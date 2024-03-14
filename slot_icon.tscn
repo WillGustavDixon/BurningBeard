@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmfdd6x6pf3q0"]
+
+[ext_resource type="Texture2D" uid="uid://dmqkgqe5sl4kd" path="res://Assets/EmptyIcon.png" id="1_pf5v8"]
+[ext_resource type="Script" path="res://Scripts/slot.gd" id="2_d7ejq"]
+
+[node name="SlotIcon" type="TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+texture = ExtResource("1_pf5v8")
+expand_mode = 1
+script = ExtResource("2_d7ejq")
+
+[node name="StatusFilter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0470588)

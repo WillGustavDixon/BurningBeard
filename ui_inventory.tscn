@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpnodabfhtiic"]
+
+[ext_resource type="Script" path="res://Scripts/inventoryUI.gd" id="1_8ofin"]
+
+[node name="UIInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ofin")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.235294, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Item Spawner 1" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Spawn Apple"
+
+[node name="Item Spawner 2" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Spawn Applesauce"
+
+[node name="Item Spawner 3" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Spawn Skewer"
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 1" to="." method="itemSpawnerPressed" binds= ["01"]]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 2" to="." method="itemSpawnerPressed" binds= ["02"]]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 3" to="." method="itemSpawnerPressed" binds= ["03"]]

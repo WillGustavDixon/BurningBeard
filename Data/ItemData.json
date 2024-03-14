@@ -1,0 +1,22 @@
+{
+  "00": {
+    "Item Name": "Empty",
+    "Item Value": 0,
+    "Grid Size": "0,0"
+  },
+  "01": {
+    "Item Name": "Apple",
+    "Item Value": 5,
+    "Grid Size": "0,0"
+  },
+  "02": {
+    "Item Name": "Applesauce",
+    "Item Value": 15,
+    "Grid Size": "0,0/1,0/0,1/1,1"
+  },
+  "03": {
+    "Item Name": "Apple Skewer",
+    "Item Value": 10,
+    "Grid Size": "0,0/0,1"
+  }
+}
