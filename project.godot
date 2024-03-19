@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Burning Beard"
-run/main_scene="res://inventory_scene.tscn"
+run/main_scene="res://Scenes/inventory_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,10 @@ window/size/viewport_height=720
 [dotnet]
 
 project/assembly_name="Burning Beard Pre-Alpha"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 

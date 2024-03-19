@@ -1,9 +1,9 @@
 extends Control
 
-@onready var slotScene = preload("res://slot_icon.tscn")
+@onready var slotScene = preload("res://Scenes/slot_icon.tscn")
 @onready var gridContainer := $Background/MarginContainer/VBoxContainer/GridContainer
-@onready var itemScene = preload("res://item.tscn")
-@onready var itemInfoScene = preload("res://item_info.tscn")
+@onready var itemScene = preload("res://Scenes/item.tscn")
+@onready var itemInfoScene = preload("res://Scenes/item_info.tscn")
 @onready var colCount = gridContainer.columns
 
 var gridArray := []

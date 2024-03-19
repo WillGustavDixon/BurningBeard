@@ -17,7 +17,6 @@ func loadData(path) -> void:
 	var dataFile = FileAccess.open(path, FileAccess.READ)
 	itemData = JSON.parse_string(dataFile.get_as_text())
 	dataFile.close()
-	##print(itemData)
 	
 # sets the grid size of each item
 func setItemSizeData():
@@ -26,4 +25,3 @@ func setItemSizeData():
 		for point in itemData[item]["Grid Size"].split("/"):
 			tempArray.push_back(point.split(","))
 		inventoryData[item] = tempArray
-	##print(inventoryData)

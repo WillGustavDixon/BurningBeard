@@ -23,7 +23,6 @@ func loadItem(itemID):
 	itemName = DataHandling.itemData[itemID]["Item Name"]
 	value = DataHandling.itemData[itemID]["Item Value"]
 	rarity = DataHandling.itemData[itemID]["Item Rarity"]
-	print(itemName, ", ", value, ", ", rarity)
 	var iconPath = "res://Assets/" + DataHandling.itemData[itemID]["Item Name"] + "Icon.png"
 	itemIconPath.texture = load(iconPath) ## load item texture from the assets folder
 	for grid in DataHandling.inventoryData[itemID]:
