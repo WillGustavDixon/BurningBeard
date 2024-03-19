@@ -1,14 +1,16 @@
 extends Control
 
 @onready var slotScene = preload("res://slot_icon.tscn")
-@onready var gridContainer := $ColorRect/MarginContainer/VBoxContainer/GridContainer
+@onready var gridContainer := $Background/MarginContainer/VBoxContainer/GridContainer
 @onready var itemScene = preload("res://item.tscn")
+@onready var itemInfoScene = preload("res://item_info.tscn")
 @onready var colCount = gridContainer.columns
 
 var gridArray := []
 var slotCount := 30
 var heldItem = null
 var curSlot = null
+var itemInfo = null
 var canPlace = false
 var itemAnchor : Vector2
 
@@ -32,9 +34,21 @@ func _process(_delta):
 		
 		if Input.is_action_just_pressed("mouseLeftClick"):
 			placeItem()
-	else: ##  otherwise, allow picking up
-		if Input.is_action_just_pressed("mouseLeftClick"):
-			pickUpItem()
+	else: ##  if not
+		if is_instance_valid(itemInfo): ## if the item info window exists
+			if Input.is_action_just_pressed("mouseRightClick") || \
+			 Input.is_action_just_pressed("mouseLeftClick")     || \
+			not curSlot.storedItem.itemIconPath || \
+			not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position())):
+				itemInfo.queue_free() 
+			## when lmb/rmb is pressed or the mouse isn't over the item, delete the window
+		
+		else: ## otherwise, allow picking up and item info viewing
+			if Input.is_action_just_pressed("mouseLeftClick"):
+				pickUpItem()
+			
+			if Input.is_action_just_pressed("mouseRightClick"):
+				createItemInfo()
 
 # instantiates a new slot in the inventory scene, ideally on startup
 func createSlot(): 
@@ -130,7 +144,9 @@ func placeItem():
 	
 # lets an item be picked up if moused over
 func pickUpItem():
-	if not curSlot || not curSlot.get_global_rect().has_point((get_global_mouse_position())) || not curSlot.storedItem:
+	if not curSlot || \
+	not curSlot.get_global_rect().has_point((get_global_mouse_position())) || \
+	not curSlot.storedItem:
 		return	## checks if there is a current slot, if its moused over, and if the item is in it
 	heldItem = curSlot.storedItem
 	heldItem.selected = true
@@ -143,3 +159,10 @@ func pickUpItem():
 		gridArray[checkingCol].storedItem = null
 	checkSlot(curSlot)
 	setGrids.call_deferred(curSlot)
+
+func createItemInfo():
+	## checks if there is a current slot, if its moused over, and if the item is in it
+	if curSlot && curSlot.get_global_rect().has_point((get_global_mouse_position())) && curSlot.storedItem:
+		itemInfo = itemInfoScene.instantiate()
+		add_child(itemInfo)
+		itemInfo.editText(curSlot.storedItem)

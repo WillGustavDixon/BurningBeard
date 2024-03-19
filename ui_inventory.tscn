@@ -11,27 +11,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8ofin")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.235294, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="Spawner Columns" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Item Spawner 1" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+[node name="Item Spawner 1" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -39,7 +39,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Spawn Apple"
 
-[node name="Item Spawner 2" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+[node name="Item Spawner 2" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -47,7 +47,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Spawn Applesauce"
 
-[node name="Item Spawner 3" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+[node name="Item Spawner 3" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -55,13 +55,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Spawn Skewer"
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 6
 
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 1" to="." method="itemSpawnerPressed" binds= ["01"]]
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 2" to="." method="itemSpawnerPressed" binds= ["02"]]
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Item Spawner 3" to="." method="itemSpawnerPressed" binds= ["03"]]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 1" to="." method="itemSpawnerPressed" binds= ["01"]]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 2" to="." method="itemSpawnerPressed" binds= ["02"]]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 3" to="." method="itemSpawnerPressed" binds= ["03"]]

@@ -1,7 +1,12 @@
 extends Node2D
 
 @onready var itemIconPath = $ItemIcon
+
 var ID
+var itemName: String
+var value: int
+var rarity: int
+
 var itemGridSizes := []
 var selected = false
 var gridAnchor = null
@@ -14,6 +19,11 @@ func _process(delta):
 
 # loads the item texture & its size data 
 func loadItem(itemID):
+	ID = itemID
+	itemName = DataHandling.itemData[itemID]["Item Name"]
+	value = DataHandling.itemData[itemID]["Item Value"]
+	rarity = DataHandling.itemData[itemID]["Item Rarity"]
+	print(itemName, ", ", value, ", ", rarity)
 	var iconPath = "res://Assets/" + DataHandling.itemData[itemID]["Item Name"] + "Icon.png"
 	itemIconPath.texture = load(iconPath) ## load item texture from the assets folder
 	for grid in DataHandling.inventoryData[itemID]:

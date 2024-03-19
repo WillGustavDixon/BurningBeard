@@ -8,14 +8,13 @@ Items, including their names, value and grid space, are specified in the ItemDat
 ### Controls
 
 - Left Mouse Button: Place/Pick up item
-- Right Mouse Button: N/A
+- Right Mouse Button: View item information
 - Scroll Wheel Up/Down: Rotate item
 
 ### TO DO
 
  - Try to get the cursor to anchor to the top left of the item, rather than the centre, so that it's more clear where the item will go when placed.
- - Add an info window with the name of the item and its value. 
- - Maybe some sort of rarity variable, e.g. apples are common or 1-star, applesauce is uncommon or 2-star.
+
 
 
 
