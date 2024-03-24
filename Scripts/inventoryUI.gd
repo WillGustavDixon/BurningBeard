@@ -6,8 +6,9 @@ extends Control
 @onready var itemInfoScene = preload("res://Scenes/item_info.tscn")
 @onready var colCount = gridContainer.columns
 
+@export var slotCount := 30
+
 var gridArray := []
-var slotCount := 30
 var heldItem = null
 var curSlot = null
 var itemInfo = null
@@ -40,6 +41,7 @@ func _process(_delta):
 			 Input.is_action_just_pressed("mouseLeftClick")     || \
 			not curSlot.storedItem.itemIconPath || \
 			not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position())):
+				print(curSlot.storedItem.itemIconPath.get_global_rect())
 				itemInfo.queue_free() 
 			## when lmb/rmb is pressed or the mouse isn't over the item, delete the window
 		
@@ -61,7 +63,7 @@ func createSlot():
 	
 # runs when a slot detects its being moused over
 func slotMouseEntered(slot):
-	itemAnchor = Vector2(10000, 10000)
+	itemAnchor = Vector2(1,1)
 	curSlot = slot
 	if heldItem:
 		checkSlot(curSlot)
@@ -163,6 +165,7 @@ func pickUpItem():
 func createItemInfo():
 	## checks if there is a current slot, if its moused over, and if the item is in it
 	if curSlot && curSlot.get_global_rect().has_point((get_global_mouse_position())) && curSlot.storedItem:
+		print("this ran")
 		itemInfo = itemInfoScene.instantiate()
 		add_child(itemInfo)
 		itemInfo.editText(curSlot.storedItem)

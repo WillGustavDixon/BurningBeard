@@ -32,3 +32,8 @@ func setColour(state = slotStates.idle) -> void:
 			filter.color = Color(Color.GREEN, 0.2) ## if able to be placed on, turn green
 		slotStates.occupied:
 			filter.color = Color(Color.RED, 0.2) ## if unable to be placed on, turn red
+
+func hasItem(item) -> bool:
+	if storedItem == item:
+		return true
+	return false

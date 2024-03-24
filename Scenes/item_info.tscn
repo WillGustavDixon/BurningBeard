@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/item_info.gd" id="1_wspgs"]
 
 [node name="ItemInfoOutline" type="ColorRect"]
-offset_top = 126.0
 offset_right = 200.0
-offset_bottom = 426.0
+offset_bottom = 300.0
 color = Color(0, 0, 0, 0.588235)
 script = ExtResource("1_wspgs")
 
