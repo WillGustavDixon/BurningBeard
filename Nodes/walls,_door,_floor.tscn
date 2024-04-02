@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b34p173j14exo"]
+
+[ext_resource type="PackedScene" uid="uid://siw22651ovi5" path="res://Imports/Walls, Door, floor.glb" id="1_522v3"]
+[ext_resource type="Material" uid="uid://ct2b31u5p2hys" path="res://Materials/Walls, floor.tres" id="2_n8cec"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acw7h"]
+size = Vector3(14.1783, 0.487793, 14.6025)
+
+[node name="Walls, Door, floor" instance=ExtResource("1_522v3")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_n8cec")
+
+[node name="Cube_003" parent="Cube" index="0"]
+material_override = ExtResource("2_n8cec")
+
+[node name="Cube_002" parent="." index="1"]
+material_override = ExtResource("2_n8cec")
+
+[node name="Cube_001" parent="." index="2"]
+material_override = ExtResource("2_n8cec")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13446, -0.256104, 3.31299)
+shape = SubResource("BoxShape3D_acw7h")
+
+[node name="Cube_004" parent="." index="3"]
+material_override = ExtResource("2_n8cec")

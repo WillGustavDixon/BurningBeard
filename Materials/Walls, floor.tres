@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ct2b31u5p2hys"]
+
+[ext_resource type="Texture2D" uid="uid://gg32dpa2letv" path="res://Materials/Textures/Wall&Door Diffuse.png" id="1_j2tev"]
+[ext_resource type="Texture2D" uid="uid://dxcnjl8acr3pd" path="res://Materials/Textures/Walls&Door Normal.png" id="2_sold4"]
+
+[resource]
+albedo_texture = ExtResource("1_j2tev")
+normal_enabled = true
+normal_texture = ExtResource("2_sold4")

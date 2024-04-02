@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://b0ky8434q1q1x"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ky8434q1q1x"]
+
+[ext_resource type="PackedScene" uid="uid://2pu0n4un7qj1" path="res://Nodes/sphere.tscn" id="1_ye6sc"]
+[ext_resource type="PackedScene" uid="uid://biygwusac7v4x" path="res://Nodes/man.tscn" id="2_jl1ry"]
+[ext_resource type="PackedScene" uid="uid://b34p173j14exo" path="res://Nodes/walls,_door,_floor.tscn" id="3_n7fga"]
+[ext_resource type="Script" path="res://Code/Controls.gd" id="4_d05uf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4h8c"]
 
 [node name="World" type="Node3D"]
+
+[node name="Sphere2" parent="." instance=ExtResource("1_ye6sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.946279)
+
+[node name="man2" parent="." instance=ExtResource("2_jl1ry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.779489)
+
+[node name="Walls, Door, floor" parent="." instance=ExtResource("3_n7fga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53547, 0, -1.52096)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44955, 5.31871)
+script = ExtResource("4_d05uf")
+vertical_look_boundary = 60.0
+jump_power = 6.0
+gravity = 15.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925901, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_k4h8c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.716704, -0.119432, -0.687075, 0.697378, 0.122742, 0.706115, 0, -0.985226, 0.171259, -9.07535, 8.29526, 0)
+shadow_enabled = true
