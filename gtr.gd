@@ -16,7 +16,7 @@ func _ready():
 func _physics_process(delta):
 	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
 	engine_force = Input.get_axis("Back", "Forward") * ENGINE_POWER
-	camera_pivot.global_position = camera_pivot.global_position.lerp(global_position, delta * 20.0)
-	camera_pivot.transform = camera_pivot.transform.interpolate_with(transform, delta * 5.0)
-	look_at = look_at.lerp(global_position + linear_velocity, delta * 5.0)
-	camera_3d.look_at(look_at)
+	#camera_pivot.global_position = camera_pivot.global_position.lerp(global_position, delta * 20.0)
+	#camera_pivot.transform = camera_pivot.transform.interpolate_with(transform, delta * 5.0)
+	#look_at = look_at.lerp(global_position + linear_velocity, delta * 5.0)
+	#camera_3d.look_at(look_at)
