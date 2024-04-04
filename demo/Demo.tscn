@@ -107,3 +107,5 @@ skeleton = NodePath("")
 
 [node name="GTR" parent="." instance=ExtResource("8_fbdrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.849, 113.315, -1849.26)
+center_of_mass_mode = 0
+center_of_mass = Vector3(0, 0, 0)

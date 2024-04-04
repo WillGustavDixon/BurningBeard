@@ -433,6 +433,7 @@ points = PackedVector3Array(1.20388, -0.438554, -1.13051, 1.1928, 0.0953528, 2.1
 
 [node name="GTR" type="VehicleBody3D"]
 mass = 200.0
+gravity_scale = 2.0
 script = ExtResource("1_t21m8")
 
 [node name="Back_Left_Wheel" type="VehicleWheel3D" parent="."]
