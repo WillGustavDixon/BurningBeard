@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl6fl4f3egg4c"]
+[gd_scene load_steps=4 format=3 uid="uid://cl6fl4f3egg4c"]
+
+[ext_resource type="Script" path="res://Scripts/boulder.gd" id="1_47w2r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ywfqi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_s8wf6"]
 
 [node name="Object" type="Node3D"]
+script = ExtResource("1_47w2r")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
