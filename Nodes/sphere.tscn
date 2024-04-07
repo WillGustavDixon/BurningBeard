@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://2pu0n4un7qj1"]
-
-[ext_resource type="PackedScene" uid="uid://bp7ctvqyh5xi6" path="res://Imports/Sphere.glb" id="1_aw1lv"]
-[ext_resource type="Material" uid="uid://bw1y20pnvq62v" path="res://Materials/Textures/man, sphere.tres" id="2_7r4wb"]
-
-[node name="Sphere2" instance=ExtResource("1_aw1lv")]
-
-[node name="Sphere" parent="." index="0"]
-material_override = ExtResource("2_7r4wb")

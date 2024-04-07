@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://biygwusac7v4x"]
-
-[ext_resource type="PackedScene" uid="uid://dt7if2cyaimrn" path="res://Imports/man.glb" id="1_b6nq1"]
-[ext_resource type="Material" uid="uid://bw1y20pnvq62v" path="res://Materials/Textures/man, sphere.tres" id="2_ykd86"]
-
-[node name="man" instance=ExtResource("1_b6nq1")]
-
-[node name="body" parent="metarig/Skeleton3D" index="0"]
-material_override = ExtResource("2_ykd86")
