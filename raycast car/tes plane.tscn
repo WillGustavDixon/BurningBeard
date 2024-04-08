@@ -20,6 +20,10 @@ shape = SubResource("BoxShape3D_p2h7g")
 
 [node name="Car" parent="." instance=ExtResource("1_08o6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, -4)
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.75, 0)
+spring_strength = 5.0
+engine_power = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 0)

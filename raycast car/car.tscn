@@ -14,6 +14,7 @@ script = ExtResource("1_g356q")
 suspension_rest_dist = 0.6
 spring_strength = 10.0
 spring_damper = 1.0
+debug = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rkyuh")
@@ -24,19 +25,21 @@ mesh = SubResource("BoxMesh_1soys")
 
 [node name="Wheels" type="Node3D" parent="."]
 
-[node name="RR_Wheel" type="RayCast3D" parent="Wheels"]
+[node name="FL_Wheel" type="RayCast3D" parent="Wheels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -1)
 script = ExtResource("2_ame8u")
+is_front_wheel = true
 
-[node name="RL_Wheel" type="RayCast3D" parent="Wheels"]
+[node name="FR_Wheel" type="RayCast3D" parent="Wheels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -1)
 script = ExtResource("2_ame8u")
+is_front_wheel = true
 
-[node name="FL_Wheel" type="RayCast3D" parent="Wheels"]
+[node name="RR_Wheel" type="RayCast3D" parent="Wheels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 1)
 script = ExtResource("2_ame8u")
 
-[node name="FR_Wheel" type="RayCast3D" parent="Wheels"]
+[node name="RL_Wheel" type="RayCast3D" parent="Wheels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1)
 script = ExtResource("2_ame8u")
 

@@ -4,21 +4,40 @@ extends RayCast3D
 
 var previous_spring_length: float = 0.0
 
+@export var is_front_wheel: bool
+
 func _ready():
 	add_exception(car)
 
 func _physics_process(delta):
 	
 	if is_colliding():
- 
+		var collision_point = get_collision_point()
+		
+		suspension(delta, collision_point)
+		
+		acceleration(collision_point)
+
+func acceleration(collision_point):
+	if is_front_wheel:
+		return
+		
+	var accel_dir = global_basis.z
+	
+	var torque = car.accel_input * car.engine_power
+	
+	var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
+	
+	car.apply_force(accel_dir * torque, point - car.global_position)
+
+func suspension(delta, collision_point):
+		
 		#the direction the force will be applied
 		var susp_dir = global_basis.y
  
 		var raycast_origin = global_position
-		var raycast_dest = get_collision_point()
+		var raycast_dest = collision_point
 		var distance = raycast_dest.distance_to(raycast_origin)
- 
-		var contact = get_collision_point() - car.global_position
  
 		var spring_length = clamp(distance - car.wheel_radius, 0, car.suspension_rest_dist)
  
@@ -32,6 +51,10 @@ func _physics_process(delta):
  
 		previous_spring_length = spring_length
  
-		var point = Vector3(raycast_dest.x, raycast_dest.y + car.wheel_radius, raycast_dest.z)
+		var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
  
 		car.apply_force(susp_dir * suspension_force, point - car.global_position)
+		
+			
+			
+			
