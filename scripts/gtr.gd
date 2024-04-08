@@ -17,11 +17,11 @@ var pitch_sensitivity : float = 0.07
 var yaw_acceleration : float = 15
 var pitch_acceleration : float = 15
 
-var pitch_max : float = 35
-var pitch_min : float = -55
+var pitch_max : float = 25
+var pitch_min : float = -5
 
-var yaw_max : float = 60
-var yaw_min : float = -60
+var yaw_max : float = 25
+var yaw_min : float = -25
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
