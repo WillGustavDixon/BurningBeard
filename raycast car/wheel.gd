@@ -46,8 +46,6 @@ func apply_z_force(collision_point):
 	var z_force = dir.dot(tire_world_vel) * car.mass / 10
 	
 	car.apply_force(-dir * z_force, collision_point - car.global_position)
-	
-	var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
 
 func acceleration(collision_point):
 	if is_front_wheel:
