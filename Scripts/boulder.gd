@@ -1,22 +1,17 @@
-extends Node3D
+extends RigidBody3D
 
-@onready var rigbod = $Rigidbody3D 
-
-var movementLocked : bool
-var pos; var rot
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	movementLocked = true
-	pos = global_position
-	rot = global_rotation
+	## when created, lock the X and Z axes
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, true)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Z, true)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_X, true)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Z, true)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	print(rigbod.get_colliding_bodies())
-	if(movementLocked):
-		global_position = pos
-		global_rotation = rot
-
-func OnCollideWithPlayer():
-	movementLocked = false
+func _on_body_entered(body):
+	if(body.is_in_group("Player")):
+		## if it touches the player, unlock the axes.
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, false)
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Z, false)
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_X, false)
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Z, false)
+		linear_velocity *= 1.2
