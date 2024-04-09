@@ -25,7 +25,7 @@ func loadItem(itemID):
 	rarity = DataHandling.itemData[itemID]["Item Rarity"]
 	var iconPath = "res://Assets/" + DataHandling.itemData[itemID]["Item Name"] + "Icon.png"
 	itemIconPath.texture = load(iconPath) ## load item texture from the assets folder
-	for grid in DataHandling.inventoryData[itemID]:
+	for grid in DataHandling.itemSizeData[itemID]:
 		var tempArray := [] 
 		for i in grid:  ## this all basically adds the info for how much space this item takes up
 			tempArray.push_back(int(i))
