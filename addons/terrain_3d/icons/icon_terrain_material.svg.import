@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bms1h110j87gf"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://ccywk15q2ad8q"
+path="res://.godot/imported/icon_terrain_material.svg-ea0cde03d29920e042a4043982714cbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/terrain_3d/icons/icon_terrain_material.svg"
+dest_files=["res://.godot/imported/icon_terrain_material.svg-ea0cde03d29920e042a4043982714cbe.ctex"]
 
 [params]
 

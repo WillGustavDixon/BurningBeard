@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://du1gtnxndlven"]
+
+[ext_resource type="PackedScene" uid="uid://cdicbg8pqd4cw" path="res://raycast car/car.tscn" id="1_08o6l"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1irqw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2h7g"]
+size = Vector3(10, 1, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_1irqw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_p2h7g")
+
+[node name="Car" parent="." instance=ExtResource("1_08o6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, -4)
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.75, 0)
+spring_strength = 5.0
+engine_power = 1.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 0)
+sky_mode = 1
