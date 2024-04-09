@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=14 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_k7qca"]
 [ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_nqak5"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://demo/components/Tunnel.tscn" id="3_kdh0b"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_yqldq"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
-[ext_resource type="PackedScene" uid="uid://58weg8fuuvdg" path="res://gtr.tscn" id="8_fbdrn"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
+[ext_resource type="PackedScene" uid="uid://cdicbg8pqd4cw" path="res://raycast car/car.tscn" id="8_qc8p2"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -105,5 +105,5 @@ visible = false
 mesh = SubResource("ArrayMesh_72m36")
 skeleton = NodePath("")
 
-[node name="GTR" parent="." instance=ExtResource("8_fbdrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.849, 113.315, -1849.26)
+[node name="Car" parent="." instance=ExtResource("8_qc8p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 499.695, 93.082, -1850.3)
