@@ -6,6 +6,8 @@ var previous_spring_length: float = 0.0
 
 @export var is_front_wheel: bool
 
+var slip_detect: Vector3 = get_collision_normal()
+
 func _ready():
 	add_exception(car)
 
@@ -63,12 +65,10 @@ func acceleration(collision_point):
 	
 	var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
 	
-	var slip_detect: Vector3 = get_collision_normal()
-	
 	if slip_detect.y < 0.75:
 		torque *= -1
 	
-	car.apply_force(accel_dir * torque, point - car.global_position)
+	car.apply_force(-accel_dir * torque, point - car.global_position)
 
 
 func suspension(delta, collision_point):

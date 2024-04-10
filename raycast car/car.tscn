@@ -12,7 +12,7 @@ size = Vector3(1.1, 0.6, 3.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mass = 1000.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.4, 0)
+center_of_mass = Vector3(0, -0.6, 0)
 script = ExtResource("1_g356q")
 suspension_rest_dist = 0.3
 spring_strength = 50000.0
@@ -57,3 +57,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4.60096)
 [node name="CamPitch" type="Node3D" parent="CameraPivot/CamYaw"]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/CamYaw/CamPitch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
