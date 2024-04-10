@@ -49,5 +49,11 @@ script = ExtResource("2_ame8u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1)
 script = ExtResource("2_ame8u")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65318, 6.86627)
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4.60096)
+
+[node name="CamYaw" type="Node3D" parent="CameraPivot"]
+
+[node name="CamPitch" type="Node3D" parent="CameraPivot/CamYaw"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/CamYaw/CamPitch"]

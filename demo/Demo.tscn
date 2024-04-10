@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=16 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_k7qca"]
 [ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_nqak5"]
@@ -8,6 +8,8 @@
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
 [ext_resource type="PackedScene" uid="uid://cdicbg8pqd4cw" path="res://raycast car/car.tscn" id="8_qc8p2"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="9_ynkld"]
+[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/wall.tscn" id="10_xljyk"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -105,5 +107,11 @@ visible = false
 mesh = SubResource("ArrayMesh_72m36")
 skeleton = NodePath("")
 
-[node name="Car" parent="." instance=ExtResource("8_qc8p2")]
+[node name="Car" parent="." groups=["Player"] instance=ExtResource("8_qc8p2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 710.812, 93.082, -1850.3)
+
+[node name="Boulder" parent="." instance=ExtResource("9_ynkld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738.895, 91.6845, -1808.96)
+
+[node name="Wall" parent="." instance=ExtResource("10_xljyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738.47, 80.3365, -1793.59)
