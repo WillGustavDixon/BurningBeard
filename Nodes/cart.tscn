@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://iqb6etvjesa1"]
+
+[ext_resource type="PackedScene" uid="uid://bimctbdjd1f20" path="res://Imports/Cart.glb" id="1_3jv4m"]
+[ext_resource type="Material" uid="uid://cgb6v685mojno" path="res://Materials/Dark_Wood.tres" id="2_qsh40"]
+[ext_resource type="Material" uid="uid://deoo3oyf801g3" path="res://Materials/Mid_Wood.tres" id="3_kiq00"]
+[ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Materials/Light_Wood.tres" id="4_lcoi4"]
+[ext_resource type="Material" uid="uid://cme7xktdqv73j" path="res://Materials/Metal.tres" id="5_ugipe"]
+[ext_resource type="Material" uid="uid://ejvccddkacl0" path="res://Materials/Metal_Dark.tres" id="6_si264"]
+[ext_resource type="Material" uid="uid://iq86o7v38duy" path="res://Materials/Red_Mat.tres" id="7_7wteq"]
+[ext_resource type="Material" uid="uid://cvf4kh4l6l2yh" path="res://Materials/Checkered_Panel.tres" id="8_ekpjo"]
+[ext_resource type="Material" uid="uid://brckuntsl2doh" path="res://Materials/Wood_Panels.tres" id="9_36bud"]
+[ext_resource type="Material" uid="uid://dk4n53g4sx3pu" path="res://Materials/Canvas_Mat.tres" id="10_dw3kd"]
+[ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Materials/Blinds.tres" id="11_jqvsq"]
+
+[node name="Cart" instance=ExtResource("1_3jv4m")]
+
+[node name="Cart" parent="." index="0"]
+transform = Transform3D(0.970792, 0, 0, 0, 0.970792, 0, 0, 0, 0.970792, 0.00663698, 1.2461, 1.9811)
+surface_material_override/0 = ExtResource("2_qsh40")
+surface_material_override/1 = ExtResource("3_kiq00")
+surface_material_override/2 = ExtResource("4_lcoi4")
+surface_material_override/3 = ExtResource("5_ugipe")
+surface_material_override/4 = ExtResource("6_si264")
+surface_material_override/5 = ExtResource("7_7wteq")
+surface_material_override/6 = ExtResource("8_ekpjo")
+surface_material_override/7 = ExtResource("9_36bud")
+surface_material_override/9 = ExtResource("10_dw3kd")
+
+[node name="Blinds" parent="Cart" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("11_jqvsq")
+
+[node name="Rear_Door" parent="Cart" index="1"]
+surface_material_override/0 = ExtResource("9_36bud")
+surface_material_override/1 = ExtResource("4_lcoi4")
+surface_material_override/2 = ExtResource("5_ugipe")
+
+[node name="Rear Axile" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_qsh40")
+
+[node name="Rear_Left" parent="Rear Axile" index="0"]
+transform = Transform3D(-0.761547, 1.50111e-07, -5.22768, -1.60628e-05, -0.0493696, -1.38924e-05, -5.22768, 1.29828e-07, 0.761548, -0.0079937, 1.09491, -0.0135288)
+
+[node name="Rear_Left" parent="Rear Axile/Rear_Left" index="0"]
+surface_material_override/0 = ExtResource("5_ugipe")
+surface_material_override/1 = ExtResource("2_qsh40")
+surface_material_override/2 = ExtResource("4_lcoi4")
+
+[node name="Rear_Right" parent="Rear Axile/Rear_Right" index="0"]
+surface_material_override/0 = ExtResource("5_ugipe")
+surface_material_override/1 = ExtResource("2_qsh40")
+surface_material_override/2 = ExtResource("4_lcoi4")
+
+[node name="Front_Left_Wheel_Support" parent="Front_Left" index="0"]
+surface_material_override/0 = ExtResource("5_ugipe")
+surface_material_override/1 = ExtResource("2_qsh40")
+
+[node name="Front_Left" parent="Front_Left" index="1"]
+surface_material_override/0 = ExtResource("5_ugipe")
+surface_material_override/1 = ExtResource("2_qsh40")
+surface_material_override/2 = ExtResource("4_lcoi4")
+
+[node name="Front_Right" parent="." index="3"]
+transform = Transform3D(-1.47913e-08, 0.0544887, 0, -0.338386, -2.38178e-09, 0, 0, 0, 0.338386, -1.05977, -0.681695, 1.09281)
+
+[node name="Front_Right_Wheel_Support" parent="Front_Right" index="0"]
+transform = Transform3D(0.189291, -2.84217e-14, 0, 0, 18.9735, -3.55271e-15, 0, 1.42109e-14, 0.189291, 0.0861286, 8.77751, 0.00493407)
+surface_material_override/0 = ExtResource("2_qsh40")
+surface_material_override/1 = ExtResource("5_ugipe")
+
+[node name="Front_Right" parent="Front_Right" index="1"]
+surface_material_override/0 = ExtResource("5_ugipe")
+surface_material_override/1 = ExtResource("2_qsh40")
+surface_material_override/2 = ExtResource("4_lcoi4")
