@@ -94,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 316.808, 140.629, 346.377)
 mass = 100.0
 
 [node name="GTR" parent="." groups=["Player"] instance=ExtResource("9_33edl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.269, 150.139, 192.599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.344, 150.139, 192.525)
 mass = 120.0
 gravity_scale = 3.0
 
