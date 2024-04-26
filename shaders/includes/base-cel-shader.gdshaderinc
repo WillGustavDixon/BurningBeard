@@ -1,6 +1,6 @@
 // global uniform sampler2D diffuse_curve;
-global uniform float specular_smoothness;
-global uniform float fresnel_smoothness;
+uniform float specular_smoothness = 0.05;
+uniform float fresnel_smoothness = 0.05;
 
 float diffuse_sample(vec3 light, vec3 normal) {
 	return smoothstep(0.02, 0.05, dot(light, normal));

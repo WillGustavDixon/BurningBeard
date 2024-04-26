@@ -2,15 +2,15 @@
 
 [ext_resource type="Material" uid="uid://ma7y6tibkkkh" path="res://Materials/VFX/outline.tres" id="1_bdydx"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="2_45cqb"]
-[ext_resource type="Texture2D" uid="uid://dgo1b1gybp8fn" path="res://Imports/Cart_Boards.png" id="3_s3wdr"]
+[ext_resource type="Texture2D" uid="uid://ijx81syx2y6l" path="res://Imports/Cart_Boards.png" id="3_s3wdr"]
 
 [resource]
 render_priority = 0
 next_pass = ExtResource("1_bdydx")
 shader = ExtResource("2_45cqb")
-shader_parameter/color = Color(0.32549, 0.207843, 0.0117647, 1)
-shader_parameter/specular = Color(0.117647, 0.054902, 0.0117647, 0.388235)
-shader_parameter/fresnel = Color(0.0784314, 0.0431373, 0.00784314, 0.301961)
+shader_parameter/color = Color(0.333333, 0.211765, 0.0117647, 1)
+shader_parameter/specular = Color(0.0509804, 0.0117647, 0.00784314, 0.470588)
+shader_parameter/fresnel = Color(0.14902, 0.0666667, 0.0235294, 0.180392)
 shader_parameter/base_texture = ExtResource("3_s3wdr")
-shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scale = Vector2(3.09, 0)
 shader_parameter/uv_offset = Vector2(0, 0)
