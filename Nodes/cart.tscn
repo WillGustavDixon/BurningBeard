@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cytibfjs3k24p"]
 
-[ext_resource type="PackedScene" uid="uid://c2jx20bufe1wx" path="res://Imports/Cart.glb" id="1_3jv4m"]
+[ext_resource type="PackedScene" uid="uid://cu2l27y66nfps" path="res://Imports/Cart.glb" id="1_3jv4m"]
 [ext_resource type="Material" uid="uid://cgb6v685mojno" path="res://Materials/Dark_Wood.tres" id="2_qsh40"]
 [ext_resource type="Material" uid="uid://deoo3oyf801g3" path="res://Materials/Mid_Wood.tres" id="3_kiq00"]
 [ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Materials/Light_Wood.tres" id="4_lcoi4"]
@@ -33,7 +33,7 @@ surface_material_override/0 = ExtResource("11_jqvsq")
 [node name="Blinds Right" parent="Cart" index="1"]
 surface_material_override/0 = ExtResource("11_jqvsq")
 
-[node name="Rear_Door" parent="Cart" index="2"]
+[node name="Rear_Door" parent="Cart" index="4"]
 surface_material_override/0 = ExtResource("9_36bud")
 surface_material_override/1 = ExtResource("4_lcoi4")
 surface_material_override/2 = ExtResource("5_ugipe")
@@ -49,6 +49,9 @@ surface_material_override/2 = ExtResource("4_lcoi4")
 
 [node name="Rear Axile" parent="." index="2"]
 surface_material_override/0 = ExtResource("3_kiq00")
+
+[node name="Rear_Left" parent="Rear Axile" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.209, 0, 0)
 
 [node name="Rear_Left" parent="Rear Axile/Rear_Left" index="0"]
 surface_material_override/0 = ExtResource("5_ugipe")

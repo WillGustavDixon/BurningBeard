@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=15 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_k7qca"]
 [ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_nqak5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
 [ext_resource type="PackedScene" uid="uid://58weg8fuuvdg" path="res://Scenes/gtr.tscn" id="9_33edl"]
+[ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Nodes/cart.tscn" id="9_d4dkg"]
 [ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="9_sx3ux"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
@@ -96,3 +97,6 @@ mass = 100.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 784.269, 150.139, 192.599)
 mass = 120.0
 gravity_scale = 3.0
+
+[node name="Cart" parent="." instance=ExtResource("9_d4dkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 787.904, 118.972, 252.751)
