@@ -1271,7 +1271,7 @@ surface_material_override/1 = ExtResource("2_qsh40")
 surface_material_override/2 = ExtResource("4_lcoi4")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -4, 3, -8)
+transform = Transform3D(-1, -1.51808e-08, 8.60946e-08, 0, 0.984808, 0.173648, -8.74228e-08, 0.173648, -0.984808, 0, 3, -8)
 
 [node name="CamYaw" type="Node3D" parent="CameraPivot"]
 
