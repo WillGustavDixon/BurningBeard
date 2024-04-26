@@ -10,3 +10,5 @@ func slip_force():
 	if slide_detect:
 		var grip = 0
 		car.apply_force(velocity * slip_power)
+
+

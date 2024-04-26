@@ -35,7 +35,7 @@ func apply_x_force(delta, collision_point):
 	
 	grip = car.rear_tire_grip
 	
-	if slip_detect.y < 0.75:
+	if slip_detect.y < 0.70:
 		grip = 0
 	
 	var desired_vel_change: float = -lateral_vel * grip
@@ -65,7 +65,7 @@ func acceleration(collision_point):
 	
 	var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
 	
-	if slip_detect.y < 0.75:
+	if slip_detect.y < 0.70:
 		torque *= -1
 	
 	car.apply_force(-accel_dir * torque, point - car.global_position)

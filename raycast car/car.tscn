@@ -10,15 +10,15 @@ size = Vector3(1.1, 0.6, 3.1)
 
 [node name="Car" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mass = 1000.0
+mass = 100.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.6, 0)
 script = ExtResource("1_g356q")
 suspension_rest_dist = 0.3
-spring_strength = 50000.0
-spring_damper = 4000.0
+spring_strength = 5000.0
+spring_damper = 400.0
 debug = true
-engine_power = 4000.0
+engine_power = 400.0
 front_tire_grip = 1000.0
 rear_tire_grip = 700.0
 
