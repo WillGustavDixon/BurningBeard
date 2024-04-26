@@ -80,3 +80,22 @@ Right={
 3d/physics_engine="JoltPhysics3D"
 jolt_3d/collisions/areas_detect_static_bodies=true
 jolt_3d/collisions/report_all_kinematic_contacts=true
+
+[shader_globals]
+
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+outline_width={
+"type": "int",
+"value": 0
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+specular_smoothness={
+"type": "float",
+"value": -0.04
+}
