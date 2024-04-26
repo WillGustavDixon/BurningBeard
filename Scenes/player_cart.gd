@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.6
-const ENGINE_POWER = 500
+const ENGINE_POWER = 666
 
 @onready var yaw_node = $CameraPivot/CamYaw
 @onready var pitch_node = $CameraPivot/CamYaw/CamPitch

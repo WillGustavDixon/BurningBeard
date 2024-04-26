@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_yqldq"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
-[ext_resource type="PackedScene" uid="uid://cyer6lnjdtncy" path="res://Scenes/player_cart.tscn" id="9_banqp"]
+[ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://cart.tscn" id="9_j3vbl"]
 [ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="9_sx3ux"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
@@ -89,9 +89,8 @@ mesh_size = 64
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
 [node name="Boulder" parent="." instance=ExtResource("9_sx3ux")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 316.808, 122.408, 346.377)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 316.808, 122.408, 346.377)
 mass = 100.0
 
-[node name="Player_Cart" parent="." instance=ExtResource("9_banqp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.158, 131.434, 326.842)
-gravity_scale = 4.0
+[node name="Cart" parent="." groups=["Player"] instance=ExtResource("9_j3vbl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 309.865, 126.556, 338.996)
