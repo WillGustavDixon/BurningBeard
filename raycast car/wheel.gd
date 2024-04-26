@@ -6,6 +6,8 @@ var previous_spring_length: float = 0.0
 
 @export var is_front_wheel: bool
 
+var slip_detect: Vector3 = get_collision_normal()
+
 func _ready():
 	add_exception(car)
 
@@ -25,14 +27,20 @@ func apply_x_force(delta, collision_point):
 	var dir: Vector3 = global_basis.x
 	var tire_world_vel: Vector3 = get_point_velocity(global_position)
 	var lateral_vel: float = dir.dot(tire_world_vel)
-	
-	var grip = car.rear_tire_grip
+	var slip_detect: Vector3 = get_collision_normal()
+	var grip: float
 	
 	if is_front_wheel:
 		grip = car.front_tire_grip
-		
+	
+	grip = car.rear_tire_grip
+	
+	if slip_detect.y < 0.70:
+		grip = 0
+	
 	var desired_vel_change: float = -lateral_vel * grip
 	var x_force = desired_vel_change + delta
+	
 	
 	car.apply_force(dir * x_force, collision_point - car.global_position)
 
@@ -57,7 +65,10 @@ func acceleration(collision_point):
 	
 	var point = Vector3(collision_point.x, collision_point.y + car.wheel_radius, collision_point.z)
 	
-	car.apply_force(accel_dir * torque, point - car.global_position)
+	if slip_detect.y < 0.70:
+		torque *= -1
+	
+	car.apply_force(-accel_dir * torque, point - car.global_position)
 
 
 func suspension(delta, collision_point):

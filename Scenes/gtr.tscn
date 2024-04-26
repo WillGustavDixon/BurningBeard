@@ -433,7 +433,7 @@ points = PackedVector3Array(1.20388, -0.438554, -1.13051, 1.1928, 0.0953528, 2.1
 
 [node name="GTR" type="VehicleBody3D"]
 mass = 50.0
-gravity_scale = 4.0
+gravity_scale = 2.0
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_ebx0k")
@@ -441,6 +441,9 @@ script = ExtResource("1_ebx0k")
 [node name="Back_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.369, -1.625)
 use_as_traction = true
+wheel_roll_influence = 0.01
+wheel_rest_length = 0.1
+wheel_friction_slip = 1.1
 suspension_travel = 0.15
 suspension_stiffness = 100.0
 
@@ -452,6 +455,9 @@ skeleton = NodePath("")
 [node name="Back_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.369, -1.625)
 use_as_traction = true
+wheel_roll_influence = 0.01
+wheel_rest_length = 0.1
+wheel_friction_slip = 1.1
 suspension_travel = 0.15
 suspension_stiffness = 100.0
 
@@ -463,6 +469,9 @@ skeleton = NodePath("")
 [node name="Front_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.369, 2)
 use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_rest_length = 0.1
+wheel_friction_slip = 1.4
 suspension_travel = 0.15
 suspension_stiffness = 100.0
 
@@ -474,6 +483,9 @@ skeleton = NodePath("")
 [node name="Front_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.369, 2)
 use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_rest_length = 0.1
+wheel_friction_slip = 1.4
 suspension_travel = 0.15
 suspension_stiffness = 100.0
 
@@ -497,3 +509,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 3, 
 [node name="CamPitch" type="Node3D" parent="CameraPivot/CamYaw"]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/CamYaw/CamPitch"]
+
+[node name="CentreOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 1)

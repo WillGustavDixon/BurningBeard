@@ -34,3 +34,41 @@ func _process(delta):
 	else:
 		fl_wheel.rotation.y = lerp(fl_wheel.rotation.y, 0.0, 0.2)
 		fr_wheel.rotation.y = lerp(fr_wheel.rotation.y, 0.0, 0.2)
+		
+@onready var yaw_node = $CameraPivot/CamYaw
+@onready var pitch_node = $CameraPivot/CamYaw/CamPitch
+@onready var camera = $CameraPivot/CamYaw/CamPitch/Camera3D
+@onready var acceleration = 15
+
+var camera_rotate_max = 15
+var camera_rotate_min = -15
+
+var yaw : float = 0
+var pitch : float = 0
+var cam_rotation: float = 0
+
+var yaw_sensitivity : float = 0.07
+var pitch_sensitivity : float = 0.07
+
+
+var pitch_max : float = 25
+var pitch_min : float = -5
+
+var yaw_max : float = 25
+var yaw_min : float = -25
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func _physics_process(delta):
+	yaw_node.rotation_degrees.y = lerp(yaw_node.rotation_degrees.y, yaw, acceleration * delta)
+	pitch_node.rotation_degrees.x = lerp(pitch_node.rotation_degrees.x, pitch, acceleration * delta)
+	camera.global_rotation_degrees.z = lerp(camera.global_rotation_degrees.z, cam_rotation, acceleration * delta)
+	pitch = clamp(pitch, pitch_min, pitch_max)
+	yaw = clamp(yaw, yaw_min, yaw_max)
+	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		yaw += -event.relative.x * yaw_sensitivity
+		pitch += -event.relative.y * pitch_sensitivity
