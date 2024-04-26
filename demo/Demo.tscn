@@ -8,7 +8,7 @@
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
 [ext_resource type="PackedScene" uid="uid://58weg8fuuvdg" path="res://Scenes/gtr.tscn" id="8_fbdrn"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
-[ext_resource type="PackedScene" uid="uid://iqb6etvjesa1" path="res://Nodes/cart.tscn" id="9_d4dkg"]
+[ext_resource type="PackedScene" uid="uid://f73wj61e0ix2" path="res://Imports/Cart.glb" id="9_akh3q"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -109,5 +109,5 @@ skeleton = NodePath("")
 [node name="GTR" parent="." instance=ExtResource("8_fbdrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.849, 113.315, -1849.26)
 
-[node name="Cart" parent="." instance=ExtResource("9_d4dkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412.322, 135.88, -958.159)
+[node name="Cart" parent="." instance=ExtResource("9_akh3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412.975, 134.767, -955.748)
