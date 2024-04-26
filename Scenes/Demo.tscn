@@ -1,14 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=12 format=3 uid="uid://chol2xlfbq7cu"]
 
-[ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_k7qca"]
-[ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_nqak5"]
-[ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="3_cw38j"]
-[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://demo/components/Tunnel.tscn" id="3_kdh0b"]
-[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_yqldq"]
-[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
-[ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
-[ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://cart.tscn" id="9_j3vbl"]
-[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="9_sx3ux"]
+[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_w2y7l"]
+[ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="4_773u5"]
+[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://demo/components/Tunnel.tscn" id="5_i5pur"]
+[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="6_1n383"]
+[ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="7_f16xr"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="8_d03s7"]
+[ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://cart.tscn" id="9_iwcnm"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -67,30 +65,27 @@ auto_shader = true
 dual_scaling = true
 
 [node name="Demo" type="Node"]
-script = ExtResource("1_k7qca")
 
-[node name="UI" parent="." instance=ExtResource("2_nqak5")]
+[node name="Global_Lighting" parent="." instance=ExtResource("3_w2y7l")]
 
-[node name="World" parent="." instance=ExtResource("3_yqldq")]
-
-[node name="Borders" parent="." instance=ExtResource("3_cw38j")]
+[node name="Borders" parent="." instance=ExtResource("4_773u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -3, 512)
 collision_mask = 3
 
-[node name="Tunnel" parent="." instance=ExtResource("3_kdh0b")]
+[node name="Tunnel" parent="." instance=ExtResource("5_i5pur")]
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
-storage = ExtResource("5_sl43a")
+storage = ExtResource("6_1n383")
 material = SubResource("Terrain3DMaterial_jrc01")
-texture_list = ExtResource("8_g2of2")
+texture_list = ExtResource("7_f16xr")
 render_cull_margin = 1000.0
 collision_mask = 3
 mesh_size = 64
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
-[node name="Boulder" parent="." instance=ExtResource("9_sx3ux")]
+[node name="Boulder" parent="." instance=ExtResource("8_d03s7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 316.808, 122.408, 346.377)
 mass = 100.0
 
-[node name="Cart" parent="." groups=["Player"] instance=ExtResource("9_j3vbl")]
+[node name="Cart" parent="." groups=["Player"] instance=ExtResource("9_iwcnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 309.865, 126.556, 338.996)

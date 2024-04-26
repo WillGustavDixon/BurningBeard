@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.6
-const ENGINE_POWER = 666
+const ENGINE_POWER = 550
 
 @onready var yaw_node = $CameraPivot/CamYaw
 @onready var pitch_node = $CameraPivot/CamYaw/CamPitch
@@ -19,8 +19,8 @@ var pitch_min : float = -5
 var yaw_max : float = 25
 var yaw_min : float = -25
 
-var camera_rotate_max = 15
-var camera_rotate_min = -15
+var camera_rotate_max = 1
+var camera_rotate_min = -1
 var cam_rotation: float = 0
 
 func _ready():
