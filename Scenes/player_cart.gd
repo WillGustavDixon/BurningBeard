@@ -2,6 +2,7 @@ extends VehicleBody3D
 
 const MAX_STEER = 0.6
 const ENGINE_POWER = 550
+const MAX_BRAKE_FORCE = 5.0 
 
 @onready var yaw_node = $CameraPivot/CamYaw
 @onready var pitch_node = $CameraPivot/CamYaw/CamPitch
@@ -23,6 +24,8 @@ var camera_rotate_max = 1
 var camera_rotate_min = -1
 var cam_rotation: float = 0
 
+var brake_val =  1.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -35,8 +38,15 @@ func _physics_process(delta):
 	pitch_node.rotation_degrees.x = lerp(pitch_node.rotation_degrees.x, pitch, acceleration * delta)
 	camera.global_rotation_degrees.z = lerp(camera.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
+	if Input.is_action_pressed("Handbrake"):
+		brake_val = 10
+	else:
+		brake_val = 0
 	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
+	brake = brake_val * MAX_BRAKE_FORCE
+	
+	
 	
 func _input(event):
 	if event is InputEventMouseMotion:
