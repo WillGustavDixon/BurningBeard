@@ -88,4 +88,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 316.808, 122.408, 346.377)
 mass = 100.0
 
 [node name="Cart" parent="." groups=["Player"] instance=ExtResource("9_iwcnm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 309.865, 126.556, 338.996)
+transform = Transform3D(0.381909, 0, -0.9242, 0, 1, 0, 0.9242, 0, 0.381909, 789.677, 124.233, 197.996)
