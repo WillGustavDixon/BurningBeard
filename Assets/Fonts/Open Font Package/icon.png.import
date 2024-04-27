@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbor5lrlu7mxk"
-path="res://.godot/imported/ApplesauceIcon.png-4ee2ae04a3cc11758515ca698172bdf5.ctex"
+uid="uid://dfy8de5o75yrn"
+path="res://.godot/imported/icon.png-d3e10b6bfd5ff21deeb3af1a6666f264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ApplesauceIcon.png"
-dest_files=["res://.godot/imported/ApplesauceIcon.png-4ee2ae04a3cc11758515ca698172bdf5.ctex"]
+source_file="res://Assets/Fonts/Open Font Package/icon.png"
+dest_files=["res://.godot/imported/icon.png-d3e10b6bfd5ff21deeb3af1a6666f264.ctex"]
 
 [params]
 

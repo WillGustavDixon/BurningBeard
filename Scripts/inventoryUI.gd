@@ -15,17 +15,14 @@ var itemInfo = null
 var canPlace = false
 var itemAnchor : Vector2
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(slotCount): 
-		createSlot()
-
+			createSlot()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if curSlot:
-		#print(curSlot.ID, ", ", curSlot.isHovering,  ", ", curSlot.get_global_rect().has_point((get_global_mouse_position())))
 		pass
 	if heldItem: ## if an item is being held, allow rotation or placement
 		if Input.is_action_just_pressed("mouseScrollDown"):
@@ -38,10 +35,9 @@ func _process(_delta):
 	else: ##  if not
 		if is_instance_valid(itemInfo): ## if the item info window exists
 			if Input.is_action_just_pressed("mouseRightClick") || \
-			 Input.is_action_just_pressed("mouseLeftClick")     || \
-			not curSlot.storedItem.itemIconPath || \
-			not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position())):
-				print(curSlot.storedItem.itemIconPath.get_global_rect())
+			Input.is_action_just_pressed("mouseLeftClick")     || \
+			(not curSlot.storedItem.itemIconPath && \
+			not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position()))):
 				itemInfo.queue_free() 
 			## when lmb/rmb is pressed or the mouse isn't over the item, delete the window
 		
@@ -56,7 +52,7 @@ func _process(_delta):
 func createSlot(): 
 	var newSlot = slotScene.instantiate() 
 	newSlot.ID = gridArray.size() ## IDs go in order of creation horizontally 
-	gridContainer.add_child(newSlot) 
+	gridContainer.add_child(newSlot)
 	gridArray.push_back(newSlot) ## puts it at the end of the grid array
 	newSlot.slotEntered.connect(slotMouseEntered) ## connects the signals with
 	newSlot.slotExited.connect(slotMouseExited) ## corresponding functions here
@@ -146,15 +142,14 @@ func placeItem():
 	
 # lets an item be picked up if moused over
 func pickUpItem():
-	if not curSlot || \
-	not curSlot.get_global_rect().has_point((get_global_mouse_position())) || \
-	not curSlot.storedItem:
+	if not curSlot || not curSlot.storedItem || \
+	not curSlot.get_global_rect().has_point((get_global_mouse_position())):
 		return	## checks if there is a current slot, if its moused over, and if the item is in it
 	heldItem = curSlot.storedItem
 	heldItem.selected = true
 	heldItem.get_parent().remove_child(heldItem)
 	add_child(heldItem) ## removes the item as a child of the slot & sets it as a child of the inventory
-	heldItem.global_position = get_global_mouse_position()	
+	heldItem.global_position = get_global_mouse_position()
 	for slot in heldItem.itemGridSizes:
 		var checkingCol = heldItem.gridAnchor.ID + slot[0] + slot[1] * colCount
 		gridArray[checkingCol].curState = gridArray[checkingCol].slotStates.free
@@ -165,7 +160,6 @@ func pickUpItem():
 func createItemInfo():
 	## checks if there is a current slot, if its moused over, and if the item is in it
 	if curSlot && curSlot.get_global_rect().has_point((get_global_mouse_position())) && curSlot.storedItem:
-		print("this ran")
 		itemInfo = itemInfoScene.instantiate()
 		add_child(itemInfo)
 		itemInfo.editText(curSlot.storedItem)

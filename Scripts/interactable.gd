@@ -18,6 +18,6 @@ func _process(delta):
 func _on_body_entered(body):
 	## this checks if it's touching the player
 	## can always be modified to check if touching something else.
-	if(body.is_in_group("Player")): 
+	if body.is_in_group("Player"): 
 		## do something
 		pass ## delete 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=3 uid="uid://cyer6lnjdtncy"]
 
-[ext_resource type="Script" path="res://Scenes/player_cart.gd" id="1_a8b0e"]
-[ext_resource type="Texture2D" uid="uid://dgo1b1gybp8fn" path="res://Imports/Cart_Boards.png" id="1_jl0f2"]
-[ext_resource type="Texture2D" uid="uid://b0yvrffdf324a" path="res://Imports/Cart_Rolled_Fabric.png" id="2_osxst"]
+[ext_resource type="Script" path="res://Scripts/player_cart.gd" id="1_a8b0e"]
+[ext_resource type="Texture2D" uid="uid://ijx81syx2y6l" path="res://Imports/Cart_Boards.png" id="1_jl0f2"]
+[ext_resource type="Texture2D" uid="uid://dyb656nkvpl7u" path="res://Imports/Cart_Rolled_Fabric.png" id="2_osxst"]
 [ext_resource type="Texture2D" uid="uid://dxwy0t35nbxm7" path="res://Imports/Cart_Blinds.png" id="3_bcqr4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4egxl"]
