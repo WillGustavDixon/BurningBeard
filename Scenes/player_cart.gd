@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.6
-var ENGINE_POWER = 550
+var ENGINE_POWER = 666
 const MAX_BRAKE_FORCE = 5.0 
 
 @onready var yaw_node = $CameraPivot/CamYaw
@@ -45,18 +45,20 @@ func _physics_process(delta):
 	else:
 		brake_val = 0
 	
-	if Input.is_action_pressed("Accelerate"):
-		print(VELOCITY)
+	if Input.is_action_pressed("Reverse"):
+		ENGINE_POWER *= 0.5
+	else:
+		ENGINE_POWER = 666
 		
-	if VELOCITY.x > 25 or VELOCITY.x < -25:
+	if VELOCITY.x > 20 or VELOCITY.x < -20:
 		ENGINE_POWER *= 0.01
 	else:
-		ENGINE_POWER = 550
+		ENGINE_POWER = 666
 		
-	if VELOCITY.z > 25 or VELOCITY.z < -25:
+	if VELOCITY.z > 20 or VELOCITY.z < -20:
 		ENGINE_POWER *= 0.01
 	else:
-		ENGINE_POWER = 550
+		ENGINE_POWER = 666
 	
 	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
