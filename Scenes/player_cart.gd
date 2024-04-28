@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.6
-const ENGINE_POWER = 550
+var ENGINE_POWER = 550
 const MAX_BRAKE_FORCE = 5.0 
 
 @onready var yaw_node = $CameraPivot/CamYaw
@@ -30,6 +30,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _physics_process(delta):
+	var VELOCITY: Vector3 = get_linear_velocity()
+	
 	yaw_node.rotation_degrees.y = lerp(yaw_node.rotation_degrees.y, yaw, yaw_acceleration * delta)
 	pitch_node.rotation_degrees.x = lerp(pitch_node.rotation_degrees.x, pitch, pitch_acceleration * delta)
 	pitch = clamp(pitch, pitch_min, pitch_max)
@@ -42,6 +44,20 @@ func _physics_process(delta):
 		brake_val = 10
 	else:
 		brake_val = 0
+	
+	if Input.is_action_pressed("Accelerate"):
+		print(VELOCITY)
+		
+	if VELOCITY.x > 25 or VELOCITY.x < -25:
+		ENGINE_POWER *= 0.01
+	else:
+		ENGINE_POWER = 550
+		
+	if VELOCITY.z > 25 or VELOCITY.z < -25:
+		ENGINE_POWER *= 0.01
+	else:
+		ENGINE_POWER = 550
+	
 	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
