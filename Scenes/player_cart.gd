@@ -20,8 +20,8 @@ var pitch_min : float = -5
 var yaw_max : float = 25
 var yaw_min : float = -25
 
-var camera_rotate_max = 1
-var camera_rotate_min = -1
+var camera_rotate_max = 0
+var camera_rotate_min = 0
 var cam_rotation: float = 0
 
 var brake_val =  1.0

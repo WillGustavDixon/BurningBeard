@@ -1205,7 +1205,7 @@ surface_material_override/1 = ExtResource("5_ugipe")
 [node name="Rear_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20875, -0.68311, -1.1715)
 use_as_traction = true
-wheel_roll_influence = 0.0
+wheel_roll_influence = 0.05
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.1
@@ -1222,7 +1222,7 @@ surface_material_override/2 = ExtResource("4_lcoi4")
 [node name="Rear_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20572, -0.682599, -1.17236)
 use_as_traction = true
-wheel_roll_influence = 0.0
+wheel_roll_influence = 0.05
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.1
@@ -1239,7 +1239,7 @@ surface_material_override/2 = ExtResource("4_lcoi4")
 [node name="Front_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06, -0.683, 1.093)
 use_as_steering = true
-wheel_roll_influence = 0.0
+wheel_roll_influence = 0.05
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.4
@@ -1256,7 +1256,7 @@ surface_material_override/2 = ExtResource("4_lcoi4")
 [node name="Front_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06, -0.683, 1.093)
 use_as_steering = true
-wheel_roll_influence = 0.0
+wheel_roll_influence = 0.05
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.4
