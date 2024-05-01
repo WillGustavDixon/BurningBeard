@@ -27,7 +27,7 @@ var cam_rotation: float = 0
 var brake_val =  1.0
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	respawn.connect(onRespawn)
 	
 func _physics_process(delta):
 	var VELOCITY: Vector3 = get_linear_velocity()
@@ -64,9 +64,21 @@ func _physics_process(delta):
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
 	
-	
-	
 func _input(event):
 	if event is InputEventMouseMotion:
 		yaw += -event.relative.x * yaw_sensitivity
 		pitch += -event.relative.y * pitch_sensitivity
+
+signal respawn()
+@export var curCheckpointPos : Vector3
+@export var curCheckpointRot : Vector3
+
+func onRespawn():
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	global_rotation = curCheckpointRot
+	global_position = curCheckpointPos
+
+func _on_body_entered(body):
+	if body.is_in_group("DeathPlane"):
+		emit_signal("respawn")

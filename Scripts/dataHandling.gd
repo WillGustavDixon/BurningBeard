@@ -34,5 +34,5 @@ func loadInvData(path):
 	var dataFile = FileAccess.open(path, FileAccess.READ)
 	
 	invData = dataFile.get_as_text()
-	print(invData)
+	#print(invData)
 	dataFile.close()
