@@ -1,17 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=18 format=3 uid="uid://chol2xlfbq7cu"]
 
-[ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_k7qca"]
-[ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_nqak5"]
-[ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="3_cw38j"]
-[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://demo/components/Tunnel.tscn" id="3_kdh0b"]
-[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_yqldq"]
-[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_sl43a"]
-[ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="8_g2of2"]
-[ext_resource type="PackedScene" uid="uid://cyer6lnjdtncy" path="res://Scenes/player_cart.tscn" id="9_banqp"]
-[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="9_sx3ux"]
-[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/wall.tscn" id="10_k76io"]
-[ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/inventory_scene.tscn" id="11_qg7vn"]
-[ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_t3x84"]
+[ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_ptmq7"]
+[ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="2_2dw7l"]
+[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/World.tscn" id="3_0t6ta"]
+[ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="4_e5e8x"]
+[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://demo/components/Tunnel.tscn" id="5_r6w53"]
+[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="6_3g0pl"]
+[ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://demo/data/texture_list.tres" id="7_xuqqr"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/boulder.tscn" id="8_arj21"]
+[ext_resource type="PackedScene" uid="uid://cyer6lnjdtncy" path="res://Scenes/player_cart.tscn" id="9_xmmlb"]
+[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/wall.tscn" id="10_dwr1h"]
+[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/death_plane.tscn" id="11_ejdc8"]
+[ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/inventory_scene.tscn" id="12_k5iwr"]
+[ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="13_sk2a3"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -71,50 +72,54 @@ dual_scaling = true
 
 [node name="Demo" type="Node"]
 process_mode = 3
-script = ExtResource("1_k7qca")
+script = ExtResource("1_ptmq7")
 
 [node name="MainScene" type="Node" parent="."]
 process_mode = 1
 
-[node name="UI" parent="MainScene" instance=ExtResource("2_nqak5")]
+[node name="UI" parent="MainScene" instance=ExtResource("2_2dw7l")]
 
-[node name="World" parent="MainScene" instance=ExtResource("3_yqldq")]
+[node name="World" parent="MainScene" instance=ExtResource("3_0t6ta")]
 
-[node name="Borders" parent="MainScene" instance=ExtResource("3_cw38j")]
+[node name="Borders" parent="MainScene" instance=ExtResource("4_e5e8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -3, 512)
 collision_mask = 3
 
-[node name="Tunnel" parent="MainScene" instance=ExtResource("3_kdh0b")]
+[node name="Tunnel" parent="MainScene" instance=ExtResource("5_r6w53")]
 
 [node name="Terrain3D" type="Terrain3D" parent="MainScene"]
-storage = ExtResource("5_sl43a")
+storage = ExtResource("6_3g0pl")
 material = SubResource("Terrain3DMaterial_jrc01")
-texture_list = ExtResource("8_g2of2")
+texture_list = ExtResource("7_xuqqr")
 render_cull_margin = 1000.0
 collision_mask = 3
 mesh_size = 64
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
-[node name="Boulder" parent="MainScene" instance=ExtResource("9_sx3ux")]
+[node name="Boulder" parent="MainScene" instance=ExtResource("8_arj21")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 477.873, 144.865, 365.94)
 mass = 100.0
 
-[node name="Player_Cart" parent="MainScene" instance=ExtResource("9_banqp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.158, 131.434, 326.842)
+[node name="Player_Cart" parent="MainScene" instance=ExtResource("9_xmmlb")]
+transform = Transform3D(-0.000370469, 0.00054968, 1, 2.25744e-05, 1, -0.000549671, -1, 2.23537e-05, -0.000370483, 318.789, 122.363, 356.415)
+curCheckpointPos = Vector3(318, 122, 356)
+curCheckpointRot = Vector3(0, 90, 0)
 
-[node name="Wall" parent="MainScene" instance=ExtResource("10_k76io")]
+[node name="Wall" parent="MainScene" instance=ExtResource("10_dwr1h")]
 transform = Transform3D(-2.18557e-07, 4.18643e-15, 5, -0.558645, 4.96869, -2.44192e-08, -4.96869, -0.558645, -2.17189e-07, 665.177, 105.394, 383)
 disappears = true
 
-[node name="Wall2" parent="MainScene" instance=ExtResource("10_k76io")]
+[node name="Wall2" parent="MainScene" instance=ExtResource("10_dwr1h")]
 transform = Transform3D(-2.18557e-07, 2.68157e-15, 5, -1.58123, 4.74339, -6.91176e-08, -4.74339, -1.58123, -2.0734e-07, 665.182, 109.88, 403.408)
 disappears = true
 
-[node name="InventoryScene" parent="." instance=ExtResource("11_qg7vn")]
+[node name="Death Plane" parent="MainScene" instance=ExtResource("11_ejdc8")]
+transform = Transform3D(150, 0, 0, 0, 1, 0, 0, 0, 150, 966.241, 89.1006, 326.842)
+
+[node name="InventoryScene" parent="." instance=ExtResource("12_k5iwr")]
 process_mode = 2
 
 [node name="PauseOverlay" type="Node2D" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PauseOverlay"]
 offset_right = 1920.0
@@ -137,14 +142,14 @@ grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PauseOverlay/ColorRect/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_t3x84")
+theme_override_fonts/normal_font = ExtResource("13_sk2a3")
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
 text = "[center]PAUSED[/center]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="PauseOverlay/ColorRect/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("12_t3x84")
+theme_override_fonts/normal_font = ExtResource("13_sk2a3")
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "

@@ -24,7 +24,7 @@ var camera_rotate_min = -15
 var cam_rotation: float = 0
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	respawn.connect(onRespawn)
 	
 func _physics_process(delta):
 	yaw_node.rotation_degrees.y = lerp(yaw_node.rotation_degrees.y, yaw, yaw_acceleration * delta)
@@ -37,8 +37,74 @@ func _physics_process(delta):
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
-	
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		yaw += -event.relative.x * yaw_sensitivity
 		pitch += -event.relative.y * pitch_sensitivity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+signal respawn()
+@export var curCheckpointPos : Vector3
+@export var curCheckpointRot : Vector3
+
+func onRespawn():
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	global_rotation = curCheckpointRot
+	global_position = curCheckpointPos
+
+func _on_body_entered(body):
+	if body.is_in_group("DeathPlane"):
+		emit_signal("respawn")

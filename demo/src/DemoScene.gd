@@ -8,8 +8,11 @@ extends Node
 
 func _ready():
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	invScene.visible = false
+	pauseScene.visible = false
 	invOpen = false
+	pausing = false
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Inventory") && !pausing: 
