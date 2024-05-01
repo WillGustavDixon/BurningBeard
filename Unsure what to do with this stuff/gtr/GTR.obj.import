@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c2h41jt75xbvv"
-path="res://.godot/imported/GTR.obj-bcedf0c69eceec1ee75ee0259dfce1da.scn"
+path="res://.godot/imported/GTR.obj-f0d8e29fac63b9be745172b94d134b60.scn"
 
 [deps]
 
-source_file="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/GTR.obj"
-dest_files=["res://.godot/imported/GTR.obj-bcedf0c69eceec1ee75ee0259dfce1da.scn"]
+source_file="res://Unsure what to do with this stuff/gtr/GTR.obj"
+dest_files=["res://.godot/imported/GTR.obj-f0d8e29fac63b9be745172b94d134b60.scn"]
 
 [params]
 

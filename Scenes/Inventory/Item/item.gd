@@ -8,6 +8,8 @@ var value: int
 var rarity: int
 var needXOffset: bool
 var needYOffset: bool
+var primeSlot: Node
+var itemSrc: Node
 
 var itemGridSizes := []
 var selected = false
@@ -23,13 +25,14 @@ func _process(delta):
 		global_position = lerp(global_position, dest, 50 * delta)
 
 # loads the item texture & its size data 
-func loadItem(itemID):
+func loadItem(itemID, src:Node = null):
 	ID = itemID
 	itemName = DataHandling.itemData[itemID]["Item Name"]
 	value = DataHandling.itemData[itemID]["Item Value"]
 	rarity = DataHandling.itemData[itemID]["Item Rarity"]
 	needXOffset = DataHandling.itemData[itemID]["Needs X Offset?"]
 	needYOffset = DataHandling.itemData[itemID]["Needs Y Offset?"]
+	itemSrc = src
 	var iconPath = "res://Assets/Items/" + DataHandling.itemData[itemID]["Item Name"] + "Icon.png"
 	itemIconPath.texture = load(iconPath) ## load item texture from the assets folder
 	for grid in DataHandling.itemSizeData[itemID]:
@@ -51,12 +54,16 @@ func rotateItem(dir):
 		rotation_degrees = 270
 
 # makes sure the item visually snaps to its desired position in the grid
-func snapToPos(destination:Vector2): ## this tweens an item to its desired position when being placed
+func place(destination:Vector2, doAnim:bool): ## this tweens an item to its desired position when being placed
 	var tween = create_tween()
 	if int(rotation_degrees) % 180 == 0: ## if it's upright or upside down, put it normally
 		destination += itemIconPath.size/2
 	else: ## otherwise, switch the X/Y coordinate info of the item and add that instead
 		var tempXYSwitch = Vector2(itemIconPath.size.y, itemIconPath.size.x);
 		destination += tempXYSwitch/2
-	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
+	
+	if doAnim:
+		tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
+	else:
+		global_position = destination
 	selected = false

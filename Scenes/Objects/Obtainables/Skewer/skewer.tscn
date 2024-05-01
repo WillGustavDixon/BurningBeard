@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://drxdjftmugqhy"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Skewer/skewer.gd" id="1_jen0q"]
+[ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="2_jccta"]
+[ext_resource type="Material" uid="uid://g0v2nvyi7vdl" path="res://Assets/Materials/Environment/Brown.tres" id="3_ojwp8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74qmg"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0nbfb"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("2_jccta")
+height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_6i1d7"]
+size = Vector3(0.05, 2, 0.05)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xc17x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8gn7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm0ab"]
+transparency = 1
+albedo_color = Color(0.196078, 0.588235, 1, 0.0784314)
+
+[node name="Skewer" type="RigidBody3D"]
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_jen0q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.77109e-05, -0.000439405, 0.0051688)
+shape = SubResource("BoxShape3D_74qmg")
+
+[node name="AppleRound" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.666143, 0)
+mesh = SubResource("SphereMesh_0nbfb")
+
+[node name="AppleRound2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227536, 0)
+mesh = SubResource("SphereMesh_0nbfb")
+
+[node name="AppleRound3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.324599, 0)
+mesh = SubResource("SphereMesh_0nbfb")
+
+[node name="AppleStalk" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_ojwp8")
+mesh = SubResource("BoxMesh_6i1d7")
+
+[node name="Detection Radius" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Radius"]
+transform = Transform3D(7.5, 0, 0, 0, 0.5, 0, 0, 0, 7.5, 0, 0.000457764, 0)
+shape = SubResource("CylinderShape3D_xc17x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Detection Radius/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_8gn7g")
+surface_material_override/0 = SubResource("StandardMaterial3D_dm0ab")
+
+[connection signal="body_entered" from="Detection Radius" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Detection Radius" to="." method="_on_body_exited"]

@@ -4,19 +4,17 @@ extends ColorRect
 @onready var valuePath = $ItemInfoBG/MarginContainer/InfoRows/ItemValue
 @onready var rarityPath = $ItemInfoBG/MarginContainer/InfoRows/ItemRarity
 @onready var bg = $ItemInfoBG
+var itemReading
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	position = get_global_mouse_position()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position = get_global_mouse_position()
 
-
 # function to edit text
 func editText(item):
+	itemReading = item
 	titlePath.text = item.itemName
 	valuePath.text = "Value: %s" % item.value 
 	## it doesn't like just inserting a float so we have to use a format string

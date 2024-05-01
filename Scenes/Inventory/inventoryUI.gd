@@ -8,6 +8,7 @@ extends Control
 
 @export var slotCount := 30
 
+var inventory := []
 var gridArray := []
 var heldItem = null
 var curSlot = null
@@ -31,13 +32,13 @@ func _process(_delta):
 			rotateItem(-1)
 		
 		if Input.is_action_just_pressed("mouseLeftClick"):
-			placeItem()
+			placeItem(true, heldItem.itemSrc)
 	else: ##  if not
 		if is_instance_valid(itemInfo): ## if the item info window exists
 			if Input.is_action_just_pressed("mouseRightClick") || \
 			Input.is_action_just_pressed("mouseLeftClick")     || \
-			(not curSlot.storedItem.itemIconPath && \
-			not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position()))):
+			(curSlot.storedItem != itemInfo.itemReading): #|| \
+			#not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position()))):
 				itemInfo.queue_free() 
 			## when lmb/rmb is pressed or the mouse isn't over the item, delete the window
 		
@@ -47,6 +48,9 @@ func _process(_delta):
 			
 			if Input.is_action_just_pressed("mouseRightClick"):
 				createItemInfo()
+
+func updateInv():
+	pass
 
 # instantiates a new slot in the inventory scene, ideally on startup
 func createSlot(): 
@@ -70,10 +74,11 @@ func slotMouseExited(slot):
 	clearGrid() ## godot doesn't like the slot var but its necessary i swear
 
 # runs when a spawner button is pressed, gets the ID from the button
-func itemSpawnerPressed(id):
+func createItem(id, src:Node = null):
 	var newItem = itemScene.instantiate()
 	add_child(newItem)
-	newItem.loadItem(id)
+	newItem.loadItem(id, src)
+	inventory.push_back(newItem)
 	newItem.selected = true
 	heldItem = newItem
 	
@@ -122,12 +127,10 @@ func rotateItem(dir):
 		slotMouseEntered(curSlot)
 		
 # checks if the item is placeable, and if so places it in its desired position on the grid
-func placeItem():
+func placeItem(doAnim, src:Node = null):
 	if not canPlace || not curSlot:
 		return
-	var gridPlacePos = curSlot.ID + itemAnchor.x * colCount + itemAnchor.y
-	heldItem.snapToPos(gridArray[gridPlacePos].global_position)
-	
+	heldItem.primeSlot = curSlot
 	heldItem.get_parent().remove_child(heldItem)
 	gridContainer.add_child(heldItem)
 	heldItem.global_position = get_global_mouse_position()
@@ -137,6 +140,12 @@ func placeItem():
 		var checkingCol = curSlot.ID + slot[0] + slot[1] * colCount
 		gridArray[checkingCol].curState = gridArray[checkingCol].slotStates.occupied
 		gridArray[checkingCol].storedItem = heldItem
+	if src != null:
+		src.itemReceived()
+		heldItem.itemSrc = null
+	
+	var gridPlacePos = curSlot.ID + itemAnchor.x * colCount + itemAnchor.y
+	heldItem.place(gridArray[gridPlacePos].global_position, doAnim)
 	heldItem = null
 	clearGrid()
 	
@@ -163,3 +172,14 @@ func createItemInfo():
 		itemInfo = itemInfoScene.instantiate()
 		add_child(itemInfo)
 		itemInfo.editText(curSlot.storedItem)
+		
+func invClosed():
+	if heldItem:
+		if heldItem.primeSlot: ##if it has been placed before
+			curSlot = heldItem.primeSlot 
+			placeItem(false)
+		else:
+			heldItem.queue_free()
+			heldItem = null
+			clearGrid()
+	curSlot = null

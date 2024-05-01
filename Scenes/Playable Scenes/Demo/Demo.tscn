@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=21 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
@@ -7,12 +7,15 @@
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://Scenes/Playable Scenes/Demo/data/terrain_storage.res" id="5_yg2nc"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://Scenes/Playable Scenes/Demo/data/texture_list.tres" id="6_buonv"]
 [ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
-[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects & Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
-[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects & Interactables/Wall/wall.tscn" id="9_mwhe5"]
-[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.tscn" id="10_exouv"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects/Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
+[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects/Interactables/Wall/wall.tscn" id="9_mwhe5"]
+[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects/Interactables/Death Plane/death_plane.tscn" id="10_exouv"]
 [ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
 [ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
+[ext_resource type="PackedScene" uid="uid://cfcbv6avaxdwh" path="res://Scenes/Objects/Obtainables/Apple/apple.tscn" id="12_q4uew"]
 [ext_resource type="PackedScene" uid="uid://boijadqa61phy" path="res://Scenes/Environmental/Trees/Pine Tree/pine_tree.tscn" id="13_ns7ko"]
+[ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
+[ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -70,7 +73,7 @@ world_background = 2
 auto_shader = true
 dual_scaling = true
 
-[node name="Demo" type="Node"]
+[node name="root" type="Node"]
 process_mode = 3
 script = ExtResource("1_ynljw")
 
@@ -114,6 +117,15 @@ transform = Transform3D(150, 0, 0, 0, 1, 0, 0, 0, 150, 966.241, 89.1006, 326.842
 
 [node name="Pine Tree" parent="MainScene" instance=ExtResource("13_ns7ko")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 42.4605)
+
+[node name="Apple" parent="MainScene" instance=ExtResource("12_q4uew")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 310.592, 119.21, 345.09)
+
+[node name="Applesauce" parent="MainScene" instance=ExtResource("13_xy5nj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 326.365, 119.22, 344.823)
+
+[node name="Skewer" parent="MainScene" instance=ExtResource("14_uftje")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 342.844, 118.399, 344.999)
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
 process_mode = 2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0bca5ari14p3"]
 
-[ext_resource type="Script" path="res://Scenes/Objects & Interactables/Wall/wall.gd" id="1_5sukr"]
+[ext_resource type="Script" path="res://Scenes/Objects/Interactables/Wall/wall.gd" id="1_5sukr"]
 [ext_resource type="Material" uid="uid://cso4f2iyuxpmc" path="res://Assets/Materials/Terrain/M_crystal_purple.tres" id="2_ou76u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwtj2"]

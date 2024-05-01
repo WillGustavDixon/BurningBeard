@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0pj2xl1sm3f0"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.gd" id="1_wvaeb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_myyuf"]
+height = 1.5
+radius = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlh3t"]
+albedo_color = Color(1, 0.85098, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kj8gw"]
+material = SubResource("StandardMaterial3D_xlh3t")
+top_radius = 0.7
+bottom_radius = 0.7
+height = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t5atu"]
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xc17x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8gn7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm0ab"]
+transparency = 1
+albedo_color = Color(0.196078, 0.588235, 1, 0.0784314)
+
+[node name="Applesauce" type="RigidBody3D"]
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_wvaeb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_myyuf")
+
+[node name="ApplesauceJar" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_kj8gw")
+
+[node name="ApplesauceLid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782598, 0)
+mesh = SubResource("CylinderMesh_t5atu")
+
+[node name="Detection Radius" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Radius"]
+transform = Transform3D(7.5, 0, 0, 0, 0.5, 0, 0, 0, 7.5, 0, 0.000457764, 0)
+shape = SubResource("CylinderShape3D_xc17x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Detection Radius/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_8gn7g")
+surface_material_override/0 = SubResource("StandardMaterial3D_dm0ab")
+
+[connection signal="body_entered" from="Detection Radius" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Detection Radius" to="." method="_on_body_exited"]

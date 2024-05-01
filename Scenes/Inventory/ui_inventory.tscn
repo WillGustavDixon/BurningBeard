@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpnodabfhtiic"]
+[gd_scene load_steps=5 format=3 uid="uid://dpnodabfhtiic"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventoryUI.gd" id="1_8ofin"]
+[ext_resource type="FontFile" uid="uid://dkhbotxjkjlbg" path="res://Assets/Fonts/Open Font Package/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Black.ttf" id="2_em77a"]
+[ext_resource type="Script" path="res://Scenes/Inventory/invExitButton.gd" id="3_i8aj3"]
+
+[sub_resource type="Theme" id="Theme_0f7ke"]
+default_font = ExtResource("2_em77a")
+default_font_size = 30
 
 [node name="UIInventory" type="Control"]
 layout_mode = 3
@@ -30,30 +36,41 @@ theme_override_constants/separation = 50
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 4
+alignment = 1
 
-[node name="Item Spawner 1" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
-custom_minimum_size = Vector2(300, 80)
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+custom_minimum_size = Vector2(570, 125)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-text = "Spawn Apple"
+theme = SubResource("Theme_0f7ke")
+bbcode_enabled = true
+text = "
+[center]Left Click = Grab/Place item[/center]
+[center]Right Click = Check item info[/center]
+               "
+scroll_active = false
+shortcut_keys_enabled = false
 
-[node name="Item Spawner 2" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
-custom_minimum_size = Vector2(300, 80)
+[node name="RichTextLabel2" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+custom_minimum_size = Vector2(800, 125)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-text = "Spawn Applesauce"
+theme = SubResource("Theme_0f7ke")
+bbcode_enabled = true
+text = "
+[center]Mouse Wheel Down: Rotate clockwise [/center]
+[center]    Mouse Wheel Up: Rotate anti-clockwise [/center]"
+scroll_active = false
+shortcut_keys_enabled = false
 
-[node name="Item Spawner 3" type="Button" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
-custom_minimum_size = Vector2(300, 80)
+[node name="RichTextLabel3" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+custom_minimum_size = Vector2(500, 125)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-text = "Spawn Skewer"
+theme = SubResource("Theme_0f7ke")
+bbcode_enabled = true
+text = "
+        I = Exit Inventory
+               "
+scroll_active = false
+shortcut_keys_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -62,6 +79,15 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 6
 
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 1" to="." method="itemSpawnerPressed" binds= ["01"]]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 2" to="." method="itemSpawnerPressed" binds= ["02"]]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Spawner Columns/Item Spawner 3" to="." method="itemSpawnerPressed" binds= ["03"]]
+[node name="InvExitButton" type="Button" parent="Background"]
+layout_mode = 2
+offset_left = 1580.0
+offset_top = 80.0
+offset_right = 1830.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("2_em77a")
+theme_override_font_sizes/font_size = 25
+text = "Or press me!"
+script = ExtResource("3_i8aj3")
+
+[connection signal="pressed" from="Background/InvExitButton" to="Background/InvExitButton" method="exitInv"]
