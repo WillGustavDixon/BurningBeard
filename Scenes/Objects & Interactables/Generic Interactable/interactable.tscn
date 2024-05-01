@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0vpjd4sdtc3"]
+
+[ext_resource type="Script" path="res://Scenes/Objects & Interactables/Generic Interactable/interactable.gd" id="1_lk01e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwtj2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hebdc"]
+
+[node name="(RENAME TO DESIRED NAME)" type="RigidBody3D"]
+mass = 300.0
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_lk01e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nwtj2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hebdc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

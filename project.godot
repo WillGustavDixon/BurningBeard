@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Burning Beard"
-run/main_scene="res://Scenes/Demo.tscn"
+run/main_scene="res://Scenes/Playable Scenes/Demo/Demo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-DataHandling="*res://Scripts/dataHandling.gd"
+DataHandling="*res://Scenes/Inventory/dataHandling.gd"
 
 [display]
 
