@@ -10,11 +10,11 @@ func _ready():
 	moving = false
 
 func _process(delta):
-	if(moving):
+	if moving:
 		pass
 
 func _on_body_entered(body):
-	if(body.is_in_group("Player")):
+	if body.is_in_group("Player"):
 		## if it touches the player, unlock the axes.
 		set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, false)
 		set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Z, false)
