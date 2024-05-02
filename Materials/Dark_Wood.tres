@@ -7,6 +7,8 @@
 render_priority = 0
 next_pass = ExtResource("1_rn6ho")
 shader = ExtResource("2_awenn")
+shader_parameter/specular_smoothness = 0.05
+shader_parameter/fresnel_smoothness = 0.05
 shader_parameter/color = Color(0.266667, 0.12549, 0.0352941, 1)
 shader_parameter/specular = Color(0.117647, 0.054902, 0.0117647, 0.388235)
 shader_parameter/fresnel = Color(0.0784314, 0.0431373, 0.00784314, 0.301961)
