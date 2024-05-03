@@ -73,7 +73,7 @@ world_background = 2
 auto_shader = true
 dual_scaling = true
 
-[node name="DemoRoot" type="Node"]
+[node name="root" type="Node"]
 process_mode = 3
 script = ExtResource("1_ynljw")
 
@@ -101,7 +101,7 @@ collision_mask = 3
 transform = Transform3D(0.381909, 0, -0.9242, 0, 1, 0, 0.9242, 0, 0.381909, 789.677, 124.233, 197.996)
 max_contacts_reported = 10
 contact_monitor = true
-curCheckpointPos = Vector3(312, 122, 352)
+curCheckpointPos = Vector3(318, 122, 356)
 curCheckpointRot = Vector3(0, 90, 0)
 
 [node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]

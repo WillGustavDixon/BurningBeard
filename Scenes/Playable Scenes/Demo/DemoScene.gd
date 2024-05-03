@@ -27,15 +27,23 @@ func _process(delta):
 			pause()
 		else:
 			unpause()
+			
+	if Input.is_action_just_pressed("Save") && invOpen:
+		print("Saving!")
+		inv.saveInv()
+	if Input.is_action_just_pressed("Load") && invOpen:
+		print("Loading!")
+		DataHandling.loadInvData(DataHandling.invPath)
+		inv.clearInv()
+		inv.loadInv.call_deferred() # call is deferred so that the inventory has time to refresh
 
 func openInv(id, src : Node = null):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
-	inv.updateInv()
 	invScene.visible = true
 	invOpen = true
 	if id != "00":
-		inv.createItem(id, src)
+		inv.heldItem = inv.createItem(id, src)
 
 func closeInv():
 	invScene.visible = false

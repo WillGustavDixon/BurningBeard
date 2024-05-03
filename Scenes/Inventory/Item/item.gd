@@ -55,7 +55,6 @@ func rotateItem(dir):
 
 # makes sure the item visually snaps to its desired position in the grid
 func place(destination:Vector2, doAnim:bool): ## this tweens an item to its desired position when being placed
-	var tween = create_tween()
 	if int(rotation_degrees) % 180 == 0: ## if it's upright or upside down, put it normally
 		destination += itemIconPath.size/2
 	else: ## otherwise, switch the X/Y coordinate info of the item and add that instead
@@ -63,6 +62,7 @@ func place(destination:Vector2, doAnim:bool): ## this tweens an item to its desi
 		destination += tempXYSwitch/2
 	
 	if doAnim:
+		var tween = create_tween()
 		tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
 	else:
 		global_position = destination

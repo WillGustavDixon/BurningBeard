@@ -37,3 +37,6 @@ func hasItem(item) -> bool:
 	if storedItem == item:
 		return true
 	return false
+	
+func getPosition() -> Vector2:
+	return position

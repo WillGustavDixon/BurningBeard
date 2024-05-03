@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventoryUI.gd" id="1_8ofin"]
 [ext_resource type="FontFile" uid="uid://dkhbotxjkjlbg" path="res://Assets/Fonts/Open Font Package/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Black.ttf" id="2_em77a"]
-[ext_resource type="Script" path="res://Scenes/Inventory/invExitButton.gd" id="3_i8aj3"]
+[ext_resource type="Script" path="res://Scenes/Inventory/invButton.gd" id="3_h0w0q"]
 
 [sub_resource type="Theme" id="Theme_0f7ke"]
 default_font = ExtResource("2_em77a")
@@ -45,7 +45,7 @@ theme = SubResource("Theme_0f7ke")
 bbcode_enabled = true
 text = "
 [center]Left Click = Grab/Place item[/center]
-[center]Right Click = Check item info[/center]
+[center] Right Click = Check item info[/center]
                "
 scroll_active = false
 shortcut_keys_enabled = false
@@ -67,7 +67,7 @@ layout_mode = 2
 theme = SubResource("Theme_0f7ke")
 bbcode_enabled = true
 text = "
-        I = Exit Inventory
+      I = Exit Inventory
                "
 scroll_active = false
 shortcut_keys_enabled = false
@@ -81,13 +81,39 @@ columns = 6
 
 [node name="InvExitButton" type="Button" parent="Background"]
 layout_mode = 2
-offset_left = 1580.0
-offset_top = 80.0
-offset_right = 1830.0
-offset_bottom = 155.0
+offset_left = 1545.0
+offset_top = 85.0
+offset_right = 1795.0
+offset_bottom = 160.0
 theme_override_fonts/font = ExtResource("2_em77a")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 28
 text = "Or press me!"
-script = ExtResource("3_i8aj3")
+script = ExtResource("3_h0w0q")
+
+[node name="SaveButton" type="Button" parent="Background"]
+custom_minimum_size = Vector2(410, 100)
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 825.0
+offset_right = 1890.0
+offset_bottom = 925.0
+theme_override_fonts/font = ExtResource("2_em77a")
+theme_override_font_sizes/font_size = 30
+text = "Save inventory to file"
+script = ExtResource("3_h0w0q")
+
+[node name="LoadButton" type="Button" parent="Background"]
+custom_minimum_size = Vector2(410, 100)
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 950.0
+offset_right = 1890.0
+offset_bottom = 1050.0
+theme_override_fonts/font = ExtResource("2_em77a")
+theme_override_font_sizes/font_size = 30
+text = "Load inventory from file"
+script = ExtResource("3_h0w0q")
 
 [connection signal="pressed" from="Background/InvExitButton" to="Background/InvExitButton" method="exitInv"]
+[connection signal="pressed" from="Background/SaveButton" to="Background/SaveButton" method="saveInv"]
+[connection signal="pressed" from="Background/LoadButton" to="Background/LoadButton" method="loadInv"]
