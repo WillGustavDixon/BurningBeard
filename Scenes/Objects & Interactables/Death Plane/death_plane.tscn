@@ -1,12 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh4aponr1g0sf"]
+[gd_scene load_steps=5 format=3 uid="uid://dh4aponr1g0sf"]
 
 [ext_resource type="Script" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.gd" id="1_mg25a"]
-[ext_resource type="Texture2D" uid="uid://dw3t5c2vx38us" path="res://Assets/Textures/Environment/BadWater.png" id="2_f0ibn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgbdc"]
-albedo_texture = ExtResource("2_f0ibn")
-uv1_scale = Vector3(3, 3, 3)
-uv1_triplanar = true
+[ext_resource type="Material" uid="uid://c8r4nyjvmpc04" path="res://Assets/Materials/Environment/WaterShader.tres" id="2_w0gou"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vf7jd"]
 
@@ -22,7 +17,7 @@ contact_monitor = true
 script = ExtResource("1_mg25a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_pgbdc")
+material_override = ExtResource("2_w0gou")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_vf7jd")
 

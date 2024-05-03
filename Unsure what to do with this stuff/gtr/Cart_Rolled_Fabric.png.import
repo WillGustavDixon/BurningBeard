@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7ysvqk1r726s"
-path.s3tc="res://.godot/imported/Cart_Rolled_Fabric.png-faa53434205b5de1559423b4ca72aa6d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Cart_Rolled_Fabric.png-401364b4d783e69be44919be8e373ab5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/Cart_Rolled_Fabric.png"
-dest_files=["res://.godot/imported/Cart_Rolled_Fabric.png-faa53434205b5de1559423b4ca72aa6d.s3tc.ctex"]
+source_file="res://Unsure what to do with this stuff/gtr/Cart_Rolled_Fabric.png"
+dest_files=["res://.godot/imported/Cart_Rolled_Fabric.png-401364b4d783e69be44919be8e373ab5.s3tc.ctex"]
 
 [params]
 

@@ -2,26 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cej74brthopr2"
-path.s3tc="res://.godot/imported/Pine Tree_Tree Wood.png-1bb18256b50a084f1e6cde6396abd88b.s3tc.ctex"
+uid="uid://dp8wade3cv0ba"
+path="res://.godot/imported/2k water surface.png-32e851bc3d849eefac78c069e06d36f6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/Textures/Environment/Pine Tree_Tree Wood.png"
-dest_files=["res://.godot/imported/Pine Tree_Tree Wood.png-1bb18256b50a084f1e6cde6396abd88b.s3tc.ctex"]
+source_file="res://Assets/Textures/Environment/2k water surface.png"
+dest_files=["res://.godot/imported/2k water surface.png-32e851bc3d849eefac78c069e06d36f6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

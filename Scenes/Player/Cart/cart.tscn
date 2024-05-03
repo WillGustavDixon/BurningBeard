@@ -1,9 +1,9 @@
 [gd_scene load_steps=55 format=3 uid="uid://cytibfjs3k24p"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Cart/player_cart.gd" id="1_ooo4o"]
-[ext_resource type="Texture2D" uid="uid://cf3k72xkdail5" path="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/Cart_grid window.png" id="1_uyrh5"]
-[ext_resource type="Texture2D" uid="uid://c8qf2s8bejf4v" path="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/Cart_Boards.png" id="2_ld85u"]
-[ext_resource type="Texture2D" uid="uid://c7ysvqk1r726s" path="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/Cart_Rolled_Fabric.png" id="3_5nvxs"]
+[ext_resource type="Texture2D" uid="uid://cf3k72xkdail5" path="res://Unsure what to do with this stuff/gtr/Cart_grid window.png" id="1_uyrh5"]
+[ext_resource type="Texture2D" uid="uid://c8qf2s8bejf4v" path="res://Unsure what to do with this stuff/gtr/Cart_Boards.png" id="2_ld85u"]
+[ext_resource type="Texture2D" uid="uid://c7ysvqk1r726s" path="res://Unsure what to do with this stuff/gtr/Cart_Rolled_Fabric.png" id="3_5nvxs"]
 [ext_resource type="Material" uid="uid://cgb6v685mojno" path="res://Assets/Materials/Cart/Dark_Wood.tres" id="5_6t083"]
 [ext_resource type="Material" uid="uid://deoo3oyf801g3" path="res://Assets/Materials/Cart/Mid_Wood.tres" id="6_x3ibf"]
 [ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Assets/Materials/Cart/Light_Wood.tres" id="7_c5sys"]
@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://cvf4kh4l6l2yh" path="res://Assets/Materials/Cart/Checkered_Panel.tres" id="11_aa5ig"]
 [ext_resource type="Material" uid="uid://brckuntsl2doh" path="res://Assets/Materials/Cart/Wood_Panels.tres" id="12_n45ek"]
 [ext_resource type="Material" uid="uid://dk4n53g4sx3pu" path="res://Assets/Materials/Cart/Canvas_Mat.tres" id="13_i0o6r"]
-[ext_resource type="Texture2D" uid="uid://brh1fi7tl5387" path="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr/Cart_Blinds.png" id="14_ff0km"]
+[ext_resource type="Texture2D" uid="uid://brh1fi7tl5387" path="res://Unsure what to do with this stuff/gtr/Cart_Blinds.png" id="14_ff0km"]
 [ext_resource type="Material" uid="uid://bsv7afqjlk7cf" path="res://Assets/Materials/Cart/Display_Faces.tres" id="14_t6hi5"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="16_wuuxl"]
 

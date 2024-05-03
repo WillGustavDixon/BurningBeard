@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects & Interactables/Wall/wall.tscn" id="9_mwhe5"]
 [ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.tscn" id="10_exouv"]
 [ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
+[ext_resource type="PackedScene" uid="uid://byipmle0sncrc" path="res://Scenes/Environmental/Trees/Pine Tree/simple_pine_tree.tscn" id="11_3gfq1"]
 [ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
-[ext_resource type="PackedScene" uid="uid://boijadqa61phy" path="res://Scenes/Environmental/Trees/Pine Tree/pine_tree.tscn" id="13_ns7ko"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -110,9 +110,9 @@ transform = Transform3D(2.04366, 0, 4.96754, 0, 27.52, 0, -17.8484, 0, 0.56879, 
 disappears = true
 
 [node name="Death Plane" parent="MainScene" instance=ExtResource("10_exouv")]
-transform = Transform3D(150, 0, 0, 0, 1, 0, 0, 0, 150, 966.241, 89.1006, 326.842)
+transform = Transform3D(89.3211, 0, 0, 0, 1, 0, 0, 0, 121.951, 966.241, 89.1006, 317.338)
 
-[node name="Pine Tree" parent="MainScene" instance=ExtResource("13_ns7ko")]
+[node name="Simple_Pine_Tree" parent="MainScene" instance=ExtResource("11_3gfq1")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 42.4605)
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]

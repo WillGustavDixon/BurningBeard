@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2h41jt75xbvv"
-path="res://.godot/imported/GTR.obj-f0d8e29fac63b9be745172b94d134b60.scn"
+uid="uid://b0yweboqijyuy"
+path="res://.godot/imported/Simple_Pine_Tree.glb-eb58c404d7d2fdcfaf5f845124410beb.scn"
 
 [deps]
 
-source_file="res://Unsure what to do with this stuff/gtr/GTR.obj"
-dest_files=["res://.godot/imported/GTR.obj-f0d8e29fac63b9be745172b94d134b60.scn"]
+source_file="res://Scenes/Environmental/Trees/Pine Tree/Simple_Pine_Tree.glb"
+dest_files=["res://.godot/imported/Simple_Pine_Tree.glb-eb58c404d7d2fdcfaf5f845124410beb.scn"]
 
 [params]
 

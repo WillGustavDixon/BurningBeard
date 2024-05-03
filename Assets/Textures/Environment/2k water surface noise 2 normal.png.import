@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsmlqein2xmc6"
-path.s3tc="res://.godot/imported/Pine Tree_Pine Tree Branch.png-5c0266ea1153caffc51e55ecdd6dfa42.s3tc.ctex"
+uid="uid://bm3wudg0y3yg2"
+path.s3tc="res://.godot/imported/2k water surface noise 2 normal.png-abe74194ddd16888f42a3c3cf3e1444b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/Textures/Environment/Pine Tree_Pine Tree Branch.png"
-dest_files=["res://.godot/imported/Pine Tree_Pine Tree Branch.png-5c0266ea1153caffc51e55ecdd6dfa42.s3tc.ctex"]
+source_file="res://Assets/Textures/Environment/2k water surface noise 2 normal.png"
+dest_files=["res://.godot/imported/2k water surface noise 2 normal.png-abe74194ddd16888f42a3c3cf3e1444b.s3tc.ctex"]
 
 [params]
 
@@ -21,7 +20,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
