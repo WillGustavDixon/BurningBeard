@@ -14,7 +14,7 @@ func _ready():
  
 func _process(delta):
 	follow_player(delta)
-	look_at(get_parent().global_position)
+	look_at(get_parent().get_parent().global_position)
  
 func follow_player(delta):
 	var direction = self.global_position - camera_point.global_position     #Where we want to move
