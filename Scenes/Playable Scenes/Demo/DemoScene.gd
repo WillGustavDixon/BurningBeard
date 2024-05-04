@@ -3,6 +3,8 @@ extends Node
 @onready var invScene = $InventoryScene
 @onready var inv = invScene.get_child(0)
 @onready var pauseScene = $PauseOverlay
+@onready var fader = $Fader
+@onready var cart = $MainScene/Cart
 
 @export var invOpen : bool
 @export var pausing : bool
@@ -12,8 +14,11 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	invScene.visible = false
 	pauseScene.visible = false
+	fader.hold()
 	invOpen = false
 	pausing = false
+	cart.hasDied.connect(onDeath)
+	fader.get_child(0).animation_finished.connect(animPlayed)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Inventory") && !pausing: 
@@ -65,3 +70,17 @@ func unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	invScene.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	pausing = false
+
+func onDeath():
+	fader.fadeOut()
+	
+func animPlayed(animName):
+	match animName:
+		"fadeOut":
+			cart.thawCam()
+			cart.respawn()
+			fader.hold()
+		"hold":
+			fader.fadeIn()
+		"fadeIn":
+			fader.visible = false

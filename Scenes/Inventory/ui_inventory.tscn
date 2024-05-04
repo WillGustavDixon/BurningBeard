@@ -72,13 +72,6 @@ text = "
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 6
-
 [node name="InvExitButton" type="Button" parent="Background"]
 layout_mode = 2
 offset_left = 1545.0

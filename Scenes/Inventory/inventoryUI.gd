@@ -1,7 +1,7 @@
 extends Control
 
 @onready var slotScene = preload("res://Scenes/Inventory/Slot/slot_icon.tscn")
-@onready var gridContainer := $Background/MarginContainer/VBoxContainer/GridContainer
+@onready var gridScene = preload("res://Scenes/Inventory/inventory_grid.tscn")
 @onready var itemScene = preload("res://Scenes/Inventory/Item/item.tscn")
 @onready var itemInfoScene = preload("res://Scenes/Inventory/Item/item_info.tscn")
 
@@ -13,6 +13,7 @@ extends Control
 var inventory := []
 var inventoryData := {}
 var gridArray := []
+var grid
 var heldItem = null
 var curSlot = null
 var itemInfo = null
@@ -21,7 +22,10 @@ var itemAnchor : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	grid = gridScene.instantiate()
+	$Background/MarginContainer/VBoxContainer.add_child(grid)
 	drawGrid()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -102,7 +106,7 @@ func loadInv():
 			curSlot = heldItem.primeSlot
 			canPlace = true
 			itemAnchor = Vector2.ONE
-			setGrids(curSlot)
+			setSlots(curSlot)
 			placeItem(false)
 		clearGrid()
 
@@ -116,8 +120,8 @@ func clearInv():
 	if heldItem:
 		pass#heldItem.free()
 	heldItem = null
-	for slot in gridContainer.get_children():
-		gridContainer.remove_child(slot)
+	for slot in grid.get_children():
+		grid.remove_child(slot)
 		slot.free()
 	gridArray = []
 	drawGrid()
@@ -145,7 +149,7 @@ func placeItem(doAnim, src:Node = null):
 	
 	heldItem.primeSlot = curSlot
 	heldItem.get_parent().remove_child(heldItem)
-	gridContainer.add_child(heldItem)
+	grid.add_child(heldItem)
 	heldItem.global_position = get_global_mouse_position()
 	heldItem.gridAnchor = curSlot
 	
@@ -180,7 +184,7 @@ func pickUpItem():
 		gridArray[checkingCol].curState = gridArray[checkingCol].slotStates.free
 		gridArray[checkingCol].storedItem = null
 	checkSlot(curSlot)
-	setGrids.call_deferred(curSlot)
+	setSlots.call_deferred(curSlot)
 
 func createItemInfo():
 	## checks if there is a current slot, if its moused over, and if the item is in it
@@ -193,7 +197,7 @@ func createItemInfo():
 func createSlot():
 	var newSlot = slotScene.instantiate()
 	newSlot.ID = gridArray.size() ## IDs go in order of creation horizontally
-	gridContainer.add_child(newSlot)
+	grid.add_child(newSlot)
 	gridArray.push_back(newSlot) ## puts it at the end of the grid array
 	newSlot.slotEntered.connect(slotMouseEntered) ## connects the signals with
 	newSlot.slotExited.connect(slotMouseExited) ## corresponding functions here
@@ -201,15 +205,15 @@ func createSlot():
 func drawGrid():
 	slotCount = DataHandling.invData["Settings"]["Size"]
 	colCount = DataHandling.invData["Settings"]["Columns"]
-	gridContainer.columns = colCount
+	grid.columns = colCount
 	invEmpty = DataHandling.invData["Settings"]["Empty"]
 	for i in range(slotCount):
 		createSlot()
 
 # clears all the colour changes from the grid
 func clearGrid():
-	for grid in gridArray:
-		grid.setColour(grid.slotStates.idle)
+	for slot in gridArray:
+		slot.setColour(slot.slotStates.idle)
 
 # runs when a slot detects its being moused over
 func slotMouseEntered(slot):
@@ -217,7 +221,7 @@ func slotMouseEntered(slot):
 	curSlot = slot
 	if heldItem:
 		checkSlot(curSlot)
-		setGrids.call_deferred(curSlot)
+		setSlots.call_deferred(curSlot)
 	
 # runs when a slot detects there is no mouse on it anymore
 func slotMouseExited(slot):
@@ -240,7 +244,7 @@ func checkSlot(slot):
 		canPlace = true
 	
 # sets the colour of the slots below where the item is being held over
-func setGrids(slot):
+func setSlots(slot):
 	for grid in heldItem.itemGridSizes:
 		var checkingCol = slot.ID + grid[0] + grid[1] * colCount
 		var lineLenCheck = slot.ID % colCount + grid[0]

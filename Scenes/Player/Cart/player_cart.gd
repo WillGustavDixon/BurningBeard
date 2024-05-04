@@ -1,11 +1,15 @@
 extends VehicleBody3D
 
+signal hasDied()
+
 const MAX_STEER = 0.6
 var ENGINE_POWER = 700
 const MAX_BRAKE_FORCE = 5.0 
 
 @onready var gimball = $CameraPivot
-@onready var camera = $CameraPivot/CameraTarget
+@onready var camTarg = $CameraPivot/CameraTarget
+@onready var cam = $CameraPivot/Camera3D
+
 @onready var acceleration = 15
 
 @export var curCheckpointPos : Vector3
@@ -38,7 +42,7 @@ func _physics_process(delta):
 	yaw = clamp(yaw, yaw_min, yaw_max)
 	gimball.rotation_degrees.y = lerp(gimball.rotation_degrees.y, yaw, acceleration * delta)
 	gimball.rotation_degrees.x = lerp(gimball.rotation_degrees.x, pitch, acceleration * delta)
-	camera.global_rotation_degrees.z = lerp(camera.global_rotation_degrees.z, cam_rotation, acceleration * delta)
+	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	
 	if Input.is_action_pressed("Handbrake"):
@@ -70,14 +74,26 @@ func _input(event):
 		yaw += -event.relative.x * yaw_sensitivity
 		pitch += event.relative.y * pitch_sensitivity
 
+func doDeath():
+	freezeCam()
+	emit_signal("hasDied")
+
 # Runs when touching a death plane, puts the player back at the last checkpoint.
 func respawn(): 
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	global_rotation = curCheckpointRot
+	global_rotation_degrees = curCheckpointRot
 	global_position = curCheckpointPos
 
-func _on_body_entered(body):
-	#print("ran")
-	if body.is_in_group("DeathPlane"):
-		respawn()
+func freezeCam():
+	cam.follow = false
+
+func thawCam():
+	cam.follow = true
+
+func _on_body_entered(body): # THIS RUNS IF TOUCHING SOMETHING WITH PHYSICS
+	pass
+
+func _on_area_entered(area): # WHILE THIS RUNS IF TOUCHING AN Area3D NODE
+	if area.is_in_group("DeathPlane"):
+		doDeath()

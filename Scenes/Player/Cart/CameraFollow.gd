@@ -6,14 +6,17 @@ extends Camera3D
 @export var wait_time : float   #How long for the camera to start following the node, can leave it at 0 too
 var point_position : Vector3    #The global position of the node we want the camera to follow
 var speed := 5    #How fast the camera will reach its destination
+var follow := true
  
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_as_top_level(true)   #Prevents the camera from being glued to the player (won't follow on its own)
 	point_position = camera_point.global_position
- 
+	follow = true
+
 func _process(delta):
-	follow_player(delta)
+	if follow:
+		follow_player(delta)
 	look_at(get_parent().get_parent().global_position)
  
 func follow_player(delta):
