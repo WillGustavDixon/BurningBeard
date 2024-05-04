@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cytibfjs3k24p"]
+[gd_scene load_steps=56 format=3 uid="uid://cytibfjs3k24p"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Cart/player_cart.gd" id="1_ooo4o"]
 [ext_resource type="Texture2D" uid="uid://cf3k72xkdail5" path="res://Unsure what to do with this stuff/gtr/Cart_grid window.png" id="1_uyrh5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://brh1fi7tl5387" path="res://Unsure what to do with this stuff/gtr/Cart_Blinds.png" id="14_ff0km"]
 [ext_resource type="Material" uid="uid://bsv7afqjlk7cf" path="res://Assets/Materials/Cart/Display_Faces.tres" id="14_t6hi5"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="16_wuuxl"]
+[ext_resource type="Script" path="res://Scenes/Player/Cart/CameraFollow.gd" id="17_w8ome"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_80ngp"]
 points = PackedVector3Array(-0.60721, -0.193732, -2.09324, -1.0855, -0.0695141, -2.70504, 0.606974, -0.193732, -2.09324, -0.60721, -0.193732, -1.87771, -1.00018, -0.104543, 1.19046, -1.14031, 0.0711, -2.45997, -1.15008, 0.0964403, -2.45997, -1.15604, 0.129234, -2.45997, -1.15961, 0.1742, -2.45997, -1.16175, 1.37787, -2.45997, -1.0855, 1.92591, -2.70504, -0.898185, 0.0320957, -2.73242, 1.08526, -0.0695141, -2.70504, -1.0855, -0.0695141, -1.23679, 0.999945, -0.104543, 1.19046, 0.606974, -0.193732, -1.87771, -0.725411, -0.106531, 1.69755, -1.00018, -0.104543, 1.48811, -1.14031, 0.0711, -2.00807, -1.15008, 0.0964403, -2.00807, -1.15604, 0.129234, -2.00807, -1.15961, 0.1742, -2.00807, -1.16175, 1.37787, -2.00807, 1.08526, 1.92591, -2.70504, -0.74948, 0.444497, -2.74111, -0.898185, 0.444497, -2.73242, -1.0855, 1.92591, -1.23679, -0.639143, 2.34428, 0.0346248, -0.74948, 0.397543, -2.74111, 0.897949, 0.0320957, -2.73242, 1.27281, 0.403257, -1.2155, 1.08526, -0.0695141, -1.23679, 0.999945, -0.104543, 1.48811, 0.725175, -0.106531, 1.69755, -0.725411, 0.281524, 1.69755, -0.910577, 1.1985, 1.62541, -1.00018, 0.279785, 1.48811, -1.08407, 1.43973, 1.22305, -1.08311, 1.35973, 1.22305, 0.897949, 0.444497, -2.73242, 0.749244, 0.444497, -2.74111, 1.08526, 1.92591, -1.23679, 1.27281, 0.461391, -1.2155, -0.270003, 1.8166, 1.22305, -0.138218, 1.8648, 1.22305, 0.00119269, 1.88318, 1.22305, 0.140365, 1.8648, 1.22305, 0.749244, 0.397543, -2.74111, 1.27281, 0.403257, 1.18872, 0.912724, 1.1985, 1.62541, 0.725175, 0.281524, 1.69755, 0.27215, 1.8166, 1.22305, 1.08621, 1.43973, 1.22305, 1.27281, 0.461391, 1.18872)
@@ -1273,8 +1274,12 @@ surface_material_override/2 = ExtResource("7_c5sys")
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="CameraTarget" type="Node3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -8)
+
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -8)
-doppler_tracking = 2
+far = 2000.0
+script = ExtResource("17_w8ome")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

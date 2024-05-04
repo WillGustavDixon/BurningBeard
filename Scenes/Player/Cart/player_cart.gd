@@ -5,7 +5,7 @@ var ENGINE_POWER = 700
 const MAX_BRAKE_FORCE = 5.0 
 
 @onready var gimball = $CameraPivot
-@onready var camera = $CameraPivot/Camera3D
+@onready var camera = $CameraPivot/CameraTarget
 @onready var acceleration = 15
 
 @export var curCheckpointPos : Vector3
@@ -30,6 +30,7 @@ var brake_val =  1.0
 
 func _ready():
 	respawn()
+	#make sure to set the respawn when moving the cart position
 	
 func _physics_process(delta):
 	var VELOCITY: Vector3 = get_linear_velocity()
