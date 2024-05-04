@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://58weg8fuuvdg"]
 
-[ext_resource type="Script" path="res://Unsure what to do with this stuff, put (or delete) them somewhere that makes sense/gtr.gd" id="1_ebx0k"]
+[ext_resource type="Script" path="res://Unsure what to do with this stuff/gtr.gd" id="1_ebx0k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxv4v"]
 resource_name = "tire"
@@ -502,13 +502,6 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_eywbu")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 3, -8)
 
-[node name="CamYaw" type="Node3D" parent="CameraPivot"]
-
-[node name="CamPitch" type="Node3D" parent="CameraPivot/CamYaw"]
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/CamYaw/CamPitch"]
-
-[node name="CentreOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 1)
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -8)
