@@ -1272,7 +1272,6 @@ surface_material_override/1 = ExtResource("5_6t083")
 surface_material_override/2 = ExtResource("7_c5sys")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CameraTarget" type="Node3D" parent="CameraPivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -8)
