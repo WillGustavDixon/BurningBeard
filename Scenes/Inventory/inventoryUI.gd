@@ -71,6 +71,7 @@ func saveInv():
 		"Settings": {
 			"Columns": colCount,
 			"Size": slotCount,
+			"Gold": money,
 			"Empty": invEmpty
 			},
 		"Slots": {}

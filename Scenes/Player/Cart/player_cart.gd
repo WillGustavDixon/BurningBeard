@@ -68,7 +68,7 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		yaw += -event.relative.x * yaw_sensitivity
-		pitch += -event.relative.y * pitch_sensitivity
+		pitch += event.relative.y * pitch_sensitivity
 
 # Runs when touching a death plane, puts the player back at the last checkpoint.
 func respawn(): 
