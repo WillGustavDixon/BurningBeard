@@ -5,7 +5,7 @@ extends Camera3D
 @export_category("Wait Time")
 @export var wait_time : float   #How long for the camera to start following the node, can leave it at 0 too
 var point_position : Vector3    #The global position of the node we want the camera to follow
-var speed := 10    #How fast the camera will reach its destination
+var speed := 5    #How fast the camera will reach its destination
  
 # Called when the node enters the scene tree for the first time.
 func _ready():
