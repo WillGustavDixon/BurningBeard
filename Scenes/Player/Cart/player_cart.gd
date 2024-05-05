@@ -2,13 +2,18 @@ extends VehicleBody3D
 
 signal hasDied()
 
-const MAX_STEER = 0.6
+const MAX_STEER = 45
 var ENGINE_POWER = 700
 const MAX_BRAKE_FORCE = 5.0 
+const FRICTION = 1
+const HI_FRICTION = 0.05
+const LO_FRICTION = 1.25
 
 @onready var gimball = $CameraPivot
 @onready var camTarg = $CameraPivot/CameraTarget
 @onready var cam = $CameraPivot/Camera3D
+@onready var rearWheels = find_children("Rear_*", "VehicleWheel3D")
+@onready var frontWheels = find_children("Front_*", "VehicleWheel3D")
 
 @onready var acceleration = 15
 
@@ -37,6 +42,8 @@ func _ready():
 	#make sure to set the respawn when moving the cart position
 	
 func _physics_process(delta):
+	if Input.is_action_pressed("Respawn"):
+		emit_signal("hasDied")
 	var VELOCITY: Vector3 = get_linear_velocity()
 	pitch = clamp(pitch, pitch_min, pitch_max)
 	yaw = clamp(yaw, yaw_min, yaw_max)
@@ -64,8 +71,20 @@ func _physics_process(delta):
 		ENGINE_POWER *= 0.01
 	else:
 		ENGINE_POWER = 666
+		
+	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1
+	if steerMod < 0.15: steerMod = 0.15
 	
-	steering = move_toward(steering, Input.get_axis("Right", "Left") * MAX_STEER, delta * 2.5)
+	if Input.is_action_pressed("Drift"):
+		for wheel in frontWheels: wheel.wheel_friction_slip = LO_FRICTION
+		brake_val = 2
+	else:
+		if !rearWheels[0].is_in_contact() || !rearWheels[1].is_in_contact(): 
+			for wheel in frontWheels: wheel.wheel_friction_slip = HI_FRICTION
+		else:
+			for wheel in frontWheels: wheel.wheel_friction_slip = FRICTION
+	
+	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
 	
@@ -97,3 +116,6 @@ func _on_body_entered(body): # THIS RUNS IF TOUCHING SOMETHING WITH PHYSICS
 func _on_area_entered(area): # WHILE THIS RUNS IF TOUCHING AN Area3D NODE
 	if area.is_in_group("DeathPlane"):
 		doDeath()
+	elif area.is_in_group("Checkpoint"):
+		curCheckpointPos = area.checkpointPos
+		curCheckpointRot = area.checkpointRot

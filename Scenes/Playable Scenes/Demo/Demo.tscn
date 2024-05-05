@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=30 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://boijadqa61phy" path="res://Scenes/Environmental/Trees/Pine Tree/pine_tree.tscn" id="13_ns7ko"]
 [ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
 [ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
+[ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="17_sswo0"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
@@ -80,9 +81,8 @@ albedo_texture = ExtResource("10_ok4sr")
 uv1_scale = Vector3(3, 3, 3)
 uv1_triplanar = true
 
-[sub_resource type="Animation" id="Animation_fkpse"]
-resource_name = "fadeOut"
-length = 0.5
+[sub_resource type="Animation" id="Animation_rx7q5"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,10 +90,10 @@ tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_p30tj"]
@@ -112,8 +112,9 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_rx7q5"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_fkpse"]
+resource_name = "fadeOut"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -121,10 +122,10 @@ tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1m215"]
@@ -202,6 +203,33 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 342.844, 118.399, 344.999)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 120, 380)
 curCheckpointPos = Vector3(320, 120, 380)
 curCheckpointRot = Vector3(0, 90, 0)
+
+[node name="Checkpoints" type="Node" parent="MainScene"]
+
+[node name="Start" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 320, 118.438, 380)
+checkpointPos = Vector3(320, 120, 380)
+checkpointRot = Vector3(0, 90, 0)
+
+[node name="Checkpoint A" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1.25932, 0, 0.986121, 0, 7.24, 0, -7.47973, 0, 0.166029, 628.992, 111.794, 383.143)
+checkpointPos = Vector3(629, 100, 383)
+checkpointRot = Vector3(0, 80, 0)
+
+[node name="Checkpoint B" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.97593, 0, -0.965473, 0, 7.24, 0, 7.32311, 0, -0.260504, 803.965, 106.077, 211.769)
+checkpointPos = Vector3(803.965, 102, 211.769)
+checkpointRot = Vector3(0, 255, 0)
+
+[node name="Checkpoint C" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.55711, 0, -0.985408, 0, 7.24, 0, 9.01472, 0, -0.17021, 604.512, 145.594, 213.907)
+checkpointPos = Vector3(583.157, 140, 210.218)
+checkpointRot = Vector3(0, 350, 0)
+
+[node name="Checkpoint D" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(0.382798, 0, -0.998342, 0, 7.24, 0, 6.63894, 0, 0.0575639, 582.662, 246.07, -3.81188)
+checkpointPos = Vector3(582.662, 240, -3.812)
+checkpointRot = Vector3(0, 273, 0)
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
 process_mode = 2
