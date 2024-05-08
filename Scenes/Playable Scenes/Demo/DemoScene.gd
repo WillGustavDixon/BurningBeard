@@ -18,6 +18,7 @@ func _ready():
 	invOpen = false
 	pausing = false
 	cart.hasDied.connect(onDeath)
+	cart.hasRespawned.connect(onRespawned)
 	fader.get_child(0).animation_finished.connect(animPlayed)
 	
 func _process(delta):
@@ -74,12 +75,14 @@ func unpause():
 func onDeath():
 	fader.fadeOut()
 	
+func onRespawned():
+	fader.hold()
+	
 func animPlayed(animName):
 	match animName:
 		"fadeOut":
 			cart.thawCam()
 			cart.respawn()
-			fader.hold()
 		"hold":
 			fader.fadeIn()
 		"fadeIn":

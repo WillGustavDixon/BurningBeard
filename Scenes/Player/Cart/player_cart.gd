@@ -1,6 +1,7 @@
 extends VehicleBody3D
 
 signal hasDied()
+signal hasRespawned()
 
 const MAX_STEER = 45
 var ENGINE_POWER = 700
@@ -103,6 +104,7 @@ func respawn():
 	angular_velocity = Vector3.ZERO
 	global_rotation_degrees = curCheckpointRot
 	global_position = curCheckpointPos
+	emit_signal("hasRespawned")
 
 func freezeCam():
 	cam.follow = false
