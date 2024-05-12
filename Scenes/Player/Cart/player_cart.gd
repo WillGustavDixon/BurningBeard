@@ -42,7 +42,7 @@ func _physics_process(delta):
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	
 	if Input.is_action_pressed("RearViewCamera"):
-		$CameraPivot/Rear_View_Camera.set_current(true)
+		$Rear_View_Camera.set_current(true)
 	else:
 		$CameraPivot/Camera3D.set_current(true)
 	
