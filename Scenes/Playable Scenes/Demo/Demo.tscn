@@ -110,7 +110,7 @@ transform = Transform3D(2.04366, 0, 4.96754, 0, 27.52, 0, -17.8484, 0, 0.56879, 
 disappears = true
 
 [node name="Death Plane" parent="MainScene" instance=ExtResource("10_exouv")]
-transform = Transform3D(89.3211, 0, 0, 0, 1, 0, 0, 0, 121.951, 966.241, 89.1006, 317.338)
+transform = Transform3D(86.0558, 0, 0, 0, 0.963443, 0, 0, 0, 117.493, 966.241, 89.1006, 317.338)
 
 [node name="Simple_Pine_Tree" parent="MainScene" instance=ExtResource("11_3gfq1")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 46.6164)

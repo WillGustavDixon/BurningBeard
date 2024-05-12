@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode specular_toon;
+render_mode diffuse_toon, specular_toon;
 
 uniform float speed: hint_range(-1, 1) = 0.0;
 uniform float normal_strength: hint_range(0, 1) = 0.5;
@@ -59,6 +59,6 @@ void fragment() {
 	
 	NORMAL_MAP = texture(normalmap,uv_movement).rbg;
 	NORMAL_MAP_DEPTH = normal_strength;
-	ROUGHNESS = 0.2;
-	SPECULAR = 0.5;
+	ROUGHNESS = 0.3;
+	SPECULAR = 0.1;
 }
