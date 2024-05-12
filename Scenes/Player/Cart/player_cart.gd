@@ -41,6 +41,11 @@ func _physics_process(delta):
 	camera.global_rotation_degrees.z = lerp(camera.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	
+	if Input.is_action_pressed("RearViewCamera"):
+		$CameraPivot/Rear_View_Camera.set_current(true)
+	else:
+		$CameraPivot/Camera3D.set_current(true)
+	
 	if Input.is_action_pressed("Handbrake"):
 		brake_val = 10
 	else:

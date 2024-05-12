@@ -87,7 +87,7 @@ storage = ExtResource("5_yg2nc")
 material = SubResource("Terrain3DMaterial_jrc01")
 texture_list = ExtResource("6_buonv")
 collision_mask = 3
-mesh_size = 64
+mesh_lods = 4
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
 [node name="Borders" parent="MainScene" instance=ExtResource("3_eyir0")]
