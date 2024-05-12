@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8cx4xjwluvxw"
-path="res://.godot/imported/RockC.glb-1802a016ee8731ab6800862adb52c48d.scn"
+uid="uid://cdh36saq4rmuk"
+path="res://.godot/imported/rock_2.glb-4b9071866bc85ceadb968d4712ed5c57.scn"
 
 [deps]
 
-source_file="res://Scenes/Environmental/Rocks/RockC.glb"
-dest_files=["res://.godot/imported/RockC.glb-1802a016ee8731ab6800862adb52c48d.scn"]
+source_file="res://Scenes/Environmental/Rocks/rock_2.glb"
+dest_files=["res://.godot/imported/rock_2.glb-4b9071866bc85ceadb968d4712ed5c57.scn"]
 
 [params]
 
-nodes/root_type="StaticBody3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true,
-"use_external/path": "res://demo/assets/materials/M_rock30.tres"
-}
-}
-}
-gltf/naming_version=0
+_subresources={}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

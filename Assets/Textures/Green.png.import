@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gg32dpa2letv"
-path.s3tc="res://.godot/imported/Wall&Door Diffuse.png-434b33853bb324b5a13e53ffa89611d4.s3tc.ctex"
+uid="uid://5ar5asamw5ys"
+path.bptc="res://.godot/imported/Green.png-940e549b1ba721837ec24eb965179abb.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,16 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Wall&Door Diffuse.png"
-dest_files=["res://.godot/imported/Wall&Door Diffuse.png-434b33853bb324b5a13e53ffa89611d4.s3tc.ctex"]
+source_file="res://Assets/Textures/Green.png"
+dest_files=["res://.godot/imported/Green.png-940e549b1ba721837ec24eb965179abb.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

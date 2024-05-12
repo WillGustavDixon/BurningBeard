@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=17 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
 [ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://Scenes/Playable Scenes/Demo/components/Borders.tscn" id="3_eyir0"]
-[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://Scenes/Playable Scenes/Demo/components/Tunnel.tscn" id="4_jkqa7"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://Scenes/Playable Scenes/Demo/data/terrain_storage.res" id="5_yg2nc"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://Scenes/Playable Scenes/Demo/data/texture_list.tres" id="6_buonv"]
 [ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
@@ -15,12 +14,12 @@
 [ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.165493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.501407, 0.501406, 0.501406, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
-noise_type = 2
-frequency = 0.03
+noise_type = 0
+frequency = 0.0023
 cellular_jitter = 3.0
 cellular_return_type = 0
 domain_warp_enabled = true
@@ -31,6 +30,8 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
+width = 1024
+height = 1024
 seamless = true
 color_ramp = SubResource("Gradient_vr1m7")
 noise = SubResource("FastNoiseLite_d8lcj")
@@ -42,19 +43,19 @@ _shader_parameters = {
 "auto_height_reduction": 0.1,
 "auto_overlay_texture": 1,
 "auto_slope": 1.0,
-"blend_sharpness": 0.87,
+"blend_sharpness": 0.7,
 "dual_scale_far": 170.0,
 "dual_scale_near": 100.0,
 "dual_scale_reduction": 0.3,
 "dual_scale_texture": 0,
 "height_blending": true,
-"macro_variation1": Color(0.878431, 0.862745, 0.901961, 1),
-"macro_variation2": Color(0.898039, 0.898039, 0.803922, 1),
+"macro_variation1": Color(0.745098, 0.745098, 0.745098, 1),
+"macro_variation2": Color(1, 1, 1, 1),
 "noise1_angle": 0.1,
 "noise1_offset": Vector2(0.5, 0.5),
-"noise1_scale": 0.04,
-"noise2_scale": 0.076,
-"noise3_scale": 0.225,
+"noise1_scale": 0.118,
+"noise2_scale": 0.086,
+"noise3_scale": 0.144,
 "noise_texture": SubResource("NoiseTexture2D_bov7h"),
 "tri_scale_reduction": 0.3,
 "world_noise_blend_far": 1.0,
@@ -78,6 +79,7 @@ script = ExtResource("1_ynljw")
 process_mode = 1
 
 [node name="Global_Lighting" parent="MainScene" instance=ExtResource("2_cfexo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53986, 3.05176e-05, 0.511292)
 
 [node name="Terrain3D" type="Terrain3D" parent="MainScene"]
 storage = ExtResource("5_yg2nc")
@@ -91,8 +93,6 @@ transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176
 [node name="Borders" parent="MainScene" instance=ExtResource("3_eyir0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -3, 512)
 collision_mask = 3
-
-[node name="Tunnel" parent="MainScene" instance=ExtResource("4_jkqa7")]
 
 [node name="Cart" parent="MainScene" instance=ExtResource("7_tp47n")]
 transform = Transform3D(0.381909, 0, -0.9242, 0, 1, 0, 0.9242, 0, 0.381909, 789.677, 124.233, 197.996)
@@ -113,7 +113,10 @@ disappears = true
 transform = Transform3D(89.3211, 0, 0, 0, 1, 0, 0, 0, 121.951, 966.241, 89.1006, 317.338)
 
 [node name="Simple_Pine_Tree" parent="MainScene" instance=ExtResource("11_3gfq1")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 42.4605)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 46.6164)
+
+[node name="Simple_Pine_Tree2" parent="MainScene" instance=ExtResource("11_3gfq1")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 816.414, 104.219, 354.994)
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
 process_mode = 2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwvtgwartxt0g"]
 
-[ext_resource type="PackedScene" uid="uid://nta3sef6c2el" path="res://Scenes/Environmental/Rocks/RockB.glb" id="1_2nhli"]
+[ext_resource type="PackedScene" uid="uid://nta3sef6c2el" path="res://Scenes/Environmental/Rocks/Demo Created/RockB.glb" id="1_2nhli"]
 [ext_resource type="Material" uid="uid://dlmtxs0c66hj3" path="res://Assets/Materials/Terrain/M_rock30.tres" id="2_a6va3"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wfrmp"]

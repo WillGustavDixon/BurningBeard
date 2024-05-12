@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bshqr118ihsi3"
-path.s3tc="res://.godot/imported/Sphere&man_Diffuse.png-edebc5da56591b4b5d987537248649ef.s3tc.ctex"
+uid="uid://c8clfxhhc0fjt"
+path.bptc="res://.godot/imported/Grey.png-5a06d408efc42df4927c52766f27d1e9.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,16 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Sphere&man_Diffuse.png"
-dest_files=["res://.godot/imported/Sphere&man_Diffuse.png-edebc5da56591b4b5d987537248649ef.s3tc.ctex"]
+source_file="res://Assets/Textures/Grey.png"
+dest_files=["res://.godot/imported/Grey.png-5a06d408efc42df4927c52766f27d1e9.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

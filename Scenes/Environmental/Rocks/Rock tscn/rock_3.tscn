@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bls0pj1a58iq7"]
+
+[ext_resource type="PackedScene" uid="uid://dvjkfq76ij1mi" path="res://Scenes/Environmental/Rocks/rock_3.glb" id="1_0fvih"]
+[ext_resource type="Material" uid="uid://d21qy1f5vg2hp" path="res://Assets/Materials/Environment/Rock_Grey.tres" id="2_ivb0y"]
+
+[node name="rock_3" instance=ExtResource("1_0fvih")]
+
+[node name="Rock Tall remeshed" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ivb0y")
