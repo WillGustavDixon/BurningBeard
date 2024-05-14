@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh4aponr1g0sf"]
+[gd_scene load_steps=8 format=3 uid="uid://dh4aponr1g0sf"]
 
 [ext_resource type="Script" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.gd" id="1_mg25a"]
 [ext_resource type="Material" uid="uid://c8r4nyjvmpc04" path="res://Assets/Materials/Environment/WaterShader.tres" id="2_w0gou"]
@@ -8,12 +8,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mk7ea"]
 size = Vector3(7.65604, 0.448975, 7.63478)
 
-[node name="RigidBody3D" type="RigidBody3D" groups=["DeathPlane"]]
-lock_rotation = true
-freeze = true
-freeze_mode = 1
-max_contacts_reported = 1
-contact_monitor = true
+[sub_resource type="PlaneMesh" id="PlaneMesh_xnlcp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uagod"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nr1o"]
+size = Vector3(7.65604, 0.448975, 7.63478)
+
+[node name="RigidBody3D" type="Area3D" groups=["DeathPlane"]]
 script = ExtResource("1_mg25a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -24,3 +28,18 @@ mesh = SubResource("PlaneMesh_vf7jd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.261643, 0, 0, 0, 0.261643, 0, 0, 0, 0.261643, -0.000251519, 0.00111786, 1.99676e-06)
 shape = SubResource("BoxShape3D_mk7ea")
+
+[node name="Boundary" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary"]
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_xnlcp")
+surface_material_override/0 = SubResource("StandardMaterial3D_uagod")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundary"]
+transform = Transform3D(0.261643, 0, 0, 0, 0.261643, 0, 0, 0, 0.261643, -0.000251519, 0.00111786, 1.99676e-06)
+shape = SubResource("BoxShape3D_4nr1o")

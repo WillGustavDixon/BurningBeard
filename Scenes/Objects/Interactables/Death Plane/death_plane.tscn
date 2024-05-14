@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh4aponr1g0sf"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Interactables/Death Plane/death_plane.gd" id="1_mg25a"]
+[ext_resource type="Script" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.gd" id="1_mg25a"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vf7jd"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=27 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
@@ -6,13 +6,18 @@
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://Scenes/Playable Scenes/Demo/data/terrain_storage.res" id="5_yg2nc"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://Scenes/Playable Scenes/Demo/data/texture_list.tres" id="6_buonv"]
 [ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
-[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects & Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
-[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects & Interactables/Wall/wall.tscn" id="9_mwhe5"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects/Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
+[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects/Interactables/Wall/wall.tscn" id="9_mwhe5"]
 [ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.tscn" id="10_exouv"]
 [ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
 [ext_resource type="PackedScene" uid="uid://byipmle0sncrc" path="res://Scenes/Environmental/Trees/Pine Tree/simple_pine_tree.tscn" id="11_3gfq1"]
 [ext_resource type="PackedScene" uid="uid://cn70vx28a4ag4" path="res://Scenes/Environmental/Shrubs/bush_1.tscn" id="11_nbhsv"]
 [ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
+[ext_resource type="PackedScene" uid="uid://cfcbv6avaxdwh" path="res://Scenes/Objects/Obtainables/Apple/apple.tscn" id="12_q4uew"]
+[ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
+[ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="16_etdfu"]
+[ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.165493, 1)
@@ -72,7 +77,62 @@ world_background = 2
 auto_shader = true
 dual_scaling = true
 
-[node name="Demo" type="Node"]
+[sub_resource type="Animation" id="Animation_p30tj"]
+resource_name = "fadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fkpse"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1m215"]
+resource_name = "hold"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnnpp"]
+_data = {
+"fadeIn": SubResource("Animation_p30tj"),
+"fadeOut": SubResource("Animation_fkpse"),
+"hold": SubResource("Animation_1m215")
+}
+
+[node name="DemoRoot" type="Node"]
 process_mode = 3
 script = ExtResource("1_ynljw")
 
@@ -121,6 +181,57 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 816.414, 104.219, 354.994)
 
 [node name="Bush_1" parent="MainScene" instance=ExtResource("11_nbhsv")]
 transform = Transform3D(1.22247, -0.00611121, -0.00232865, 0.00558357, 1.20194, -0.22312, 0.00340491, 0.223107, 1.20195, 480.362, 178.608, 277.68)
+
+[node name="Apple" parent="MainScene" instance=ExtResource("12_q4uew")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 310.592, 119.21, 345.09)
+
+[node name="Applesauce" parent="MainScene" instance=ExtResource("13_xy5nj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 326.365, 119.22, 344.823)
+
+[node name="Skewer" parent="MainScene" instance=ExtResource("14_uftje")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 342.844, 118.399, 344.999)
+
+[node name="Checkpoints" type="Node" parent="MainScene"]
+
+[node name="Start" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 320, 118.438, 380)
+checkpointPos = Vector3(320, 120, 380)
+checkpointRot = Vector3(0, 90, 0)
+
+[node name="Checkpoint A" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1.25932, 0, 0.986121, 0, 7.24, 0, -7.47973, 0, 0.166029, 628.992, 111.794, 383.143)
+checkpointPos = Vector3(629, 100, 383)
+checkpointRot = Vector3(0, 80, 0)
+
+[node name="Checkpoint B" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.97593, 0, -0.965473, 0, 7.24, 0, 7.32311, 0, -0.260504, 803.965, 106.077, 211.769)
+checkpointPos = Vector3(803.965, 102, 211.769)
+checkpointRot = Vector3(0, 255, 0)
+
+[node name="Checkpoint C" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.55711, 0, -0.985408, 0, 7.24, 0, 9.01472, 0, -0.17021, 604.512, 145.594, 213.907)
+checkpointPos = Vector3(583.157, 140, 210.218)
+checkpointRot = Vector3(0, 350, 0)
+
+[node name="Checkpoint D" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(0.382798, 0, -0.998342, 0, 7.24, 0, 6.63894, 0, 0.0575639, 582.662, 246.07, -3.81188)
+checkpointPos = Vector3(582.662, 240, -3.812)
+checkpointRot = Vector3(0, 273, 0)
+
+[node name="Fader" type="ColorRect" parent="."]
+process_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("16_etdfu")
+
+[node name="Anim" type="AnimationPlayer" parent="Fader"]
+libraries = {
+"": SubResource("AnimationLibrary_gnnpp")
+}
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
 process_mode = 2

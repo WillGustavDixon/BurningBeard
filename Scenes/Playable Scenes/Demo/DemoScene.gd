@@ -3,7 +3,7 @@ extends Node
 @onready var invScene = $InventoryScene
 @onready var inv = invScene.get_child(0)
 @onready var pauseScene = $PauseOverlay
-@onready var tradeScene = $TradingScene
+#@onready var tradeScene = $TradingScene
 @onready var fader = $Fader
 @onready var cart = $MainScene/Cart
 
