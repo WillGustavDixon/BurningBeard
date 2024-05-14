@@ -1212,11 +1212,11 @@ surface_material_override/1 = ExtResource("8_md0av")
 [node name="Rear_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20572, -0.682599, -1.17236)
 use_as_traction = true
-wheel_roll_influence = 0.05
+wheel_roll_influence = 0.01
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.1
-suspension_stiffness = 120.0
+suspension_stiffness = 150.0
 
 [node name="Rear_Left2" type="MeshInstance3D" parent="Rear_Left_Wheel"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.00328004, -0.000510752, 0.000860214)
@@ -1229,11 +1229,11 @@ surface_material_override/2 = ExtResource("7_c5sys")
 [node name="Rear_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20875, -0.68311, -1.1715)
 use_as_traction = true
-wheel_roll_influence = 0.05
+wheel_roll_influence = 0.01
 wheel_radius = 0.45
 wheel_rest_length = 0.1
 wheel_friction_slip = 1.1
-suspension_stiffness = 120.0
+suspension_stiffness = 150.0
 
 [node name="Rear_Right2" type="MeshInstance3D" parent="Rear_Right_Wheel"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 1.54972e-06, 2.38419e-07, 2.38419e-07)
@@ -1246,11 +1246,11 @@ surface_material_override/2 = ExtResource("7_c5sys")
 [node name="Front_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06, -0.683, 1.093)
 use_as_steering = true
-wheel_roll_influence = 0.05
+wheel_roll_influence = 0.01
 wheel_radius = 0.45
 wheel_rest_length = 0.1
-wheel_friction_slip = 1.4
-suspension_stiffness = 120.0
+wheel_friction_slip = 1.2
+suspension_stiffness = 150.0
 
 [node name="Front_Left2" type="MeshInstance3D" parent="Front_Left_Wheel"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.000274777, -0.00030303)
@@ -1263,11 +1263,11 @@ surface_material_override/2 = ExtResource("7_c5sys")
 [node name="Front_Right_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06, -0.683, 1.093)
 use_as_steering = true
-wheel_roll_influence = 0.05
+wheel_roll_influence = 0.01
 wheel_radius = 0.45
 wheel_rest_length = 0.1
-wheel_friction_slip = 1.4
-suspension_stiffness = 120.0
+wheel_friction_slip = 1.2
+suspension_stiffness = 150.0
 
 [node name="Front_Right2" type="MeshInstance3D" parent="Front_Right_Wheel"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.000274777, -0.00030303)
