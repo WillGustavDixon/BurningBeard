@@ -15,7 +15,7 @@ uv_scale = 0.001
 [sub_resource type="Terrain3DTexture" id="Terrain3DTexture_56fwf"]
 name = "Grass"
 texture_id = 1
-albedo_color = Color(0.870588, 0.905882, 0.878431, 1)
+albedo_color = Color(0.623529, 0.701961, 0.643137, 1)
 albedo_texture = ExtResource("3_r2qa3")
 normal_texture = ExtResource("4_cpsw4")
 uv_scale = 0.318

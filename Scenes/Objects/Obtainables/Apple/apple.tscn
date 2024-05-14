@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Apple/apple.gd" id="1_irjq3"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="1_mg22b"]
-[ext_resource type="Material" uid="uid://g0v2nvyi7vdl" path="res://Assets/Materials/Environment/Brown.tres" id="2_06wv7"]
+[ext_resource type="Material" uid="uid://b4r8rsns3qgxx" path="res://Assets/Materials/Environment/Brown.tres" id="2_06wv7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rtb12"]
 
@@ -22,8 +22,12 @@ transparency = 1
 albedo_color = Color(0.196078, 0.588235, 1, 0.0784314)
 
 [node name="Apple" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 lock_rotation = true
-freeze = true
 freeze_mode = 1
 script = ExtResource("1_irjq3")
 
