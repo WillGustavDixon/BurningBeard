@@ -7,6 +7,8 @@
 render_priority = 0
 next_pass = ExtResource("1_pkif2")
 shader = ExtResource("2_xw6xi")
+shader_parameter/specular_smoothness = 0.05
+shader_parameter/fresnel_smoothness = 0.05
 shader_parameter/anisotropy_ratio = 0.0
 shader_parameter/anisotropy_direction = Vector3(0, -1, 0)
 shader_parameter/aniso_map_dir_ratio = 0.0

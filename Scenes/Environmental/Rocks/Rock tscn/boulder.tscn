@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cslvhe86ne6yq"]
+
+[ext_resource type="PackedScene" uid="uid://b3o0bkosqb3jb" path="res://Scenes/Environmental/Rocks/Boulder.glb" id="1_fxmh0"]
+[ext_resource type="Material" uid="uid://dnk86fkf1h2ok" path="res://Assets/Materials/Environment/Boulder_Grey.tres" id="2_ef6qe"]
+
+[node name="Boulder" instance=ExtResource("1_fxmh0")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ef6qe")

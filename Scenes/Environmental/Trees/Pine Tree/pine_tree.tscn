@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://boijadqa61phy"]
-
-[ext_resource type="PackedScene" uid="uid://ci4e42gvmmqqf" path="res://Scenes/Environmental/Trees/Pine Tree/Pine Tree.glb" id="1_5l3ku"]
-
-[node name="Pine Tree" instance=ExtResource("1_5l3ku")]

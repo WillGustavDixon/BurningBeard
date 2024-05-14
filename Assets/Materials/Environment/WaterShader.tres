@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c8r4nyjvmpc04"]
+
+[ext_resource type="Shader" path="res://shaders/WaterShader.gdshader" id="1_1ur1c"]
+[ext_resource type="Texture2D" uid="uid://dp8wade3cv0ba" path="res://Assets/Textures/Environment/2k water surface.png" id="2_qotar"]
+[ext_resource type="Texture2D" uid="uid://wmgqb2a6nqh6" path="res://Assets/Textures/Environment/2k water surface noise 2 inverted.png" id="3_ybijx"]
+[ext_resource type="Texture2D" uid="uid://bm3wudg0y3yg2" path="res://Assets/Textures/Environment/2k water surface noise 2 normal.png" id="4_2e5tt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1ur1c")
+shader_parameter/speed = 0.00500005
+shader_parameter/normal_strength = 0.01
+shader_parameter/color = Color(0, 0.235294, 1, 0.980392)
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/edge_scale = 0.355
+shader_parameter/near = 0.1
+shader_parameter/far = 200.0
+shader_parameter/uv_offset_size = Vector2(1, 1)
+shader_parameter/noise1 = ExtResource("2_qotar")
+shader_parameter/noise2 = ExtResource("3_ybijx")
+shader_parameter/normalmap = ExtResource("4_2e5tt")

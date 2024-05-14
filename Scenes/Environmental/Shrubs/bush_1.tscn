@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn70vx28a4ag4"]
+
+[ext_resource type="PackedScene" uid="uid://xraat64ixqxj" path="res://Scenes/Environmental/Shrubs/Bush_1.glb" id="1_wgmwb"]
+[ext_resource type="Material" uid="uid://1w3kgv7gh2yg" path="res://Assets/Materials/Environment/Green_Dark.tres" id="2_7bh2l"]
+
+[node name="Bush_1" instance=ExtResource("1_wgmwb")]
+
+[node name="Bush_2_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_7bh2l")

@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://diig211dvjkv6"]
+[gd_scene load_steps=4 format=3 uid="uid://diig211dvjkv6"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Interactables/Boulder/boulder.gd" id="1_4qidk"]
-[ext_resource type="Material" uid="uid://dlmtxs0c66hj3" path="res://Assets/Materials/Terrain/M_rock30.tres" id="2_20jq1"]
+[ext_resource type="Script" path="res://Scenes/Objects & Interactables/Boulder/boulder.gd" id="1_4qidk"]
+[ext_resource type="PackedScene" uid="uid://cslvhe86ne6yq" path="res://Scenes/Environmental/Rocks/Rock tscn/boulder.tscn" id="2_jrnku"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bsxfg"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_s8wf6"]
+radius = 0.735
 
 [node name="Boulder" type="RigidBody3D" groups=["Destroyer"]]
 mass = 400.0
@@ -15,12 +14,8 @@ contact_monitor = true
 script = ExtResource("1_4qidk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 shape = SubResource("SphereShape3D_bsxfg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-material_override = ExtResource("2_20jq1")
-mesh = SubResource("SphereMesh_s8wf6")
+[node name="Boulder" parent="." instance=ExtResource("2_jrnku")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
