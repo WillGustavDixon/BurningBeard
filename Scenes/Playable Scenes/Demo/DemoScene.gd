@@ -3,6 +3,7 @@ extends Node
 @onready var invScene = $InventoryScene
 @onready var inv = invScene.get_child(0)
 @onready var pauseScene = $PauseOverlay
+@onready var tradeScene = $TradingScene
 @onready var fader = $Fader
 @onready var cart = $MainScene/Cart
 
@@ -57,6 +58,13 @@ func closeInv():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 	invOpen = false
+
+func openTrade(src : Node = null):
+	pass#tradeScene.visible = true
+	#tradeScene
+
+func closeTrade():
+	pass
 
 func pause():
 	invScene.process_mode = Node.PROCESS_MODE_PAUSABLE

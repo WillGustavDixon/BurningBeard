@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
 [ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
 [ext_resource type="PackedScene" uid="uid://cfcbv6avaxdwh" path="res://Scenes/Objects/Obtainables/Apple/apple.tscn" id="12_q4uew"]
-[ext_resource type="PackedScene" path="res://Scenes/Environmental/Trees/Pine Tree/pine_tree.tscn" id="13_ns7ko"]
+[ext_resource type="PackedScene" uid="uid://boijadqa61phy" path="res://Scenes/Environmental/Trees/Pine Tree/pine_tree.tscn" id="13_ns7ko"]
 [ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
 [ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
 [ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
@@ -231,6 +231,9 @@ transform = Transform3D(0.382798, 0, -0.998342, 0, 7.24, 0, 6.63894, 0, 0.057563
 checkpointPos = Vector3(582.662, 240, -3.812)
 checkpointRot = Vector3(0, 273, 0)
 
+[node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
+process_mode = 2
+
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 1
 anchors_preset = 15
@@ -245,9 +248,6 @@ script = ExtResource("17_sswo0")
 libraries = {
 "": SubResource("AnimationLibrary_gnnpp")
 }
-
-[node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
-process_mode = 2
 
 [node name="PauseOverlay" type="Node2D" parent="."]
 

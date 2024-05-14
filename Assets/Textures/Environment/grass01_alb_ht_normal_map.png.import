@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddprscrpsofah"
-path.bptc="res://.godot/imported/ground037_alb_ht.png-02beca27216d22075f423cb231d54d9d.bptc.ctex"
+uid="uid://dwj613l5xjnae"
+path.bptc="res://.godot/imported/grass01_alb_ht_normal_map.png-6ae0f922f2804f170fca4033e3fccb30.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Terrain/ground037_alb_ht.png"
-dest_files=["res://.godot/imported/ground037_alb_ht.png-02beca27216d22075f423cb231d54d9d.bptc.ctex"]
+source_file="res://Assets/Textures/Environment/grass01_alb_ht_normal_map.png"
+dest_files=["res://.godot/imported/grass01_alb_ht_normal_map.png-6ae0f922f2804f170fca4033e3fccb30.bptc.ctex"]
 
 [params]
 

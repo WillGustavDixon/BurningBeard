@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl3t8ve0h2g0h"]
+
+[ext_resource type="Script" path="res://NPC.gd" id="1_1h8hx"]
+[ext_resource type="Texture2D" uid="uid://bshqr118ihsi3" path="res://Assets/Textures/Sphere&man_Diffuse.png" id="2_o45jt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6lywq"]
+radius = 0.75
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1s1f"]
+albedo_texture = ExtResource("2_o45jt")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p2vqm"]
+radius = 0.75
+height = 3.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uiuv2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nodfs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ytiss"]
+transparency = 1
+albedo_color = Color(0.196078, 0.588235, 1, 0.0784314)
+
+[node name="NPC" type="RigidBody3D"]
+script = ExtResource("1_1h8hx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6lywq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_u1s1f")
+mesh = SubResource("CapsuleMesh_p2vqm")
+
+[node name="Detection Radius" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Radius"]
+transform = Transform3D(7.5, 0, 0, 0, 0.5, 0, 0, 0, 7.5, 0, 0.000457764, 0)
+shape = SubResource("CylinderShape3D_uiuv2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Detection Radius/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_nodfs")
+surface_material_override/0 = SubResource("StandardMaterial3D_ytiss")

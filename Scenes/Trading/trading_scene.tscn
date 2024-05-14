@@ -1,3 +1,242 @@
-[gd_scene format=3 uid="uid://d04ng4hjdypyk"]
+[gd_scene load_steps=6 format=3 uid="uid://d04ng4hjdypyk"]
+
+[ext_resource type="Script" path="res://Scenes/Trading/trading.gd" id="1_8u6il"]
+[ext_resource type="FontFile" uid="uid://dkhbotxjkjlbg" path="res://Assets/Fonts/Open Font Package/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Black.ttf" id="1_tq6gg"]
+[ext_resource type="PackedScene" uid="uid://dmfdd6x6pf3q0" path="res://Scenes/Inventory/Slot/slot_icon.tscn" id="3_4jpyg"]
+[ext_resource type="Script" path="res://Scenes/Inventory/invButton.gd" id="3_5v2fs"]
+
+[sub_resource type="Theme" id="Theme_o6cwb"]
+default_font = ExtResource("1_tq6gg")
+default_font_size = 30
 
 [node name="TradingScene" type="Node2D"]
+script = ExtResource("1_8u6il")
+
+[node name="Trading UI" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Trading UI"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.235294, 0, 0, 1)
+
+[node name="Margin" type="MarginContainer" parent="Trading UI/Background"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBox" type="VBoxContainer" parent="Trading UI/Background/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Text Columns" type="HBoxContainer" parent="Trading UI/Background/Margin/VBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trading UI/Background/Margin/VBox/Text Columns"]
+custom_minimum_size = Vector2(570, 125)
+layout_mode = 2
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+text = "
+[center]Left Click = Grab/Place item[/center]
+[center] Right Click = Check item info[/center]
+               "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Trading UI/Background/Margin/VBox/Text Columns"]
+custom_minimum_size = Vector2(800, 125)
+layout_mode = 2
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+text = "
+[center]Mouse Wheel Down: Rotate clockwise [/center]
+[center]    Mouse Wheel Up: Rotate anti-clockwise [/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Trading UI/Background/Margin/VBox/Text Columns"]
+custom_minimum_size = Vector2(500, 125)
+layout_mode = 2
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+text = "
+  ESC = Exit Trade Screen
+               "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="TradeRules" type="RichTextLabel" parent="Trading UI/Background/Margin/VBox"]
+custom_minimum_size = Vector2(500, 175)
+layout_mode = 2
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+text = "
+[center] HOW TO TRADE: Put the items you want to sell in the trading box on the right. Put the items that 
+you	want to buy in the trading box on the left. Press the TRADE button to swap the items. Money 
+will be deducted from the party that has the goods of lesser value. [center]
+               "
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="HGridContainers" type="HBoxContainer" parent="Trading UI/Background/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlayerGrid" type="GridContainer" parent="Trading UI/Background/Margin/VBox/HGridContainers"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="SlotIcon" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon2" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon3" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon5" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon6" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon4" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon7" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon8" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon9" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon10" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon11" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon12" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="PlayerOfferGrid" type="GridContainer" parent="Trading UI/Background/Margin/VBox/HGridContainers"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="SlotIcon4" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon5" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon6" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon7" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon8" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon9" parent="Trading UI/Background/Margin/VBox/HGridContainers/PlayerOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="NPCOfferGrid" type="GridContainer" parent="Trading UI/Background/Margin/VBox/HGridContainers"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="SlotIcon4" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon5" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon6" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon7" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon8" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon9" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCOfferGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="NPCGrid" type="GridContainer" parent="Trading UI/Background/Margin/VBox/HGridContainers"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="SlotIcon" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon2" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon3" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon5" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon6" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon4" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon7" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon8" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon9" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon10" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon11" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="SlotIcon12" parent="Trading UI/Background/Margin/VBox/HGridContainers/NPCGrid" instance=ExtResource("3_4jpyg")]
+layout_mode = 2
+
+[node name="TraExitButton" type="Button" parent="Trading UI/Background"]
+layout_mode = 2
+offset_left = 1505.0
+offset_top = 85.0
+offset_right = 1755.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("1_tq6gg")
+theme_override_font_sizes/font_size = 28
+text = "Or press me!"
+script = ExtResource("3_5v2fs")
+
+[connection signal="pressed" from="Trading UI/Background/TraExitButton" to="Trading UI/Background/TraExitButton" method="exitInv"]
