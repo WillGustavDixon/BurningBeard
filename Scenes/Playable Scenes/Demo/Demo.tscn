@@ -1,9 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=19 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
-[ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://Scenes/Playable Scenes/Demo/components/Borders.tscn" id="3_eyir0"]
-[ext_resource type="PackedScene" uid="uid://djhl3foqkj4e2" path="res://Scenes/Playable Scenes/Demo/components/Tunnel.tscn" id="4_jkqa7"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://Scenes/Playable Scenes/Demo/data/terrain_storage.res" id="5_yg2nc"]
 [ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://Scenes/Playable Scenes/Demo/data/texture_list.tres" id="6_buonv"]
 [ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
@@ -87,21 +85,15 @@ storage = ExtResource("5_yg2nc")
 material = SubResource("Terrain3DMaterial_jrc01")
 texture_list = ExtResource("6_buonv")
 collision_mask = 3
-mesh_lods = 4
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
-[node name="Borders" parent="MainScene" instance=ExtResource("3_eyir0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -3, 512)
-collision_mask = 3
-
-[node name="Tunnel" parent="MainScene" instance=ExtResource("4_jkqa7")]
-
 [node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]
-transform = Transform3D(3.93986, 0, -0.691017, 0, 4, 0, 0.691017, 0, 3.93986, 496.63, 140.036, 356.223)
+transform = Transform3D(3.93986, 0, -0.691017, 0, 4, 0, 0.691017, 0, 3.93986, 532.176, 266.039, -575.258)
 mass = 200.0
+gravity_scale = 4.0
 
 [node name="Wall" parent="MainScene" instance=ExtResource("9_mwhe5")]
-transform = Transform3D(2.04366, 0, 4.96754, 0, 27.52, 0, -17.8484, 0, 0.56879, 624.559, 111.072, 375.476)
+transform = Transform3D(1.50608, 0, 4.9824, 0, 27.52, 0, -17.9018, 0, 0.419172, 1214.62, 5.80619, -666.058)
 disappears = true
 
 [node name="Death Plane" parent="MainScene" instance=ExtResource("10_exouv")]
@@ -120,8 +112,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 326.365, 119.22, 344.823)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 342.844, 118.399, 344.999)
 
 [node name="Cart" parent="MainScene" instance=ExtResource("7_tp47n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 325.542, 119.993, 354.129)
-curCheckpointPos = Vector3(325.542, 119.993, 354.129)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1141.47, 36.1858, -620.901)
+center_of_mass_mode = 0
+center_of_mass = Vector3(0, 0, 0)
+curCheckpointPos = Vector3(1141.47, 36.1858, -620.901)
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
 process_mode = 2
