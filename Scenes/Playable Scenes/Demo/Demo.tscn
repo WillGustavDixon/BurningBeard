@@ -159,7 +159,7 @@ curCheckpointPos = Vector3(320.809, 119.315, 345.152)
 curCheckpointRot = Vector3(0, 1.26852, 0)
 
 [node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]
-transform = Transform3D(15.7594, 0, -2.76407, 0, 16, 0, 2.76407, 0, 15.7594, 532.176, 268.86, -575.258)
+transform = Transform3D(15.7594, 0, -2.76407, 0, 16, 0, 2.76407, 0, 15.7594, 622.795, 268.86, -588.471)
 mass = 200.0
 gravity_scale = 4.0
 
