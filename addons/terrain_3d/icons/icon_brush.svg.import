@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjrjfjmbyseol"
-path="res://.godot/imported/icon_brush.svg-8886426485f67abe2233686de39952ce.ctex"
+path="res://.godot/imported/icon_brush.svg-266758db7e274e96f3af9107f60ec3c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/terrain_3d/icons/icon_brush.svg"
-dest_files=["res://.godot/imported/icon_brush.svg-8886426485f67abe2233686de39952ce.ctex"]
+source_file="res://Addons/terrain_3d/icons/icon_brush.svg"
+dest_files=["res://.godot/imported/icon_brush.svg-266758db7e274e96f3af9107f60ec3c1.ctex"]
 
 [params]
 

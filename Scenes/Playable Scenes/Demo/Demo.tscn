@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
 [ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects/Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
 [ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects/Interactables/Wall/wall.tscn" id="9_mwhe5"]
-[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects & Interactables/Death Plane/death_plane.tscn" id="10_exouv"]
+[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects/Interactables/Death Plane/water.tscn" id="10_exouv"]
 [ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
 [ext_resource type="PackedScene" uid="uid://byipmle0sncrc" path="res://Scenes/Environmental/Trees/Pine Tree/simple_pine_tree.tscn" id="11_3gfq1"]
 [ext_resource type="PackedScene" uid="uid://cn70vx28a4ag4" path="res://Scenes/Environmental/Shrubs/bush_1.tscn" id="11_nbhsv"]
@@ -151,11 +151,11 @@ mesh_lods = 5
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
 [node name="Cart" parent="MainScene" instance=ExtResource("7_tp47n")]
-transform = Transform3D(0.297692, 0, 0.954662, 0, 1, 0, -0.954662, 0, 0.297692, 320.809, 119.315, 345.152)
+transform = Transform3D(0.297692, 0, 0.954662, 0, 1, 0, -0.954662, 0, 0.297692, 607.218, 268.86, -565.423)
 center_of_mass = Vector3(0, -0.2, 0)
 max_contacts_reported = 10
 contact_monitor = true
-curCheckpointPos = Vector3(320.809, 119.315, 345.152)
+curCheckpointPos = Vector3(607, 268.86, -600)
 curCheckpointRot = Vector3(0, 1.26852, 0)
 
 [node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]
