@@ -27,10 +27,10 @@ var yaw_sensitivity : float = 0.07
 var pitch_sensitivity : float = 0.07
 var yaw_acceleration : float = 15
 var pitch_acceleration : float = 15
-var pitch_max : float = 20
-var pitch_min : float = -10
-var yaw_max : float = 25
-var yaw_min : float = -25
+var pitch_max : float = 60
+var pitch_min : float = -20
+var yaw_max : float = 70
+var yaw_min : float = -70
 
 var camera_rotate_max = 0
 var camera_rotate_min = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cytibfjs3k24p"]
+[gd_scene load_steps=63 format=3 uid="uid://cytibfjs3k24p"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Cart/player_cart.gd" id="1_ooo4o"]
 [ext_resource type="Texture2D" uid="uid://cf3k72xkdail5" path="res://Unsure what to do with this stuff/gtr/Cart_grid window.png" id="1_uyrh5"]
@@ -1127,6 +1127,53 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1ojm4")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j62ix"]
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.533333, 0.533333, 0.533333, 1)
+billboard_keep_scale = true
+proximity_fade_enabled = true
+
+[sub_resource type="Curve" id="Curve_7rk5w"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, -321.799), 0.0, 0.0, 0, 0, Vector2(0.988152, -10.3597), 0.0, 0.0, 0, 0, Vector2(0.995261, -170.288), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_24xhj"]
+curve = SubResource("Curve_7rk5w")
+
+[sub_resource type="Curve" id="Curve_tyrpf"]
+_data = [Vector2(0.00473933, 0.0998201), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jdw5"]
+curve = SubResource("Curve_tyrpf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v67bk"]
+lifetime_randomness = 0.3
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = -10.0
+angular_velocity_max = -1.0
+angular_velocity_curve = SubResource("CurveTexture_24xhj")
+gravity = Vector3(0, 3, 0)
+damping_min = 0.3
+damping_max = 0.3
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_5jdw5")
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+turbulence_enabled = true
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.02
+collision_mode = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_3dqe0"]
+
 [node name="Cart" type="VehicleBody3D" groups=["Player"]]
 mass = 120.0
 gravity_scale = 4.0
@@ -1289,6 +1336,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, 
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 3, -10)
 far = 2000.0
 script = ExtResource("17_w8ome")
+
+[node name="ChimneySmoke" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.642085, 1.45284, 0.848589)
+material_override = SubResource("StandardMaterial3D_j62ix")
+amount = 12
+lifetime = 2.0
+randomness = 1.0
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_v67bk")
+draw_pass_1 = SubResource("SphereMesh_3dqe0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Detection" to="." method="_on_area_entered"]

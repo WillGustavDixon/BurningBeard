@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://516qh3duc33g"
-path="res://.godot/imported/icon_picker.svg-2c1e23e960fa7c28daa4de5ca338afa4.ctex"
+path="res://.godot/imported/icon_picker.svg-9f872a162ed3e0053283f4bf299ac645.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/terrain_3d/icons/icon_picker.svg"
-dest_files=["res://.godot/imported/icon_picker.svg-2c1e23e960fa7c28daa4de5ca338afa4.ctex"]
+source_file="res://addons/terrain_3d/icons/icon_picker.svg"
+dest_files=["res://.godot/imported/icon_picker.svg-9f872a162ed3e0053283f4bf299ac645.ctex"]
 
 [params]
 
