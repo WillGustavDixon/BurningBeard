@@ -10,6 +10,8 @@ const FRICTION = 1
 const HI_FRICTION = 0.05
 const LO_FRICTION = 1.25
 
+@onready var smoke = $ChimneySmoke
+
 @onready var gimball = $CameraPivot
 @onready var camTarg = $CameraPivot/CameraTarget
 @onready var cam = $CameraPivot/Camera3D
@@ -89,6 +91,12 @@ func _physics_process(delta):
 			for wheel in frontWheels: wheel.wheel_friction_slip = HI_FRICTION
 		else:
 			for wheel in frontWheels: wheel.wheel_friction_slip = FRICTION
+			
+	#Smoke increase on acceleration
+	if Input.is_action_pressed("Accelerate"):
+		smoke.amount = 50
+	else:
+		smoke.amount = 12
 	
 	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
