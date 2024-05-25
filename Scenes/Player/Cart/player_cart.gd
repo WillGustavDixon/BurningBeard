@@ -70,15 +70,6 @@ func _physics_process(delta):
 	else:
 		ENGINE_POWER = 666
 		
-	if VELOCITY.x > 20 or VELOCITY.x < -20:
-		ENGINE_POWER *= 0.01
-	else:
-		ENGINE_POWER = 666
-		
-	if VELOCITY.z > 20 or VELOCITY.z < -20:
-		ENGINE_POWER *= 0.01
-	else:
-		ENGINE_POWER = 666
 		
 	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1
 	if steerMod < 0.15: steerMod = 0.15
@@ -94,7 +85,7 @@ func _physics_process(delta):
 			
 	#Smoke increase on acceleration
 	if Input.is_action_pressed("Accelerate"):
-		smoke.amount = 50
+		smoke.amount = 48
 	else:
 		smoke.amount = 12
 	
