@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cytibfjs3k24p"]
+[gd_scene load_steps=65 format=3 uid="uid://cytibfjs3k24p"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Cart/player_cart.gd" id="1_ooo4o"]
 [ext_resource type="Texture2D" uid="uid://cf3k72xkdail5" path="res://Unsure what to do with this stuff/gtr/Cart_grid window.png" id="1_uyrh5"]
@@ -1143,8 +1143,15 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_24xhj"]
 curve = SubResource("Curve_7rk5w")
 
+[sub_resource type="Gradient" id="Gradient_q8cnw"]
+offsets = PackedFloat32Array(0, 0.294416, 0.741117, 1)
+colors = PackedColorArray(0, 0, 0, 0.372549, 0.246019, 0.246019, 0.246019, 1, 0.619289, 0.619289, 0.619289, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5qtke"]
+gradient = SubResource("Gradient_q8cnw")
+
 [sub_resource type="Curve" id="Curve_tyrpf"]
-_data = [Vector2(0.00473933, 0.0998201), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.245953), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_5jdw5"]
@@ -1165,6 +1172,7 @@ damping_min = 0.3
 damping_max = 0.3
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_5jdw5")
+color_ramp = SubResource("GradientTexture1D_5qtke")
 anim_speed_min = 0.5
 anim_speed_max = 1.0
 turbulence_enabled = true
