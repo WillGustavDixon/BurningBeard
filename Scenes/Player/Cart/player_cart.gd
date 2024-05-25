@@ -39,7 +39,7 @@ var camera_rotate_min = 0
 var cam_rotation: float = 0
 
 var brake_val =  1.0
-var VELOCITY: Vector3 = get_linear_velocity()
+
 
 func _ready():
 	respawn()
@@ -54,6 +54,7 @@ func _physics_process(delta):
 	gimball.rotation_degrees.x = lerp(gimball.rotation_degrees.x, pitch, acceleration * delta)
 	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
+	var VELOCITY: Vector3 = get_linear_velocity()
 	
 	if Input.is_action_pressed("RearViewCamera"):
 		$Rear_View_Camera.set_current(true)
