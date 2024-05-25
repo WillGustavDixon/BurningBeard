@@ -4,7 +4,7 @@ signal hasDied()
 signal hasRespawned()
 
 const MAX_STEER = 45
-var ENGINE_POWER = 700
+var ENGINE_POWER = 666
 const MAX_BRAKE_FORCE = 5.0 
 const FRICTION = 1
 const HI_FRICTION = 0.05
@@ -27,6 +27,8 @@ var yaw : float = 0
 var pitch : float = 0
 var yaw_sensitivity : float = 0.07
 var pitch_sensitivity : float = 0.07
+var con_yaw_sensitivity : float = 2
+var con_pitch_sensitivity : float = 2
 var yaw_acceleration : float = 15
 var pitch_acceleration : float = 15
 var pitch_max : float = 60
@@ -67,7 +69,7 @@ func _physics_process(delta):
 		brake_val = 0
 	
 	if Input.is_action_pressed("Reverse"):
-		ENGINE_POWER *= 0.5
+		ENGINE_POWER = 333
 	else:
 		ENGINE_POWER = 666
 		
@@ -89,10 +91,17 @@ func _physics_process(delta):
 		smoke.amount = 48
 	else:
 		smoke.amount = 12
+		
+	#Controller Camera
+	yaw += Input.get_action_strength("controllerCameraRight") * con_pitch_sensitivity
+	yaw -= Input.get_action_strength("controllerCameraLeft") * con_yaw_sensitivity
+	pitch -= Input.get_action_strength("controllerCameraDown") * con_pitch_sensitivity
+	pitch += Input.get_action_strength("controllerCameraUp") * con_pitch_sensitivity
 	
 	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
+
 	
 func _input(event):
 	if event is InputEventMouseMotion:

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://brh1fi7tl5387" path="res://Unsure what to do with this stuff/gtr/Cart_Blinds.png" id="14_ff0km"]
 [ext_resource type="Material" uid="uid://bsv7afqjlk7cf" path="res://Assets/Materials/Cart/Display_Faces.tres" id="14_t6hi5"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="16_wuuxl"]
-[ext_resource type="Texture2D" uid="uid://h66dspf7ntw6" path="res://Assets/Textures/NPC Sprites/oscarcartrear.png" id="17_t1oeu"]
+[ext_resource type="Texture2D" uid="uid://h66dspf7ntw6" path="res://oscarcartrear.png" id="17_r240e"]
 [ext_resource type="Script" path="res://Scenes/Player/Cart/CameraFollow.gd" id="17_w8ome"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_80ngp"]
@@ -1269,7 +1269,7 @@ surface_material_override/1 = ExtResource("8_md0av")
 [node name="Oscar" type="Sprite3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.626, -2.735)
 pixel_size = 0.0004
-texture = ExtResource("17_t1oeu")
+texture = ExtResource("17_r240e")
 
 [node name="Rear_Left_Wheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20572, -0.682599, -1.17236)

@@ -215,6 +215,9 @@ transform = Transform3D(0.382798, 0, -0.998342, 0, 7.24, 0, 6.63894, 0, 0.057563
 checkpointPos = Vector3(582.662, 240, -3.812)
 checkpointRot = Vector3(0, 273, 0)
 
+[node name="Death Plane2" parent="MainScene" instance=ExtResource("10_exouv")]
+transform = Transform3D(500, 0, 0, 0, 3.358, 0, 0, 0, 450, 2057.01, -41.8135, -216.272)
+
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 1
 anchors_preset = 15
