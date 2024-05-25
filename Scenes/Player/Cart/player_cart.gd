@@ -37,6 +37,7 @@ var camera_rotate_min = 0
 var cam_rotation: float = 0
 
 var brake_val =  1.0
+var VELOCITY: Vector3 = get_linear_velocity()
 
 func _ready():
 	respawn()
@@ -45,7 +46,6 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_pressed("Respawn"):
 		emit_signal("hasDied")
-	var VELOCITY: Vector3 = get_linear_velocity()
 	pitch = clamp(pitch, pitch_min, pitch_max)
 	yaw = clamp(yaw, yaw_min, yaw_max)
 	gimball.rotation_degrees.y = lerp(gimball.rotation_degrees.y, yaw, acceleration * delta)
