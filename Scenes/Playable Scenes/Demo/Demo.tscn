@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=25 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
@@ -18,28 +18,12 @@
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="16_etdfu"]
 [ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
 
-[sub_resource type="Gradient" id="Gradient_vr1m7"]
-offsets = PackedFloat32Array(0.165493, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.501407, 0.501406, 0.501406, 1)
+[sub_resource type="Gradient" id="Gradient_wnuip"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
-noise_type = 0
-frequency = 0.0023
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
-width = 1024
-height = 1024
-seamless = true
-color_ramp = SubResource("Gradient_vr1m7")
-noise = SubResource("FastNoiseLite_d8lcj")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vh6pk"]
+gradient = SubResource("Gradient_wnuip")
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jrc01"]
 _shader_parameters = {
@@ -61,7 +45,7 @@ _shader_parameters = {
 "noise1_scale": 0.118,
 "noise2_scale": 0.086,
 "noise3_scale": 0.144,
-"noise_texture": SubResource("NoiseTexture2D_bov7h"),
+"noise_texture": SubResource("GradientTexture2D_vh6pk"),
 "tri_scale_reduction": 0.3,
 "world_noise_blend_far": 1.0,
 "world_noise_blend_near": 0.7,
