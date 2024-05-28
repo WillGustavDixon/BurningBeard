@@ -10,12 +10,13 @@ size = Vector3(1.97952, 17.8374, 2.1608)
 [node name="Simple_Pine_Tree" instance=ExtResource("1_hrhsl")]
 
 [node name="SImple_Pine_Tree" parent="." index="0"]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.633477, 0)
 surface_material_override/0 = ExtResource("2_u6y3e")
 surface_material_override/1 = ExtResource("4_pyka4")
 surface_material_override/2 = ExtResource("4_pyka4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.633477, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134171, 8.41868, 0.119125)
