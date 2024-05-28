@@ -91,7 +91,7 @@ func _physics_process(delta):
 		smoke.amount_ratio = 1
 	else:
 		smoke.amount_ratio = 0.25
-	
+		
 	#Controller Camera
 	yaw += Input.get_action_strength("controllerCameraRight") * con_pitch_sensitivity
 	yaw -= Input.get_action_strength("controllerCameraLeft") * con_yaw_sensitivity
