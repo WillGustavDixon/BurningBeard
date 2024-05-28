@@ -110,7 +110,6 @@ func saveInv():
 		var slotVal = [item.ID, item.rotation_degrees]
 		slotDict[slotKey] = slotVal
 	saveDict["Slots"] = slotDict
-	print(saveDict)
 	DataHandling.saveInvData(DataHandling.invPath, saveDict)
 
 func loadInv():
@@ -118,7 +117,6 @@ func loadInv():
 	invEmpty = inventoryData["Settings"]["Empty"]
 	gold = inventoryData["Settings"]["Gold"]
 	if(!invEmpty):
-		print(inventoryData)
 		for slot in inventoryData["Slots"]:
 			var newItem = createItem(inventoryData["Slots"][slot][0])
 			for n in range(0, inventoryData["Slots"][slot][1] / 90): # 0 if 0, 1 if 90, 2 if 180, 3 if 270

@@ -16,7 +16,6 @@ var canTrade := false
 @export var gridCols : int
 
 func _ready(): ## bit of a fucky way of making his inventory for now but it works
-	print("Hi")
 	for i in range(0, invItemIDs.size()):
 		var newItem = itemScene.instantiate()
 		get_tree().get_nodes_in_group("Root")[0].find_child("ItemHider", false).add_child(newItem)

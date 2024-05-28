@@ -63,7 +63,7 @@ func _ready():
 func _process(delta):
 	if trading:
 		if curSlot:
-			pass #print(curSlot.ID)
+			pass
 		if heldItem: ## if an item is being held, allow rotation or placement
 			if Input.is_action_just_pressed("mouseScrollDown"):
 				rotateItem(heldItem, 1)
@@ -198,7 +198,6 @@ func placeItem(doAnim, grid, gridArray, src:Node = null):
 		heldItem.itemSrc = null
 		
 	var gridPlacePos = curSlot.ID + itemAnchor.x * grid.columns + itemAnchor.y
-	print(gridArray[gridPlacePos].global_position)
 	heldItem.place(gridArray[gridPlacePos].global_position, doAnim)
 	heldItem = null
 	clearGrid(gridArray)
