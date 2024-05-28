@@ -1267,8 +1267,14 @@ surface_material_override/0 = ExtResource("6_x3ibf")
 surface_material_override/1 = ExtResource("8_md0av")
 
 [node name="Oscar" type="Sprite3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.626, -2.735)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.626, -2.735)
+cast_shadow = 2
+gi_mode = 2
+modulate = Color(0.929412, 0.772549, 0.694118, 1)
 pixel_size = 0.0004
+shaded = true
+double_sided = false
+alpha_cut = 1
 texture = ExtResource("17_t1oeu")
 
 [node name="Rear_Left_Wheel" type="VehicleWheel3D" parent="."]
