@@ -8,8 +8,10 @@ extends Control
 @export var colCount : int
 @export var slotCount : int
 @export var invEmpty : bool
-@export var money : int
+@export var gold : int
 
+var root
+var itemHider
 var inventory := []
 var inventoryData := {}
 var gridArray := []
@@ -22,6 +24,8 @@ var itemAnchor : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	root = get_tree().get_nodes_in_group("Root")[0]
+	itemHider = root.find_child("ItemHider", false)
 	grid = gridScene.instantiate()
 	$Background/MarginContainer/VBoxContainer.add_child(grid)
 	drawGrid()
@@ -47,8 +51,7 @@ func _process(_delta):
 		if is_instance_valid(itemInfo): ## if the item info window exists
 			if Input.is_action_just_pressed("mouseRightClick") || \
 			Input.is_action_just_pressed("mouseLeftClick")     || \
-			(curSlot.storedItem != itemInfo.itemReading): #|| \
-			#not curSlot.storedItem.itemIconPath.get_global_rect().has_point((get_global_mouse_position()))):
+			(curSlot.storedItem != itemInfo.itemReading):
 				itemInfo.queue_free()
 			## when lmb/rmb is pressed or the mouse isn't over the item, delete the window
 		
@@ -58,6 +61,17 @@ func _process(_delta):
 			
 			if Input.is_action_just_pressed("mouseRightClick"):
 				createItemInfo()
+
+func invOpened():
+	for item in inventory:
+		item.marked = false
+		heldItem = item
+		curSlot = heldItem.primeSlot
+		canPlace = true
+		itemAnchor = Vector2.ONE
+		setSlots(curSlot)
+		placeItem(false)
+	clearGrid()
 
 func invClosed():
 	if heldItem:
@@ -69,13 +83,23 @@ func invClosed():
 			heldItem = null
 			clearGrid()
 	curSlot = null
+	
+	if grid:
+		for child in grid.get_children():
+			if child.is_in_group("Item"):
+				grid.remove_child(child)
+				root.find_child("ItemHider", false).add_child(child)
+			else:
+				child.storedItem = null
+				child.curState = child.slotStates.idle
+	
 
 func saveInv():
 	var saveDict = {
 		"Settings": {
 			"Columns": colCount,
 			"Size": slotCount,
-			"Gold": money,
+			"Gold": gold,
 			"Empty": invEmpty
 			},
 		"Slots": {}
@@ -92,7 +116,7 @@ func saveInv():
 func loadInv():
 	inventoryData = DataHandling.invData
 	invEmpty = inventoryData["Settings"]["Empty"]
-	money = inventoryData["Settings"]["Gold"]
+	gold = inventoryData["Settings"]["Gold"]
 	if(!invEmpty):
 		print(inventoryData)
 		for slot in inventoryData["Slots"]:
@@ -100,6 +124,7 @@ func loadInv():
 			for n in range(0, inventoryData["Slots"][slot][1] / 90): # 0 if 0, 1 if 90, 2 if 180, 3 if 270
 				rotateItem(newItem, 1)
 			newItem.primeSlot = gridArray[int(slot)]
+			newItem.primeSlotID = newItem.primeSlot.ID
 			newItem.selected = false
 		for item in inventory:
 			heldItem = item
@@ -118,7 +143,7 @@ func clearInv():
 	inventory = []
 	clearGrid()
 	if heldItem:
-		pass#heldItem.free()
+		pass
 	heldItem = null
 	for slot in grid.get_children():
 		grid.remove_child(slot)
@@ -148,6 +173,7 @@ func placeItem(doAnim, src:Node = null):
 		return
 	
 	heldItem.primeSlot = curSlot
+	heldItem.primeSlotID = gridArray.find(curSlot)
 	heldItem.get_parent().remove_child(heldItem)
 	grid.add_child(heldItem)
 	heldItem.global_position = get_global_mouse_position()
@@ -194,21 +220,19 @@ func createItemInfo():
 		itemInfo.editText(curSlot.storedItem)
 
 # instantiates a new slot in the inventory scene, ideally on startup
-func createSlot():
+func createSlot(g, arr):
 	var newSlot = slotScene.instantiate()
-	newSlot.ID = gridArray.size() ## IDs go in order of creation horizontally
-	grid.add_child(newSlot)
-	gridArray.push_back(newSlot) ## puts it at the end of the grid array
+	newSlot.ID = arr.size() ## IDs go in order of creation horizontally
+	g.add_child(newSlot)
+	arr.push_back(newSlot) ## puts it at the end of the grid array
 	newSlot.slotEntered.connect(slotMouseEntered) ## connects the signals with
 	newSlot.slotExited.connect(slotMouseExited) ## corresponding functions here
 
 func drawGrid():
 	slotCount = DataHandling.invData["Settings"]["Size"]
 	colCount = DataHandling.invData["Settings"]["Columns"]
-	grid.columns = colCount
 	invEmpty = DataHandling.invData["Settings"]["Empty"]
-	for i in range(slotCount):
-		createSlot()
+	grid.draw(gridArray, colCount, slotCount, self)
 
 # clears all the colour changes from the grid
 func clearGrid():

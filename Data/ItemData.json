@@ -25,31 +25,31 @@
   },
   "04": {
 	"Item Name": "Mutton",
-	"Item Value": "19",
+	"Item Value": 19,
 	"Item Rarity": 2,
 	"Grid Size": "0,0/1,0"
   },
   "05": {
 	"Item Name": "Sheep Milk",
-	"Item Value": "12",
+	"Item Value": 12,
 	"Item Rarity": 3,
 	"Grid Size": "0,0/1,0/0,1/1,1"
   },
   "06": {
 	"Item Name": "Mushrooms",
-	"Item Value": "8",
+	"Item Value": 8,
 	"Item Rarity": 1,
 	"Grid Size": "0,0/0,1"
   },
   "07": {
 	"Item Name": "Potato",
-	"Item Value": "5",
+	"Item Value": 5,
 	"Item Rarity": 1,
 	"Grid Size": "0,0"
   },
   "08": {
 	"Item Name": "Fish",
-	"Item Value": "7",
+	"Item Value": 7,
 	"Item Rarity": 2,
 	"Grid Size": "0,0/0,1/1,1"
   }

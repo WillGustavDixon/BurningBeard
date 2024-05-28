@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/Inventory/Item/item.gd" id="1_3c2xu"]
 
-[node name="Item" type="Node2D"]
+[node name="Item" type="Node2D" node_paths=PackedStringArray("itemIcon") groups=["Item"]]
 script = ExtResource("1_3c2xu")
+itemIcon = NodePath("ItemIcon")
 
 [node name="ItemIcon" type="TextureRect" parent="."]
 anchors_preset = 8
