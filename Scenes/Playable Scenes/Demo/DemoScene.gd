@@ -3,37 +3,48 @@ extends Node
 @onready var invScene = $InventoryScene
 @onready var inv = invScene.get_child(0)
 @onready var pauseScene = $PauseOverlay
-#@onready var tradeScene = $TradingScene
+@onready var tradeScene = $TradingScene
+@onready var trade = tradeScene.get_child(0)
 @onready var fader = $Fader
 @onready var cart = $MainScene/Cart
+@onready var itemHider = $ItemHider
 
 @export var invOpen : bool
+@export var tradeOpen : bool
 @export var pausing : bool
 
 func _ready():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	invScene.visible = false
+	tradeScene.visible = false
 	pauseScene.visible = false
+	itemHider.visible = false
 	fader.hold()
 	invOpen = false
+	tradeOpen = false
 	pausing = false
 	cart.hasDied.connect(onDeath)
 	cart.hasRespawned.connect(onRespawned)
 	fader.get_child(0).animation_finished.connect(animPlayed)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("Inventory") && !pausing: 
+	if Input.is_action_just_pressed("Inventory") && !pausing && !tradeOpen: 
 		if !invOpen:
 			openInv("00")
 		else:
 			closeInv()
 	
-	if Input.is_action_just_pressed("Pause") && !invOpen: 
-		if !pausing:
-			pause()
+	if Input.is_action_just_pressed("Pause"):
+		if tradeOpen:
+			closeTrade()
+		elif invOpen:
+			closeInv()
 		else:
-			unpause()
+			if !pausing:
+				pause()
+			else:
+				unpause()
 			
 	if Input.is_action_just_pressed("Save") && invOpen:
 		print("Saving!")
@@ -47,6 +58,7 @@ func _process(delta):
 func openInv(id, src : Node = null):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
+	inv.invOpened()
 	invScene.visible = true
 	invOpen = true
 	if id != "00":
@@ -59,12 +71,20 @@ func closeInv():
 	get_tree().paused = false
 	invOpen = false
 
-func openTrade(src : Node = null):
-	pass#tradeScene.visible = true
-	#tradeScene
+func openTrade(npc):
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	tradeScene.visible = true
+	tradeOpen = true
+	trade.getNPCGrid(npc)
+	trade.tradeOpened.call_deferred()
 
 func closeTrade():
-	pass
+	tradeScene.visible = false
+	trade.tradeClosed()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+	tradeOpen = false
 
 func pause():
 	invScene.process_mode = Node.PROCESS_MODE_PAUSABLE

@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="13_u8g5d"]
 [ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="14_jm47q"]
+[ext_resource type="PackedScene" uid="uid://bl3t8ve0h2g0h" path="res://Scenes/Objects/NPCs/npc.tscn" id="14_mnp7d"]
 [ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="16_6uuxx"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="16_etdfu"]
@@ -32,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dfiliib477sv4" path="res://Scenes/Objects/Interactables/Sheep/sheep.tscn" id="18_5efw1"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/remove_outside_shapes.gd" id="18_g5caj"]
 [ext_resource type="PackedScene" uid="uid://c74whwtu4r8j6" path="res://Scenes/Environmental/Trees/Apple Tree/apple_tree.tscn" id="31_qycml"]
+[ext_resource type="PackedScene" uid="uid://d04ng4hjdypyk" path="res://Scenes/Trading/trading_scene.tscn" id="17_wqkvr"]
 
 [sub_resource type="Gradient" id="Gradient_trwf4"]
 offsets = PackedFloat32Array(0)
@@ -819,11 +821,17 @@ _data = {
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_13in5"]
 bounce = 0.1
 
-[node name="DemoRoot" type="Node"]
+[node name="DemoRoot" type="Node" groups=["Root"]]
 process_mode = 3
 script = ExtResource("1_ynljw")
 
-[node name="MainScene" type="Node" parent="."]
+[node name="ItemHider" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainScene" type="Node3D" parent="."]
 process_mode = 1
 
 [node name="Global_Lighting" parent="MainScene" instance=ExtResource("2_cfexo")]
@@ -1079,6 +1087,13 @@ transform = Transform3D(500, 0, 0, 0, 3.358, 0, 0, 0, 450, 2057.01, -41.8135, -2
 
 [node name="Sheep" parent="MainScene" instance=ExtResource("18_5efw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 591.311, 255.903, -560.003)
+[node name="NPC" parent="MainScene" instance=ExtResource("14_mnp7d")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 607, 259.587, -552.264)
+invItemIDs = ["01", "01", "01"]
+itemPrimeSlots = [2, 8, 12]
+gold = 32
+gridSlots = 16
+gridCols = 4
 
 [node name="Checkpoints" type="Node" parent="MainScene"]
 
@@ -1123,6 +1138,9 @@ libraries = {
 }
 
 [node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
+process_mode = 2
+
+[node name="TradingScene" parent="." instance=ExtResource("17_wqkvr")]
 process_mode = 2
 
 [node name="PauseOverlay" type="Node2D" parent="."]

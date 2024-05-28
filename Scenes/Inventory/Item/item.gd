@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var itemIconPath = $ItemIcon
+@export var itemIcon : TextureRect
 
 var ID
 var itemName: String
@@ -8,15 +8,16 @@ var value: int
 var rarity: int
 var needXOffset: bool
 var needYOffset: bool
+var primeSlotID: int
 var primeSlot: Node
 var itemSrc: Node
+var marked: bool # marked for trading
 
 var itemGridSizes := []
 var selected = false
 var offset := Vector2(0,0)
 var offDiv = 4
 var gridAnchor = null
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -25,14 +26,15 @@ func _process(delta):
 		global_position = lerp(global_position, dest, 50 * delta)
 
 # loads the item texture & its size data 
-func loadItem(itemID, src:Node = null):
+func loadItem(itemID:String, src:Node = null):
 	ID = itemID
 	itemName = DataHandling.itemData[itemID]["Item Name"]
 	value = DataHandling.itemData[itemID]["Item Value"]
 	rarity = DataHandling.itemData[itemID]["Item Rarity"]
 	itemSrc = src
 	var iconPath = "res://Assets/Items/" + DataHandling.itemData[itemID]["Item Name"] + "Icon.png"
-	itemIconPath.texture = load(iconPath) ## load item texture from the assets folder
+	var texture = load(iconPath) ## load item texture from the assets folder
+	itemIcon.texture = texture
 	for grid in DataHandling.itemSizeData[itemID]:
 		var tempArray := [] 
 		for i in grid:  ## this all basically adds the info for how much space this item takes up
@@ -54,9 +56,9 @@ func rotateItem(dir):
 # makes sure the item visually snaps to its desired position in the grid
 func place(destination:Vector2, doAnim:bool): ## this tweens an item to its desired position when being placed
 	if int(rotation_degrees) % 180 == 0: ## if it's upright or upside down, put it normally
-		destination += itemIconPath.size/2
+		destination += itemIcon.size/2
 	else: ## otherwise, switch the X/Y coordinate info of the item and add that instead
-		var tempXYSwitch = Vector2(itemIconPath.size.y, itemIconPath.size.x);
+		var tempXYSwitch = Vector2(itemIcon.size.y, itemIcon.size.x);
 		destination += tempXYSwitch/2
 	
 	if doAnim:

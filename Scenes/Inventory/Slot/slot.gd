@@ -7,7 +7,7 @@ signal slotExited(slot)
 
 var ID ## each slot's unique ID
 var isHovering := false ## if the mouse is hovering over this slot
-enum slotStates {idle, free, occupied}
+enum slotStates {idle, free, occupied, marked}
 var curState := slotStates.idle
 var storedItem = null
 
@@ -24,7 +24,7 @@ func _process(_delta):
 			emit_signal("slotExited", self) ## send a signal saying its not
 
 # sets the colour of the slot based on its state
-func setColour(state = slotStates.idle) -> void:
+func setColour(state = slotStates.idle):
 	match state: ## match is basically the switch statement in java, C#, etc.
 		slotStates.idle:
 			filter.color = Color(Color.WHITE, 0.0) ## when not being touched, filter is invisible
@@ -32,6 +32,8 @@ func setColour(state = slotStates.idle) -> void:
 			filter.color = Color(Color.GREEN, 0.2) ## if able to be placed on, turn green
 		slotStates.occupied:
 			filter.color = Color(Color.RED, 0.2) ## if unable to be placed on, turn red
+		slotStates.marked:
+			filter.color = Color(Color.YELLOW, 0.2) ## if marked, turn yellow.
 
 func hasItem(item) -> bool:
 	if storedItem == item:

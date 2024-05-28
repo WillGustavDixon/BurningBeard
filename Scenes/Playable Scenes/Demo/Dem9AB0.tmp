@@ -1,0 +1,279 @@
+[gd_scene load_steps=28 format=3 uid="uid://chol2xlfbq7cu"]
+
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
+[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
+[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://Scenes/Playable Scenes/Demo/data/terrain_storage.res" id="5_yg2nc"]
+[ext_resource type="Terrain3DTextureList" uid="uid://dal3jhw6241qg" path="res://Scenes/Playable Scenes/Demo/data/texture_list.tres" id="6_buonv"]
+[ext_resource type="PackedScene" uid="uid://cytibfjs3k24p" path="res://Scenes/Player/Cart/cart.tscn" id="7_tp47n"]
+[ext_resource type="PackedScene" uid="uid://diig211dvjkv6" path="res://Scenes/Objects/Interactables/Boulder/boulder.tscn" id="8_vvc3l"]
+[ext_resource type="PackedScene" uid="uid://0bca5ari14p3" path="res://Scenes/Objects/Interactables/Wall/wall.tscn" id="9_mwhe5"]
+[ext_resource type="PackedScene" uid="uid://dh4aponr1g0sf" path="res://Scenes/Objects/Interactables/Death Plane/water.tscn" id="10_exouv"]
+[ext_resource type="PackedScene" uid="uid://bc2smtelv1nx6" path="res://Scenes/Inventory/inventory_scene.tscn" id="11_0xa8k"]
+[ext_resource type="PackedScene" uid="uid://byipmle0sncrc" path="res://Scenes/Environmental/Trees/Pine Tree/simple_pine_tree.tscn" id="11_3gfq1"]
+[ext_resource type="PackedScene" uid="uid://cn70vx28a4ag4" path="res://Scenes/Environmental/Shrubs/bush_1.tscn" id="11_nbhsv"]
+[ext_resource type="FontFile" uid="uid://bo17uxfavdtbw" path="res://Assets/Fonts/Open Font Package/montreal/Montreal-Regular.ttf" id="12_bd54q"]
+[ext_resource type="PackedScene" uid="uid://cfcbv6avaxdwh" path="res://Scenes/Objects/Obtainables/Apple/apple.tscn" id="12_q4uew"]
+[ext_resource type="PackedScene" uid="uid://c0pj2xl1sm3f0" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.tscn" id="13_xy5nj"]
+[ext_resource type="PackedScene" uid="uid://bl3t8ve0h2g0h" path="res://Scenes/Objects/NPCs/npc.tscn" id="14_mnp7d"]
+[ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
+[ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="16_etdfu"]
+[ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
+[ext_resource type="PackedScene" uid="uid://d04ng4hjdypyk" path="res://Scenes/Trading/trading_scene.tscn" id="17_wqkvr"]
+
+[sub_resource type="Gradient" id="Gradient_vr1m7"]
+offsets = PackedFloat32Array(0.165493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.501407, 0.501406, 0.501406, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
+noise_type = 0
+frequency = 0.0023
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_vr1m7")
+noise = SubResource("FastNoiseLite_d8lcj")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jrc01"]
+_shader_parameters = {
+"_mouse_layer": 2147483648,
+"auto_base_texture": 0,
+"auto_height_reduction": 0.1,
+"auto_overlay_texture": 1,
+"auto_slope": 1.0,
+"blend_sharpness": 0.7,
+"dual_scale_far": 170.0,
+"dual_scale_near": 100.0,
+"dual_scale_reduction": 0.3,
+"dual_scale_texture": 0,
+"height_blending": true,
+"macro_variation1": Color(0.745098, 0.745098, 0.745098, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.1,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.118,
+"noise2_scale": 0.086,
+"noise3_scale": 0.144,
+"noise_texture": SubResource("NoiseTexture2D_bov7h"),
+"tri_scale_reduction": 0.3,
+"world_noise_blend_far": 1.0,
+"world_noise_blend_near": 0.7,
+"world_noise_height": 34.0,
+"world_noise_lod_distance": 7500.0,
+"world_noise_max_octaves": 4,
+"world_noise_min_octaves": 2,
+"world_noise_offset": Vector3(1.485, -1.01, 1.9),
+"world_noise_scale": 9.85
+}
+world_background = 2
+auto_shader = true
+dual_scaling = true
+
+[sub_resource type="Animation" id="Animation_p30tj"]
+resource_name = "fadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fkpse"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1m215"]
+resource_name = "hold"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnnpp"]
+_data = {
+"fadeIn": SubResource("Animation_p30tj"),
+"fadeOut": SubResource("Animation_fkpse"),
+"hold": SubResource("Animation_1m215")
+}
+
+[node name="DemoRoot" type="Node"]
+process_mode = 3
+script = ExtResource("1_ynljw")
+
+[node name="MainScene" type="Node3D" parent="."]
+process_mode = 1
+
+[node name="Global_Lighting" parent="MainScene" instance=ExtResource("2_cfexo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53986, 3.05176e-05, 0.511292)
+
+[node name="Terrain3D" type="Terrain3D" parent="MainScene"]
+storage = ExtResource("5_yg2nc")
+material = SubResource("Terrain3DMaterial_jrc01")
+texture_list = ExtResource("6_buonv")
+render_cull_margin = 1000.0
+collision_mask = 3
+mesh_lods = 5
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
+
+[node name="Cart" parent="MainScene" instance=ExtResource("7_tp47n")]
+transform = Transform3D(0.297692, 0, 0.954662, 0, 1, 0, -0.954662, 0, 0.297692, 607.218, 268.86, -565.423)
+center_of_mass = Vector3(0, -0.2, 0)
+max_contacts_reported = 10
+contact_monitor = true
+curCheckpointPos = Vector3(607, 268.86, -600)
+curCheckpointRot = Vector3(0, 1.26852, 0)
+
+[node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]
+transform = Transform3D(15.7594, 0, -2.76407, 0, 16, 0, 2.76407, 0, 15.7594, 622.795, 268.86, -588.471)
+mass = 200.0
+gravity_scale = 4.0
+
+[node name="Wall" parent="MainScene" instance=ExtResource("9_mwhe5")]
+transform = Transform3D(1.50608, 0, 4.9824, 0, 27.52, 0, -17.9018, 0, 0.419172, 1214.62, 5.80619, -666.058)
+disappears = true
+
+[node name="Death Plane" parent="MainScene" instance=ExtResource("10_exouv")]
+transform = Transform3D(86.0558, 0, 0, 0, 0.963443, 0, 0, 0, 117.493, 966.241, 89.1006, 317.338)
+
+[node name="Simple_Pine_Tree" parent="MainScene" instance=ExtResource("11_3gfq1")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 460.43, 250.804, 46.6164)
+
+[node name="Simple_Pine_Tree2" parent="MainScene" instance=ExtResource("11_3gfq1")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 816.414, 104.219, 354.994)
+
+[node name="Bush_1" parent="MainScene" instance=ExtResource("11_nbhsv")]
+transform = Transform3D(1.22247, -0.00611121, -0.00232865, 0.00558357, 1.20194, -0.22312, 0.00340491, 0.223107, 1.20195, 480.362, 178.608, 277.68)
+
+[node name="Apple" parent="MainScene" instance=ExtResource("12_q4uew")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 808.878, 106.03, 363.71)
+
+[node name="Applesauce" parent="MainScene" instance=ExtResource("13_xy5nj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 465.626, 250.778, 42.4773)
+
+[node name="Skewer" parent="MainScene" instance=ExtResource("14_uftje")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 479.703, 180.988, 271.49)
+
+[node name="NPC" parent="MainScene" instance=ExtResource("14_mnp7d")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 607, 259.587, -552.264)
+
+[node name="Checkpoints" type="Node" parent="MainScene"]
+
+[node name="Start" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 320, 120.547, 346.03)
+checkpointPos = Vector3(320, 121, 346)
+checkpointRot = Vector3(0, 90, 0)
+
+[node name="Checkpoint A" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(1.25932, 0, 0.986121, 0, 7.24, 0, -7.47973, 0, 0.166029, 628.992, 111.794, 383.143)
+checkpointPos = Vector3(629, 100, 383)
+checkpointRot = Vector3(0, 80, 0)
+
+[node name="Checkpoint B" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.97593, 0, -0.965473, 0, 7.24, 0, 7.32311, 0, -0.260504, 803.965, 106.077, 211.769)
+checkpointPos = Vector3(803.965, 102, 211.769)
+checkpointRot = Vector3(0, 255, 0)
+
+[node name="Checkpoint C" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(-1.55711, 0, -0.985408, 0, 7.24, 0, 9.01472, 0, -0.17021, 604.512, 145.594, 213.907)
+checkpointPos = Vector3(583.157, 140, 210.218)
+checkpointRot = Vector3(0, 350, 0)
+
+[node name="Checkpoint D" parent="MainScene/Checkpoints" instance=ExtResource("16_tvpvu")]
+transform = Transform3D(0.382798, 0, -0.998342, 0, 7.24, 0, 6.63894, 0, 0.0575639, 582.662, 246.07, -3.81188)
+checkpointPos = Vector3(582.662, 240, -3.812)
+checkpointRot = Vector3(0, 273, 0)
+
+[node name="Fader" type="ColorRect" parent="."]
+process_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("16_etdfu")
+
+[node name="Anim" type="AnimationPlayer" parent="Fader"]
+libraries = {
+"": SubResource("AnimationLibrary_gnnpp")
+}
+
+[node name="InventoryScene" parent="." instance=ExtResource("11_0xa8k")]
+process_mode = 2
+
+[node name="TradingScene" parent="." instance=ExtResource("17_wqkvr")]
+process_mode = 2
+
+[node name="PauseOverlay" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PauseOverlay"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.313726)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseOverlay/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -250.0
+offset_right = 750.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseOverlay/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_bd54q")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]PAUSED[/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PauseOverlay/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_bd54q")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "
+
+[center]Press ESC/Enter to continue[/center]"

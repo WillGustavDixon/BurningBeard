@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpnodabfhtiic"]
+[gd_scene load_steps=5 format=3 uid="uid://dpnodabfhtiic"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventoryUI.gd" id="1_8ofin"]
 [ext_resource type="FontFile" uid="uid://dkhbotxjkjlbg" path="res://Assets/Fonts/Open Font Package/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Black.ttf" id="2_em77a"]
 [ext_resource type="Script" path="res://Scenes/Inventory/invButton.gd" id="3_h0w0q"]
-[ext_resource type="PackedScene" uid="uid://btun56y276res" path="res://Scenes/Inventory/inventory_grid.tscn" id="3_tbd1o"]
 
 [sub_resource type="Theme" id="Theme_0f7ke"]
 default_font = ExtResource("2_em77a")
@@ -72,9 +71,6 @@ text = "
                "
 scroll_active = false
 shortcut_keys_enabled = false
-
-[node name="InventoryGrid" parent="Background/MarginContainer/VBoxContainer" instance=ExtResource("3_tbd1o")]
-layout_mode = 2
 
 [node name="InvExitButton" type="Button" parent="Background"]
 layout_mode = 2
