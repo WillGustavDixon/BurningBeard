@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://chol2xlfbq7cu"]
+[gd_scene load_steps=26 format=3 uid="uid://chol2xlfbq7cu"]
 
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/DemoScene.gd" id="1_ynljw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://Scenes/Playable Scenes/Demo/components/World.tscn" id="2_cfexo"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://drxdjftmugqhy" path="res://Scenes/Objects/Obtainables/Skewer/skewer.tscn" id="14_uftje"]
 [ext_resource type="Script" path="res://Scenes/Playable Scenes/Demo/fade.gd" id="16_etdfu"]
 [ext_resource type="PackedScene" uid="uid://cix783df8rp66" path="res://Scenes/Objects/checkpoint.tscn" id="16_tvpvu"]
+[ext_resource type="PackedScene" uid="uid://exvm43i1te5p" path="res://Scenes/Objects/Interactables/Sheep/sheep.tscn" id="18_5efw1"]
 
 [sub_resource type="Gradient" id="Gradient_wnuip"]
 offsets = PackedFloat32Array(1)
@@ -134,11 +135,11 @@ collision_mask = 3
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.05176e-05, 0, 0)
 
 [node name="Cart" parent="MainScene" instance=ExtResource("7_tp47n")]
-transform = Transform3D(0.297692, 0, 0.954662, 0, 1, 0, -0.954662, 0, 0.297692, 607.218, 268.86, -565.423)
+transform = Transform3D(0.297692, 0, 0.954662, 0, 1, 0, -0.954662, 0, 0.297692, 1285.47, 5.56338, -233.922)
 center_of_mass = Vector3(0, -0.2, 0)
 max_contacts_reported = 10
 contact_monitor = true
-curCheckpointPos = Vector3(607, 268.86, -600)
+curCheckpointPos = Vector3(1285.47, 5.56338, -233.922)
 curCheckpointRot = Vector3(0, 1.26852, 0)
 
 [node name="Boulder" parent="MainScene" instance=ExtResource("8_vvc3l")]
@@ -255,3 +256,6 @@ bbcode_enabled = true
 text = "
 
 [center]Press ESC/Enter to continue[/center]"
+
+[node name="Sheep" parent="." instance=ExtResource("18_5efw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1346.07, 1.17687, -231.274)
