@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c74whwtu4r8j6"]
+
+[ext_resource type="PackedScene" uid="uid://cup4tj0wol2qf" path="res://Scenes/Environmental/Trees/Apple Tree/Apple Tree.glb" id="1_tb5hd"]
+[ext_resource type="Material" uid="uid://bw1yb020710km" path="res://Assets/Materials/Environment/Green_Light.tres" id="2_onwxv"]
+[ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Assets/Materials/Cart/Light_Wood.tres" id="3_j4gxv"]
+[ext_resource type="Material" uid="uid://bm3sdhc055wju" path="res://Assets/Materials/Environment/Red_Bright.tres" id="4_hwfjr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fmof"]
+size = Vector3(2.09207, 6.92291, 1.67139)
+
+[node name="Apple Tree2" instance=ExtResource("1_tb5hd")]
+
+[node name="Tree" parent="." index="0"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+surface_material_override/0 = ExtResource("3_j4gxv")
+surface_material_override/1 = ExtResource("2_onwxv")
+
+[node name="Apple_006" parent="." index="1"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+surface_material_override/0 = ExtResource("4_hwfjr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.748459, 2.96146, -0.335693)
+shape = SubResource("BoxShape3D_1fmof")
