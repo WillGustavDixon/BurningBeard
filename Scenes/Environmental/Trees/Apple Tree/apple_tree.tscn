@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://c74whwtu4r8j6"]
+
+[ext_resource type="PackedScene" uid="uid://cup4tj0wol2qf" path="res://Scenes/Environmental/Trees/Apple Tree/Apple Tree.glb" id="1_tb5hd"]
+[ext_resource type="Material" uid="uid://bw1yb020710km" path="res://Assets/Materials/Environment/Green_Light.tres" id="2_onwxv"]
+[ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Assets/Materials/Cart/Light_Wood.tres" id="3_j4gxv"]
+[ext_resource type="Material" uid="uid://bm3sdhc055wju" path="res://Assets/Materials/Environment/Red_Bright.tres" id="4_hwfjr"]
+
+[node name="Apple Tree2" instance=ExtResource("1_tb5hd")]
+
+[node name="Tree" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_j4gxv")
+surface_material_override/1 = ExtResource("2_onwxv")
+
+[node name="Apple_006" parent="." index="1"]
+surface_material_override/0 = ExtResource("4_hwfjr")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://coc2dnqfi3yjg"]
+
+[ext_resource type="PackedScene" uid="uid://b5ne534hy3w14" path="res://Scenes/Environmental/Trees/Pine Tree/Dead_Pine_Tree.glb" id="1_sfqhy"]
+[ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Assets/Materials/Cart/Light_Wood.tres" id="2_5raip"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t43k2"]
+size = Vector3(0.480217, 4.32123, 0.311523)
+
+[node name="Dead_Pine_Tree" instance=ExtResource("1_sfqhy")]
+
+[node name="BézierCurve_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.988956, 1.87715, 0.0270133)
+surface_material_override/0 = ExtResource("2_5raip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109821, 1.66061, -0.166504)
+shape = SubResource("BoxShape3D_t43k2")

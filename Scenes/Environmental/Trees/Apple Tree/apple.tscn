@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://ocewbfbuw3xf"]
+
+[ext_resource type="PackedScene" uid="uid://iiomoi8urcsy" path="res://Scenes/Environmental/Trees/Apple Tree/Apple.glb" id="1_kpmrj"]
+[ext_resource type="Material" uid="uid://bw1yb020710km" path="res://Assets/Materials/Environment/Green_Light.tres" id="2_xfana"]
+[ext_resource type="Material" uid="uid://d1hwfcrq2e8sf" path="res://Assets/Materials/Cart/Light_Wood.tres" id="3_rbhgv"]
+[ext_resource type="Material" uid="uid://bm3sdhc055wju" path="res://Assets/Materials/Environment/Red_Bright.tres" id="4_udkvp"]
+
+[node name="Apple" instance=ExtResource("1_kpmrj")]
+
+[node name="Apple_006" parent="." index="0"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293968, -0.013454, 0.391085)
+surface_material_override/0 = ExtResource("2_xfana")
+surface_material_override/1 = ExtResource("3_rbhgv")
+surface_material_override/2 = ExtResource("4_udkvp")

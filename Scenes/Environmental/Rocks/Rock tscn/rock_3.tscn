@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bls0pj1a58iq7"]
+[gd_scene load_steps=4 format=3 uid="uid://bls0pj1a58iq7"]
 
 [ext_resource type="PackedScene" uid="uid://dvjkfq76ij1mi" path="res://Scenes/Environmental/Rocks/rock_3.glb" id="1_0fvih"]
 [ext_resource type="Material" uid="uid://d21qy1f5vg2hp" path="res://Assets/Materials/Environment/Rock_Grey.tres" id="2_ivb0y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_orlgi"]
+size = Vector3(0.759766, 1.90796, 1)
 
 [node name="rock_3" instance=ExtResource("1_0fvih")]
 
 [node name="Rock Tall remeshed" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_ivb0y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722656, 0.12561, 0)
+shape = SubResource("BoxShape3D_orlgi")

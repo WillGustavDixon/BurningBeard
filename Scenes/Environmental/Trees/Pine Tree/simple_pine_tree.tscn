@@ -2,12 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://b0yweboqijyuy" path="res://Scenes/Environmental/Trees/Pine Tree/Simple_Pine_Tree.glb" id="1_hrhsl"]
 [ext_resource type="Material" uid="uid://deoo3oyf801g3" path="res://Assets/Materials/Cart/Mid_Wood.tres" id="2_u6y3e"]
-[ext_resource type="Material" uid="uid://bw1yb020710km" path="res://Assets/Materials/Environment/Green_Light.tres" id="3_5y540"]
 [ext_resource type="Material" uid="uid://1w3kgv7gh2yg" path="res://Assets/Materials/Environment/Green_Dark.tres" id="4_pyka4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e5qc3"]
+size = Vector3(1.97952, 17.8374, 2.1608)
 
 [node name="Simple_Pine_Tree" instance=ExtResource("1_hrhsl")]
 
 [node name="SImple_Pine_Tree" parent="." index="0"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_u6y3e")
-surface_material_override/1 = ExtResource("3_5y540")
+surface_material_override/1 = ExtResource("4_pyka4")
 surface_material_override/2 = ExtResource("4_pyka4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134171, 8.41868, 0.119125)
+shape = SubResource("BoxShape3D_e5qc3")
