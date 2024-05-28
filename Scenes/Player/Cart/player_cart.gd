@@ -88,9 +88,9 @@ func _physics_process(delta):
 			
 	#Smoke increase on acceleration
 	if Input.is_action_pressed("Accelerate"):
-		smoke.amount = 48
+		smoke.amount_ratio = 1
 	else:
-		smoke.amount = 12
+		smoke.amount_ratio = 0.25
 		
 	#Controller Camera
 	yaw += Input.get_action_strength("controllerCameraRight") * con_pitch_sensitivity
@@ -101,7 +101,6 @@ func _physics_process(delta):
 	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
-
 	
 func _input(event):
 	if event is InputEventMouseMotion:

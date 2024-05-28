@@ -1355,7 +1355,7 @@ script = ExtResource("17_w8ome")
 [node name="ChimneySmoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.642085, 1.45284, 0.848589)
 material_override = SubResource("StandardMaterial3D_j62ix")
-amount = 12
+amount = 48
 lifetime = 2.0
 randomness = 1.0
 draw_order = 3
