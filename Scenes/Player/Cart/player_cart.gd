@@ -4,11 +4,11 @@ signal hasDied()
 signal hasRespawned()
 
 const MAX_STEER = 45
-var ENGINE_POWER = 666
+var ENGINE_POWER = 666*1.5
 const MAX_BRAKE_FORCE = 5.0 
 const FRICTION = 1
 const HI_FRICTION = 0.05
-const LO_FRICTION = 1.25
+const LO_FRICTION = 1.1
 
 @onready var smoke = $ChimneySmoke
 
@@ -57,6 +57,7 @@ func _physics_process(delta):
 	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	var VELOCITY: Vector3 = get_linear_velocity()
+
 	
 	if Input.is_action_pressed("RearViewCamera"):
 		$Rear_View_Camera.set_current(true)
@@ -71,15 +72,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Reverse"):
 		ENGINE_POWER = 333
 	else:
-		ENGINE_POWER = 666
-		
-		
+		ENGINE_POWER = 666*1.5
+
 	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1
 	if steerMod < 0.15: steerMod = 0.15
-	
+	print(steerMod)
+
 	if Input.is_action_pressed("Drift"):
-		for wheel in frontWheels: wheel.wheel_friction_slip = LO_FRICTION
-		brake_val = 2
+		for wheel in frontWheels: 
+			wheel.wheel_friction_slip = LO_FRICTION
+			brake_val = 0.5
 	else:
 		if !rearWheels[0].is_in_contact() || !rearWheels[1].is_in_contact(): 
 			for wheel in frontWheels: wheel.wheel_friction_slip = HI_FRICTION
