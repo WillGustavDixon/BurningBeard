@@ -4,7 +4,8 @@ signal hasDied()
 signal hasRespawned()
 
 const MAX_STEER = 45
-var ENGINE_POWER = 666
+const DEF_ENGINE_POWER = 666
+var ENGINE_POWER
 const MAX_BRAKE_FORCE = 5.0 
 const FRICTION = 1
 const HI_FRICTION = 0.05
@@ -22,6 +23,8 @@ const LO_FRICTION = 1.25
 
 @export var curCheckpointPos : Vector3
 @export var curCheckpointRot : Vector3
+
+var HUD
 
 var yaw : float = 0
 var pitch : float = 0
@@ -44,6 +47,9 @@ var brake_val =  1.0
 
 
 func _ready():
+	ENGINE_POWER = DEF_ENGINE_POWER
+	curCheckpointPos = global_position
+	curCheckpointRot = global_rotation
 	respawn()
 	#make sure to set the respawn when moving the cart position
 	
@@ -69,9 +75,9 @@ func _physics_process(delta):
 		brake_val = 0
 	
 	if Input.is_action_pressed("Reverse"):
-		ENGINE_POWER = 333
+		ENGINE_POWER = DEF_ENGINE_POWER/2
 	else:
-		ENGINE_POWER = 666
+		ENGINE_POWER = DEF_ENGINE_POWER
 		
 		
 	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1

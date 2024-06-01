@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg51lwu617epr"]
+
+[ext_resource type="Script" path="res://Scenes/Shop/shop_scene.gd" id="1_f47p4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uf06l"]
+size = Vector3(0.25, 1, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_letlx"]
+size = Vector3(0.25, 1, 2.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mocjc"]
+size = Vector3(0.25, 0.3, 2.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_11g8n"]
+size = Vector3(0.25, 0.125, 2.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1pvnv"]
+size = Vector3(1.5, 0, 2)
+
+[node name="Shop" type="Node3D"]
+process_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_f47p4")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.793353, 0.608761, 0, -0.608761, 0.793353, 0, 0.479, 0.897)
+fov = 74.5
+
+[node name="CartWalls" type="Node3D" parent="."]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0, 1.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.270771)
+mesh = SubResource("BoxMesh_uf06l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.270771)
+mesh = SubResource("BoxMesh_uf06l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.125)
+mesh = SubResource("BoxMesh_letlx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.35, -0.355)
+mesh = SubResource("BoxMesh_mocjc")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.35, 0.682918)
+mesh = SubResource("BoxMesh_mocjc")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.438, -0.355)
+mesh = SubResource("BoxMesh_11g8n")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.5, 0.343)
+mesh = SubResource("BoxMesh_1pvnv")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="CartWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0.343)
+visible = false
+mesh = SubResource("BoxMesh_1pvnv")
+skeleton = NodePath("../..")

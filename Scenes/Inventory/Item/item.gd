@@ -1,9 +1,8 @@
 extends Node2D
 
-@export var itemIcon : TextureRect
-
 var ID
 var itemName: String
+var itemIcon : TextureRect
 var value: int
 var rarity: int
 var needXOffset: bool

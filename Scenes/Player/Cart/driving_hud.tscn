@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://xpt5s322vlpj"]
+
+[ext_resource type="Texture2D" uid="uid://qvu2gfosbtym" path="res://Assets/Textures/HUD/compassBG.png" id="1_bv6d3"]
+[ext_resource type="Texture2D" uid="uid://dtlab3ydurldq" path="res://Assets/Textures/HUD/compass.png" id="2_lpes8"]
+
+[node name="DrivingHUD" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CompassBG" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("1_bv6d3")
+
+[node name="Compass" type="TextureRect" parent="Control/CompassBG"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lpes8")
+stretch_mode = 1

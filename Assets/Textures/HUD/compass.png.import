@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csvgl70e60lue"
-path="res://.godot/imported/PotatoIcon.png-2f6b5678572c9efab2eef4b6e41b157b.ctex"
+uid="uid://dtlab3ydurldq"
+path="res://.godot/imported/compass.png-93051ebebc50b1c6c042511eb1b163a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/PotatoIcon.png"
-dest_files=["res://.godot/imported/PotatoIcon.png-2f6b5678572c9efab2eef4b6e41b157b.ctex"]
+source_file="res://Assets/Textures/HUD/compass.png"
+dest_files=["res://.godot/imported/compass.png-93051ebebc50b1c6c042511eb1b163a8.ctex"]
 
 [params]
 

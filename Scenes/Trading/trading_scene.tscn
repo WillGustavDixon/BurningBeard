@@ -182,7 +182,7 @@ layout_mode = 0
 offset_left = 695.0
 offset_top = 520.0
 offset_right = 945.0
-offset_bottom = 1020.0
+offset_bottom = 920.0
 theme = SubResource("Theme_o6cwb")
 bbcode_enabled = true
 scroll_active = false
@@ -193,9 +193,33 @@ layout_mode = 0
 offset_left = 980.0
 offset_top = 520.0
 offset_right = 1230.0
+offset_bottom = 920.0
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="PlayerTotal" type="RichTextLabel" parent="TradingUI/Background/Text"]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 920.0
+offset_right = 945.0
 offset_bottom = 1020.0
 theme = SubResource("Theme_o6cwb")
 bbcode_enabled = true
+text = "Total: XXXXX"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="NPCTotal" type="RichTextLabel" parent="TradingUI/Background/Text"]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 920.0
+offset_right = 1230.0
+offset_bottom = 1020.0
+theme = SubResource("Theme_o6cwb")
+bbcode_enabled = true
+text = "Total: XXXXX"
 scroll_active = false
 shortcut_keys_enabled = false
 

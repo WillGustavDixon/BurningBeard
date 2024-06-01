@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://7y41arnn2k43"]
+
+[ext_resource type="Script" path="res://Scenes/Shop/req_info.gd" id="1_jdb01"]
+[ext_resource type="FontFile" uid="uid://dy6ipi0ybtx6d" path="res://Assets/Fonts/Open Font Package/cmu-typewriter/Typewriter/cmuntt.ttf" id="1_ob4xa"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(130, 175)
+offset_right = 130.0
+offset_bottom = 175.0
+script = ExtResource("1_jdb01")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.721569, 0.721569, 0.721569, 1)
+
+[node name="InfoRows" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ItemIcon" type="TextureRect" parent="InfoRows"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="RichTextLabel" parent="InfoRows"]
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_ob4xa")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]XXXXXXXXXXXX
+XXXXXXXXXXXX[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+selection_enabled = true
+
+[node name="ItemAmt" type="RichTextLabel" parent="InfoRows"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_ob4xa")
+theme_override_font_sizes/normal_font_size = 19
+bbcode_enabled = true
+text = "[center]x99999[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+selection_enabled = true
+
+[node name="ItemOK" type="RichTextLabel" parent="InfoRows"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_ob4xa")
+theme_override_font_sizes/normal_font_size = 19
+bbcode_enabled = true
+text = "[center]YES/NO[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+selection_enabled = true

@@ -5,6 +5,8 @@ extends Control
 @onready var itemScene = preload("res://Scenes/Inventory/Item/item.tscn")
 @onready var itemInfoScene = preload("res://Scenes/Inventory/Item/item_info.tscn")
 
+@onready var goldText = $Background/GoldText
+
 @export var colCount : int
 @export var slotCount : int
 @export var invEmpty : bool
@@ -61,6 +63,8 @@ func _process(_delta):
 			
 			if Input.is_action_just_pressed("mouseRightClick"):
 				createItemInfo()
+				
+	goldText.text = "[center]Gold: " + str(gold)
 
 func invOpened():
 	for item in inventory:
@@ -251,9 +255,9 @@ func slotMouseExited(slot):
 
 # checks the slot currently on to see if an item can be placed there
 func checkSlot(slot):
-	for grid in heldItem.itemGridSizes:
-		var checkingCol = slot.ID + grid[0] + grid[1] * colCount
-		var lineLenCheck = slot.ID % colCount + grid[0]
+	for g in heldItem.itemGridSizes:
+		var checkingCol = slot.ID + g[0] + g[1] * colCount
+		var lineLenCheck = slot.ID % colCount + g[0]
 		if lineLenCheck < 0 || lineLenCheck >= colCount:
 			canPlace = false
 			return
@@ -267,16 +271,16 @@ func checkSlot(slot):
 	
 # sets the colour of the slots below where the item is being held over
 func setSlots(slot):
-	for grid in heldItem.itemGridSizes:
-		var checkingCol = slot.ID + grid[0] + grid[1] * colCount
-		var lineLenCheck = slot.ID % colCount + grid[0]
+	for g in heldItem.itemGridSizes:
+		var checkingCol = slot.ID + g[0] + g[1] * colCount
+		var lineLenCheck = slot.ID % colCount + g[0]
 		if checkingCol < 0 || checkingCol >= gridArray.size():
 			continue
 		if lineLenCheck < 0 || lineLenCheck >= colCount:
 			continue
 		if canPlace:
 			gridArray[checkingCol].setColour(gridArray[checkingCol].slotStates.free)
-			if grid[0] < itemAnchor.y: itemAnchor.y = grid[0]
-			if grid[1] < itemAnchor.x: itemAnchor.x = grid[1]
+			if g[0] < itemAnchor.y: itemAnchor.y = g[0]
+			if g[1] < itemAnchor.x: itemAnchor.x = g[1]
 		else:
 			gridArray[checkingCol].setColour(gridArray[checkingCol].slotStates.occupied)

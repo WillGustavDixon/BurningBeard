@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deefa1e2mrtug"
-path="res://.godot/imported/MushroomIcon.png-677e5a905d9b4bea77ff8c64a8b80a57.ctex"
+uid="uid://qvu2gfosbtym"
+path="res://.godot/imported/compassBG.png-06efff6dd21f2ec73a19282814c46baf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/MushroomIcon.png"
-dest_files=["res://.godot/imported/MushroomIcon.png-677e5a905d9b4bea77ff8c64a8b80a57.ctex"]
+source_file="res://Assets/Textures/HUD/compassBG.png"
+dest_files=["res://.godot/imported/compassBG.png-06efff6dd21f2ec73a19282814c46baf.ctex"]
 
 [params]
 

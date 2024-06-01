@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfcbv6avaxdwh"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Apple/apple.gd" id="1_irjq3"]
+[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/obtainable.gd" id="1_56xoj"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="1_mg22b"]
 [ext_resource type="Material" uid="uid://b4r8rsns3qgxx" path="res://Assets/Materials/Environment/Brown.tres" id="2_06wv7"]
 
@@ -29,7 +29,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 lock_rotation = true
 freeze_mode = 1
-script = ExtResource("1_irjq3")
+script = ExtResource("1_56xoj")
+id = "01"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_rtb12")

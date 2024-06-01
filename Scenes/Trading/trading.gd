@@ -11,6 +11,8 @@ extends Control
 @onready var npcGoldText = $Background/Text/NPCGold
 @onready var playerTradesText = $Background/Text/PlayerTrades
 @onready var npcTradesText = $Background/Text/NPCTrades
+@onready var playerTotalText = $Background/Text/PlayerTotal
+@onready var npcTotalText = $Background/Text/NPCTotal
 
 var root 
 var invScene
@@ -25,6 +27,7 @@ var playerInvEmpty
 var playerGold : int
 var playerTrades := []
 var playerTradesStr := ""
+var playerVal : int
 
 var npc
 var npcGrid
@@ -36,6 +39,7 @@ var npcInvEmpty
 var npcGold : int
 var npcTrades := []
 var npcTradesStr := ""
+var npcVal : int
 
 var trading
 var heldItem = null
@@ -99,11 +103,14 @@ func _process(delta):
 		npcGoldText.text = "Gold: " + str(npcGold)
 		playerTradesText.text = playerTradesStr
 		npcTradesText.text = npcTradesStr
+		playerTotalText.text = "Total: " + str(playerVal)
+		npcTotalText.text = "Total: " + str(npcVal)
 
 func tradeOpened():
 	trading = true
 	playerInv = invScene.inventory
 	playerInvEmpty = invScene.invEmpty
+	playerGold = invScene.gold
 	
 	if !playerInvEmpty:
 		for item in playerInv:
@@ -136,6 +143,7 @@ func tradeClosed():
 			else:
 				child.storedItem = null
 				child.curState = child.slotStates.idle
+	invScene.gold = playerGold
 	
 	if is_instance_valid(npcGrid):
 		for child in npcGrid.get_children():
@@ -145,7 +153,8 @@ func tradeClosed():
 			else: child.queue_free()
 		npcGrid.queue_free()
 		npcGridArray = []
-		npc.savedInventory = npcInv.duplicate()
+		npc.inventory = npcInv.duplicate()
+	npc.gold = npcGold
 
 func getNPCGrid(src):
 	if is_instance_valid(npcGrid):
@@ -158,7 +167,7 @@ func getNPCGrid(src):
 	npcGold = src.gold
 	npcColCount = src.gridCols
 	npcSlotCount = src.gridSlots
-	npcInv = src.savedInventory.duplicate()
+	npcInv = src.inventory.duplicate()
 	npcInvEmpty = src.invEmpty
 	drawGrid(npcGrid, npcGridArray, npcColCount, npcSlotCount)
 
@@ -300,6 +309,7 @@ func setSlots(slot, itemSlots, g, gridArray, marking = false):
 
 ## input a slot and an item, return all the slots that the item would take up
 func getSlots(slot, item, g, gridArray) -> Array:
+	var slots = []
 	for grid in item.itemGridSizes:
 		var checkingCol = slot.ID + grid[0] + grid[1] * g.columns
 		var lineLenCheck = slot.ID % g.columns + grid[0]
@@ -307,7 +317,10 @@ func getSlots(slot, item, g, gridArray) -> Array:
 			continue
 		if lineLenCheck < 0 || lineLenCheck >= g.columns:
 			continue
-	return []
+		if gridArray[checkingCol].curState == gridArray[checkingCol].slotStates.occupied:
+			continue
+		slots.push_back(checkingCol)
+	return slots
 
 func markItem(slot):
 	if !slot || !slot.storedItem || \
@@ -315,20 +328,23 @@ func markItem(slot):
 		return
 	var markedItem = slot.storedItem
 	if playerInv.has(markedItem):
-		if !markedItem.marked:
+		if !markedItem.marked && playerTrades.size() < 5:
 			markedItem.marked = true
 			playerTrades.push_back(markedItem)
+			playerVal += markedItem.value
 		else:
 			markedItem.marked = false
 			playerTrades.erase(markedItem)
-		
+			playerVal -= markedItem.value
 	else: 
-		if !markedItem.marked:
+		if !markedItem.marked && npcTrades.size() < 5:
 			markedItem.marked = true
 			npcTrades.push_back(markedItem)
+			npcVal += markedItem.value
 		else:
 			markedItem.marked = false
 			npcTrades.erase(markedItem)
+			npcVal -= markedItem.value
 	getTradeStrs()
 
 func getTradeStrs():
@@ -350,9 +366,55 @@ func checkMarked():
 			npcGrid, npcGridArray, true)
 
 func tradeItems():
+	# check if items can fit in opposite inventory + add up their values
+	var nOccupied = []
+	var canTrade = true
+	var found = false
+	
+	for item in playerTrades:
+		found = false
+		for s in npcGridArray:
+			if s.curState == s.slotStates.occupied: nOccupied.push_back(s)
+			if nOccupied.has(s): continue # skip this slot
+			var slots = getSlots(s, item, npcGrid, npcGridArray)
+			if slots.size() == item.itemGridSizes.size():
+				found = true
+				for slot in slots:
+					nOccupied.push_back(npcGridArray[slot])
+				break
+		if !found: canTrade = false; break
+	if !canTrade: return
+	
+	var pOccupied = []
+		
+	for item in npcTrades:
+		found = false
+		for s in playerGridArray:
+			if s.curState == s.slotStates.occupied: pOccupied.push_back(s)
+			if pOccupied.has(s): continue
+			var slots = getSlots(s, item, playerGrid, playerGridArray)
+			if slots.size() == item.itemGridSizes.size():
+				found = true
+				for slot in slots:
+					pOccupied.push_back(playerGridArray[slot])
+				break
+		if !found: canTrade = false; break
+	if !canTrade: return
+	
 	# check value of all goods in both inventories
 	# whichever has the highest value keeps money
 	# the lower value one gives enough money to offset the item cost
+	
+	if playerVal > npcVal:
+		if npcGold < playerVal:
+			print("NPC is too poor")
+			return
+		else: npcGold -= playerVal; playerGold += playerVal;
+	elif playerVal < npcVal:
+		if playerGold < npcVal:
+			print("Player is too poor")
+			return
+		else: playerGold -= npcVal; npcGold += npcVal;
 	
 	# remove the trading items from each inventory and put them in the opposite inventory
 	# remove them from their grids and add them to the other grid
@@ -419,3 +481,5 @@ func tradeItems():
 	clearGrid(npcGridArray)
 	playerTradesStr = ""
 	npcTradesStr = ""
+	playerVal = 0
+	npcVal = 0

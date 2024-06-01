@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://drxdjftmugqhy"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Skewer/skewer.gd" id="1_jen0q"]
+[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/obtainable.gd" id="1_lbxhd"]
 [ext_resource type="Material" uid="uid://dg4s1eo00i8x" path="res://Assets/Materials/Cart/Blinds.tres" id="2_jccta"]
 [ext_resource type="Material" uid="uid://b4r8rsns3qgxx" path="res://Assets/Materials/Environment/Brown.tres" id="3_ojwp8"]
 
@@ -31,7 +31,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 lock_rotation = true
 freeze_mode = 1
-script = ExtResource("1_jen0q")
+script = ExtResource("1_lbxhd")
+id = "03"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.77109e-05, -0.000439405, 0.0051688)

@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmw3s87yyf6yc"]
+
+[ext_resource type="Script" path="res://Scenes/Shop/item_reqs.gd" id="1_kfntb"]
+[ext_resource type="FontFile" uid="uid://5t0scqnrrbh1" path="res://Assets/Fonts/Open Font Package/cmu-typewriter/Typewriter/cmunit.ttf" id="2_4nlgo"]
+[ext_resource type="FontFile" uid="uid://vesvwwwsvj3i" path="res://Assets/Fonts/Open Font Package/cmu-typewriter/Typewriter/cmuntb.ttf" id="3_1k8b1"]
+
+[node name="ItemReqs" type="ColorRect"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -900.0
+offset_top = -450.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0, 0, 0, 0.588235)
+script = ExtResource("1_kfntb")
+
+[node name="ItemReqsBG" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(880, 430)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -215.0
+offset_right = 440.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.835294, 0.694118, 0.631373, 0.784314)
+
+[node name="ServingText" type="RichTextLabel" parent="ItemReqsBG"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 37.0
+offset_right = 335.0
+offset_bottom = 67.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_4nlgo")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Items needed to begin service:"
+scroll_active = false
+shortcut_keys_enabled = false
+selection_enabled = true
+
+[node name="AreaText" type="RichTextLabel" parent="ItemReqsBG"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 3.0
+offset_right = 740.0
+offset_bottom = 33.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_1k8b1")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]XXXXXXXXXXXXXXXXXXXXXXXXXXXX[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+selection_enabled = true
+
+[node name="HBox" type="HBoxContainer" parent="ItemReqsBG"]
+custom_minimum_size = Vector2(865, 355)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 70.0
+offset_right = 872.0
+offset_bottom = 425.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Grid" type="GridContainer" parent="ItemReqsBG"]
+custom_minimum_size = Vector2(865, 355)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 70.0
+offset_right = 872.0
+offset_bottom = 425.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 6

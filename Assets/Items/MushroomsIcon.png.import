@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5frmqu7vf52v"
-path="res://.godot/imported/Sheep MilkIcon.png-48db58aa5555b7d7e840a5dd9a3de3ec.ctex"
+uid="uid://deefa1e2mrtug"
+path="res://.godot/imported/MushroomsIcon.png-f4fe637bf6321337b4fa41e295c748da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Sheep MilkIcon.png"
-dest_files=["res://.godot/imported/Sheep MilkIcon.png-48db58aa5555b7d7e840a5dd9a3de3ec.ctex"]
+source_file="res://Assets/Items/MushroomsIcon.png"
+dest_files=["res://.godot/imported/MushroomsIcon.png-f4fe637bf6321337b4fa41e295c748da.ctex"]
 
 [params]
 

@@ -30,7 +30,7 @@
 	"Grid Size": "0,0/1,0"
   },
   "05": {
-	"Item Name": "Sheep Milk",
+	"Item Name": "Sheep's Milk",
 	"Item Value": 12,
 	"Item Rarity": 3,
 	"Grid Size": "0,0/1,0/0,1/1,1"
@@ -42,7 +42,7 @@
 	"Grid Size": "0,0/0,1"
   },
   "07": {
-	"Item Name": "Potato",
+	"Item Name": "Potatoes",
 	"Item Value": 5,
 	"Item Rarity": 1,
 	"Grid Size": "0,0"

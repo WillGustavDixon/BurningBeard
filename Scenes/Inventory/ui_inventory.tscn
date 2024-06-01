@@ -23,6 +23,21 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.235294, 0, 0, 1)
 
+[node name="GoldText" type="RichTextLabel" parent="Background"]
+custom_minimum_size = Vector2(285, 100)
+layout_mode = 2
+offset_left = 100.0
+offset_top = 150.0
+offset_right = 385.0
+offset_bottom = 250.0
+theme = SubResource("Theme_0f7ke")
+bbcode_enabled = true
+text = "
+[center]Gold: XXXXX
+               "
+scroll_active = false
+shortcut_keys_enabled = false
+
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 0
 offset_right = 1920.0
@@ -32,13 +47,13 @@ offset_bottom = 1080.0
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Spawner Columns" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+[node name="Text Columns" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Text Columns"]
 custom_minimum_size = Vector2(570, 125)
 layout_mode = 2
 theme = SubResource("Theme_0f7ke")
@@ -50,7 +65,7 @@ text = "
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Text Columns"]
 custom_minimum_size = Vector2(800, 125)
 layout_mode = 2
 theme = SubResource("Theme_0f7ke")
@@ -61,7 +76,7 @@ text = "
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Spawner Columns"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/Text Columns"]
 custom_minimum_size = Vector2(500, 125)
 layout_mode = 2
 theme = SubResource("Theme_0f7ke")

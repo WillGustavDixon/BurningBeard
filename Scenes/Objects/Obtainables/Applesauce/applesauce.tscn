@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0pj2xl1sm3f0"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/Applesauce/applesauce.gd" id="1_wvaeb"]
+[ext_resource type="Script" path="res://Scenes/Objects/Obtainables/obtainable.gd" id="1_fige0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_myyuf"]
 height = 1.5
@@ -36,7 +36,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 lock_rotation = true
 freeze_mode = 1
-script = ExtResource("1_wvaeb")
+script = ExtResource("1_fige0")
+id = "02"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_myyuf")
