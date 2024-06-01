@@ -1345,10 +1345,10 @@ surface_material_override/0 = ExtResource("8_md0av")
 surface_material_override/1 = ExtResource("5_6t083")
 surface_material_override/2 = ExtResource("7_c5sys")
 
-[node name="Rear_View_Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00369, 0.107258, 3.22656)
-
 [node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Rear_View_Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00369, 0.107258, 3.22656)
 
 [node name="CameraTarget" type="Node3D" parent="CameraPivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -8)
@@ -1357,6 +1357,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, 
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 3, -10)
 far = 2000.0
 script = ExtResource("17_w8ome")
+
+[node name="CameraRayCast" type="RayCast3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 3, -10)
+target_position = Vector3(0, -0.5, 0)
 
 [node name="ChimneySmoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.642085, 1.45284, 0.848589)

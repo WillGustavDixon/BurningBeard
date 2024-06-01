@@ -4,7 +4,8 @@ signal hasDied()
 signal hasRespawned()
 
 const MAX_STEER = 45
-var ENGINE_POWER = 666*1.5
+const MAX_RPM = 1000
+const MAX_TORQUE = 400
 const MAX_BRAKE_FORCE = 5.0 
 const FRICTION = 1
 const HI_FRICTION = 0.05
@@ -57,10 +58,11 @@ func _physics_process(delta):
 	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	var VELOCITY: Vector3 = get_linear_velocity()
-
+	var rpm = abs($Rear_Left_Wheel.get_rpm())
+	var ENGINE_POWER = acceleration * MAX_TORQUE * (1 - rpm/MAX_RPM)
 	
 	if Input.is_action_pressed("RearViewCamera"):
-		$Rear_View_Camera.set_current(true)
+		$CameraPivot/Rear_View_Camera.set_current(true)
 	else:
 		$CameraPivot/Camera3D.set_current(true)
 	
@@ -70,13 +72,15 @@ func _physics_process(delta):
 		brake_val = 0
 	
 	if Input.is_action_pressed("Reverse"):
-		ENGINE_POWER = 333
+		ENGINE_POWER = ENGINE_POWER/2
 	else:
-		ENGINE_POWER = 666*1.5
+		ENGINE_POWER = ENGINE_POWER*2
 
 	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1
 	if steerMod < 0.15: steerMod = 0.15
 	print(steerMod)
+	
+	print($Rear_Right_Wheel.get_rpm())
 
 	if Input.is_action_pressed("Drift"):
 		for wheel in frontWheels: 
@@ -101,7 +105,8 @@ func _physics_process(delta):
 	pitch += Input.get_action_strength("controllerCameraUp") * con_pitch_sensitivity
 	
 	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
-	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
+	$Rear_Left_Wheel.engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
+	$Rear_Right_Wheel.engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
 	
 func _input(event):
