@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_dyyui"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_dyyui")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
 shader_parameter/outline_width = 4.0

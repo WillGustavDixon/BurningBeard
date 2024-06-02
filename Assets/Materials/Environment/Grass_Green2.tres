@@ -1,11 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dp8tujyc28ypg"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dp8tujyc28ypg"]
 
-[ext_resource type="Material" uid="uid://ma7y6tibkkkh" path="res://Assets/VFX/outline.tres" id="1_yc22g"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="2_03anb"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_yc22g")
 shader = ExtResource("2_03anb")
 shader_parameter/specular_smoothness = 0.05
 shader_parameter/fresnel_smoothness = 0.05

@@ -1,12 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dk4n53g4sx3pu"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dk4n53g4sx3pu"]
 
-[ext_resource type="Material" uid="uid://ma7y6tibkkkh" path="res://Assets/VFX/outline.tres" id="1_qcpb6"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-translucent.gdshader" id="2_ayw4f"]
 [ext_resource type="Texture2D" uid="uid://dyb656nkvpl7u" path="res://Assets/Textures/Cart/Cart_Rolled_Fabric.png" id="3_0o0aw"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_qcpb6")
 shader = ExtResource("2_ayw4f")
 shader_parameter/specular_smoothness = 0.05
 shader_parameter/fresnel_smoothness = 0.05
