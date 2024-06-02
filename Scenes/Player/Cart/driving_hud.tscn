@@ -1,32 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://xpt5s322vlpj"]
+[gd_scene load_steps=5 format=3 uid="uid://xpt5s322vlpj"]
 
 [ext_resource type="Texture2D" uid="uid://qvu2gfosbtym" path="res://Assets/Textures/HUD/compassBG.png" id="1_bv6d3"]
+[ext_resource type="Script" path="res://Scenes/Player/Cart/drivingHUD.gd" id="1_nck8j"]
 [ext_resource type="Texture2D" uid="uid://dtlab3ydurldq" path="res://Assets/Textures/HUD/compass.png" id="2_lpes8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eron7"]
+atlas = ExtResource("2_lpes8")
+region = Rect2(400, 0, 800, 100)
 
 [node name="DrivingHUD" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_nck8j")
 
-[node name="CompassBG" type="TextureRect" parent="Control"]
+[node name="CompassBG" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -400.0
+offset_left = -405.0
 offset_top = 20.0
-offset_right = 400.0
+offset_right = 405.0
 offset_bottom = 120.0
 grow_horizontal = 2
 texture = ExtResource("1_bv6d3")
+expand_mode = 1
 
-[node name="Compass" type="TextureRect" parent="Control/CompassBG"]
+[node name="Compass" type="TextureRect" parent="UI/CompassBG"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_lpes8")
+offset_left = 5.0
+offset_right = 805.0
+offset_bottom = 100.0
+texture = SubResource("AtlasTexture_eron7")
+expand_mode = 1
 stretch_mode = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="UI/CompassBG/Compass"]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+max_value = 359.0
