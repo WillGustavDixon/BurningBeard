@@ -6,7 +6,7 @@ extends Node
 @onready var tradeScene = $TradingScene
 @onready var trade = tradeScene.get_child(0)
 @onready var driveHUD = $DrivingHUD/UI
-@onready var shopHUD = $ShopHUD
+#@onready var shopHUD = $ShopHUD
 @onready var fader = $Fader
 @onready var cart = $MainScene/Cart
 @onready var itemHider = $ItemHider
@@ -27,7 +27,7 @@ func _ready():
 	invScene.visible = false
 	tradeScene.visible = false
 	pauseScene.visible = false
-	shopHUD.visible = false
+	#shopHUD.visible = false
 	driveHUD.visible = true
 	itemHider.visible = false
 	winScreen.visible = false

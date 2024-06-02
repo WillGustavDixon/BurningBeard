@@ -87,7 +87,7 @@ func _process(delta):
 			
 			else: ## otherwise, allow picking up and item info viewing
 				if Input.is_action_just_pressed("mouseLeftClick") && \
-				curSlot.get_parent() == playerGrid:
+				curSlot && curSlot.get_parent() == playerGrid:
 					pickUpItem()
 				
 				if Input.is_action_just_pressed("mouseRightClick"):
