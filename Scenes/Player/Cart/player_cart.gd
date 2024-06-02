@@ -1,5 +1,6 @@
 extends VehicleBody3D
 
+signal rotated(rot)
 signal hasDied()
 signal hasRespawned()
 
@@ -49,7 +50,7 @@ var brake_val =  1.0
 func _ready():
 	ENGINE_POWER = DEF_ENGINE_POWER
 	curCheckpointPos = global_position
-	curCheckpointRot = global_rotation
+	curCheckpointRot = global_rotation_degrees
 	respawn()
 	#make sure to set the respawn when moving the cart position
 	
@@ -105,6 +106,7 @@ func _physics_process(delta):
 	pitch += Input.get_action_strength("controllerCameraUp") * con_pitch_sensitivity
 	
 	steering = Input.get_axis("Right", "Left") * (MAX_STEER*steerMod) * delta
+	emit_signal("rotated", rotation.y)
 	engine_force = Input.get_axis("Reverse", "Accelerate") * ENGINE_POWER
 	brake = brake_val * MAX_BRAKE_FORCE
 	

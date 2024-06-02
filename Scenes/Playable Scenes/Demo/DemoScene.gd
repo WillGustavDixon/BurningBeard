@@ -5,11 +5,12 @@ extends Node
 @onready var pauseScene = $PauseOverlay
 @onready var tradeScene = $TradingScene
 @onready var trade = tradeScene.get_child(0)
-@onready var driveHUD = $DrivingHUD
+@onready var driveHUD = $DrivingHUD/UI
 @onready var shopHUD = $ShopHUD
 @onready var fader = $Fader
 @onready var cart = $MainScene/Cart
 @onready var itemHider = $ItemHider
+@onready var winScreen = $WinOverlay
 
 @export var invOpen : bool
 @export var tradeOpen : bool
@@ -18,6 +19,7 @@ extends Node
 @export var curMode := modes.drive
 enum modes {drive, shop}
 
+@onready var invLoaded = false
 
 func _ready():
 	get_tree().paused = false
@@ -28,13 +30,14 @@ func _ready():
 	shopHUD.visible = false
 	driveHUD.visible = true
 	itemHider.visible = false
+	winScreen.visible = false
 	fader.hold()
 	invOpen = false
 	tradeOpen = false
 	pausing = false
-	
 	cart.hasDied.connect(onDeath)
 	cart.hasRespawned.connect(onRespawned)
+	cart.rotated.connect(driveHUD.rotateCompass)
 	fader.get_child(0).animation_finished.connect(animPlayed)
 	
 func _process(delta):
@@ -62,12 +65,13 @@ func _process(delta):
 				inv.saveInv()
 			if Input.is_action_just_pressed("Load") && invOpen:
 				print("Loading!")
-				DataHandling.loadInvData(DataHandling.invPath)
-				inv.clearInv()
-				inv.loadInv.call_deferred() # call is deferred so that the inventory has time to refresh
+				loadInv()
 		
 		modes.shop:
 			pass
+	if !invLoaded:
+		invLoaded = true
+		#loadInv()
 
 func openInv(id, src : Node = null):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -84,6 +88,11 @@ func closeInv():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 	invOpen = false
+	
+func loadInv():
+	DataHandling.loadInvData(DataHandling.invPath)
+	inv.clearInv()
+	inv.loadInv.call_deferred() # call is deferred so that the inventory has time to refresh
 
 func openTrade(npc):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -101,6 +110,7 @@ func closeTrade():
 	tradeOpen = false
 
 func startShop(shop, reqs):
+	winScreen.visible = true
 	for req in reqs:
 		var count = 0
 		for item in inv.inventory:

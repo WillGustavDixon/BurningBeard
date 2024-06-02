@@ -1,5 +1,7 @@
 extends Control
 
+signal canLoad
+
 @onready var slotScene = preload("res://Scenes/Inventory/Slot/slot_icon.tscn")
 @onready var gridScene = preload("res://Scenes/Inventory/inventory_grid.tscn")
 @onready var itemScene = preload("res://Scenes/Inventory/Item/item.tscn")
@@ -31,10 +33,12 @@ func _ready():
 	grid = gridScene.instantiate()
 	$Background/MarginContainer/VBoxContainer.add_child(grid)
 	drawGrid()
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	for slot in gridArray:
+		if slot.position != Vector2(0,0):
+			emit_signal("canLoad")
 	if inventory.size() == 0:
 		invEmpty = true
 	else:
@@ -235,6 +239,7 @@ func drawGrid():
 	colCount = DataHandling.invData["Settings"]["Columns"]
 	invEmpty = DataHandling.invData["Settings"]["Empty"]
 	grid.draw(gridArray, colCount, slotCount, self)
+	print("griddrwan")
 
 # clears all the colour changes from the grid
 func clearGrid():
