@@ -1,12 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cvf4kh4l6l2yh"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cvf4kh4l6l2yh"]
 
-[ext_resource type="Material" uid="uid://ma7y6tibkkkh" path="res://Assets/VFX/outline.tres" id="1_8tims"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-transp.gdshader" id="2_jhrnt"]
 [ext_resource type="Texture2D" uid="uid://vib5ssi3ssms" path="res://Assets/Textures/Cart/grid window.png" id="3_20i55"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_8tims")
 shader = ExtResource("2_jhrnt")
 shader_parameter/specular_smoothness = 0.05
 shader_parameter/fresnel_smoothness = 0.05
