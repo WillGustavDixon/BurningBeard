@@ -5,6 +5,7 @@ signal hasRespawned()
 
 const MAX_STEER = 45
 var ENGINE_POWER = 666*1.5
+const MAX_RPM = 2000
 const MAX_BRAKE_FORCE = 5.0 
 const FRICTION = 1
 const HI_FRICTION = 0.05
@@ -50,12 +51,17 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_pressed("Respawn"):
 		emit_signal("hasDied")
+		
+	# Camera parameters
 	pitch = clamp(pitch, pitch_min, pitch_max)
 	yaw = clamp(yaw, yaw_min, yaw_max)
 	gimball.rotation_degrees.y = lerp(gimball.rotation_degrees.y, yaw, acceleration * delta)
 	gimball.rotation_degrees.x = lerp(gimball.rotation_degrees.x, pitch, acceleration * delta)
 	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
+	
+	
+	var RearLeftWheelRPM = $Rear_Left_Wheel.get_rpm()
 	var VELOCITY: Vector3 = get_linear_velocity()
 
 	
@@ -76,7 +82,14 @@ func _physics_process(delta):
 
 	var steerMod = ((-0.75/40) * abs(VELOCITY.length())) + 1
 	if steerMod < 0.15: steerMod = 0.15
+	
+	#Throttle rpm of wheels
+	if RearLeftWheelRPM > MAX_RPM:
+		RearLeftWheelRPM = MAX_RPM
+	
+	# Print section
 	print(steerMod)
+	print(RearLeftWheelRPM)
 
 	if Input.is_action_pressed("Drift"):
 		for wheel in frontWheels: 
