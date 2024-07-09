@@ -13,10 +13,16 @@ func _ready():
 	set_as_top_level(true)  # Prevents the camera from being glued to the player (won't follow on its own)
 	follow = true
 
-func _process(delta):
+func _physics_process(delta):
 	if follow:
 		follow_player(delta)
 	look_at(get_parent().get_parent().global_position)
+	
+	# Trying to fix camera jitter
+	var fps = Engine.get_frames_per_second()
+	# ALL I HAD TO DO WAS MAKE IT PHYSICS PROCESS SO IT UPDATED AT THE SAME TIME AS THE CART MOVEMENT AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
 
 func follow_player(delta):
 	# Update target position with camera_point's current position

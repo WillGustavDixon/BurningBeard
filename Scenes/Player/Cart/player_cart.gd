@@ -34,8 +34,8 @@ var yaw_acceleration : float = 15
 var pitch_acceleration : float = 15
 var pitch_max : float = 60
 var pitch_min : float = -20
-var yaw_max : float = 70
-var yaw_min : float = -70
+var yaw_max : float = 90
+var yaw_min : float = -90
 
 var camera_rotate_max = 0
 var camera_rotate_min = 0
@@ -51,19 +51,18 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_pressed("Respawn"):
 		emit_signal("hasDied")
-		
+	
+	var VELOCITY: Vector3 = get_linear_velocity()
+	var RearLeftWheelRPM = $Rear_Left_Wheel.get_rpm()
+	
 	# Camera parameters
-	pitch = clamp(pitch, pitch_min, pitch_max)
 	yaw = clamp(yaw, yaw_min, yaw_max)
+	pitch = clamp(pitch, pitch_min, pitch_max)
 	gimball.rotation_degrees.y = lerp(gimball.rotation_degrees.y, yaw, acceleration * delta)
 	gimball.rotation_degrees.x = lerp(gimball.rotation_degrees.x, pitch, acceleration * delta)
 	camTarg.global_rotation_degrees.z = lerp(camTarg.global_rotation_degrees.z, cam_rotation, acceleration * delta)
 	cam_rotation = clamp(cam_rotation, camera_rotate_min, camera_rotate_max)
 	
-	
-	var RearLeftWheelRPM = $Rear_Left_Wheel.get_rpm()
-	var VELOCITY: Vector3 = get_linear_velocity()
-
 	
 	if Input.is_action_pressed("RearViewCamera"):
 		$Rear_View_Camera.set_current(true)
